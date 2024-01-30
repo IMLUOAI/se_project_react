@@ -1,0 +1,72 @@
+.header {
+    position: relative;
+    background-color: #0cedf1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1360px;
+    height: 40px;
+    
+    }
+    
+    .header__logo {
+        width: 89px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    }
+    
+    .header__date {
+        display: flex;
+        align-items: center;
+        width: 116px;
+    height: 24px;
+        font-family: Cabinet Grotesk;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    }
+    
+    .header__add-button {
+        display: flex;
+    align-items: center;
+        width: 116px;
+    height: 24px;
+      font-family: Cabinet Grotesk;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    }  
+    
+    .header__user-name {
+        display: flex;
+        align-items: center;
+        width: 157px;
+    height: 25px;
+        font-family: Cabinet Grotesk;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    }
+    
+    .header__avatar-logo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    row-gap: 12px;
+    padding: 0;
+    }
+    
+    .haeder__avatar img{
+        display: flex;
+        align-items: center;
+        width:40px;
+        height:40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(0, 0, 0, 0.50);
+    }

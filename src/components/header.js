@@ -1,25 +1,27 @@
-import header from "../components/app";
+import "../blocks/header/header.css";
 
+const header = () => {
+  console.log("header");
 
-const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
- 
-
-
-return {
-    <header className="App-header">
-    <img src={logo} className="App-logo" alt="logo" />
-    <p>
-      Edit <code>src/App.js</code> and save to reload.
-    </p>
-    <a
-      className="App-link"
-      href="https://reactjs.org"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Learn React
-    </a>
-  </header>
-}
+  return (
+    <header className="header">
+      <div className="header__logo">
+        <div>
+          <img src="/images/logo.svg" alt="logo" />
+        </div>
+        <div className="header__date">date </div>
+      </div>
+      <div className="header__avatar-logo">
+        <button className="header__add-button" type="text">
+          +Add clothes
+        </button>
+        <div className="header__user-name">name</div>
+        <div>
+          <img src="/images/avatar.svg" alt="avatar" />
+        </div>
+      </div>
+    </header>
+  );
+};
 
 export default header;

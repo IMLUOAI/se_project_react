@@ -1,72 +1,30 @@
-.header {
-position: relative;
-background-color: #0cedf1;
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 1360px;
-height: 40px;
-top: 32px;
+.main {
+    padding: 0;
+    display: flex;
+}
+
+.weather {
+    position: relative;
+    width: 1360px;
+    height: 40px;
+top: 100px;
 left: 40px;
 }
 
-.header__logo {
-    width: 89px;
-height: 40px;
-display: flex;
-align-items: center;
-gap: 24px;
-}
-
-.header__date {
-    display: flex;
-    align-items: center;
-    width: 116px;
-height: 24px;
+.weather__info {
+    position: absolute;
+    top:20px;
+    left: 16px;
+    width: 69px;
+    height: 40px;
     font-family: Cabinet Grotesk;
-font-size: 20px;
+font-size: 36px;
 font-weight: 700;
-line-height: 24px;
+line-height: 40px;
 letter-spacing: 0em;
+text-align: left;
+
 }
-
-.header__add-button {
-    display: flex;
-align-items: center;
-    width: 116px;
-height: 24px;
-  font-family: Cabinet Grotesk;
-font-size: 20px;
-font-weight: 700;
-line-height: 24px;
-letter-spacing: 0em;
-}  
-
-.header__user-name {
-    display: flex;
-    align-items: center;
-    width: 157px;
-height: 25px;
-    font-family: Cabinet Grotesk;
-font-size: 20px;
-font-weight: 700;
-line-height: 25px;
-letter-spacing: 0em;
-}
-
-.header__avatar-logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-row-gap: 12px;
-}
-
-.haeder__avatar img{
-    display: flex;
-    align-items: center;
-    width:40px;
-    height:40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid rgba(0, 0, 0, 0.50);
+.weather img{
+    width: 100%;
 }
