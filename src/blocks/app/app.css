@@ -3,11 +3,11 @@
     display: flex;
 }
 
-.weather {
+.weather-bar {
     position: relative;
     width: 1360px;
     height: 40px;
-top: 100px;
+top: 72px;
 left: 40px;
 }
 

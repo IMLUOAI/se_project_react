@@ -1,15 +1,12 @@
-import header from "./header.js";
+import Header from "../components/header";
 import "../blocks/app/app.css";
-
+import WeatherCard from "../components/weatherCard";
 function App() {
   return (
     <div>
-      <header />
+      <Header />
       <main className="main">
-        <section className="weather" id="weather">
-          <div className="weather__info">75°F</div>
-          <img src="images/day/Cloudy.svg" />
-        </section>
+        <WeatherCard day={true} type="cloudy" />
         <section id="card-section"> card section</section>
       </main>
     </div>
