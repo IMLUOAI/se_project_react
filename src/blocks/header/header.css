@@ -33,6 +33,7 @@
     
     .header__add-button {
         display: flex;
+        justify-content: center;
     align-items: center;
         width: 116px;
     height: 24px;
@@ -55,15 +56,15 @@
     letter-spacing: 0em;
     }
     
-    .header__avatar-logo {
+    .header__avatar-bar {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
     gap: 12px;
-    padding: 0;
     }
     
-    .haeder__avatar img{
+    .header__avatar {
         display: flex;
         align-items: center;
         width:40px;

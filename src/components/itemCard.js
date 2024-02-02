@@ -1,6 +1,6 @@
 import "../blocks/itemCard/itemCard.css";
 
-const ItemCard = (item) => {
+const ItemCard = ({ item }) => {
   return (
     <div>
       <div>

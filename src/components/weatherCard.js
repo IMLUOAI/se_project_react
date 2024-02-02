@@ -1,3 +1,5 @@
+import React from "react";
+
 import "../blocks/weatherCard/weatherCard.css";
 
 const weatherOptions = [
@@ -31,12 +33,12 @@ const weatherOptions = [
   { url: require("../images/night/Fog night.svg"), night: true, type: "fog" },
 ];
 
-const weatherCard = ({ day, type }) => {
+const weatherCard = ({ day, type, weatherTemp }) => {
   console.log("weather card");
   const imageSrc = weatherOptions.filter((i) => {
     console.log(i);
 
-    return i.day === day && i.type === type;
+    return i.day === day && i.type === type && i.weatherTemp === weatherTemp;
   });
 
   console.log(imageSrc);
@@ -46,7 +48,7 @@ const weatherCard = ({ day, type }) => {
 
   return (
     <section className="weather__bar" id="weather">
-      <div className="weather__info">75°F</div>
+      <div className="weather__info">{weatherTemp}</div>
       <img src={imageSrcUrl} alt="weather" className="weather__image" />
     </section>
   );
