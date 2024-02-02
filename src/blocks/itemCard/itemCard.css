@@ -1,0 +1,31 @@
+.card__section {
+    position: relative;
+    display: flex;
+ top: 40px;
+ left: 40px;
+}
+
+.card__image {
+    width: 328px;
+    height: 328px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.card__name {
+    color: #000;
+    font-family: "Cabinet Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 18px 140x  290px 140px;
+}
+
+.card__items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:17px;
+}
