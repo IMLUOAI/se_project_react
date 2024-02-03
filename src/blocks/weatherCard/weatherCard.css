@@ -1,15 +1,10 @@
-.main {
-    padding: 0;
-    display: flex;
-}
 
 .weather__bar {
     position: relative;
     width: 1360px;
     height: 40px;
-top: 72px;
-left: 40px;
-}
+    margin: 28px 40px 0;
+}   
 
 .weather__info {
     position: absolute;
@@ -22,8 +17,6 @@ font-size: 36px;
 font-weight: 700;
 line-height: 40px;
 letter-spacing: 0em;
-text-align: left;
-
 }
 .weather__image {
     width: 100%;

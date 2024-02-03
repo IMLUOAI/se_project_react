@@ -2,7 +2,7 @@ import "../blocks/itemCard/itemCard.css";
 
 const ItemCard = ({ item }) => {
   return (
-    <div>
+    <div className="card__items">
       <div>
         <img src={item.link} className="card__image" alt="" />
       </div>

@@ -19,7 +19,7 @@ const header = () => {
         <div>
           <img
             className="header__avatar"
-            src={require("../images/avatar.svg")}
+            src={require("../images/avatar.svg") } alt="avatar"
           />
         </div>
       </div>

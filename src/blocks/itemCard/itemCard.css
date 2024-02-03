@@ -1,8 +1,6 @@
 .card__section {
-    position: relative;
     display: flex;
- top: 40px;
- left: 40px;
+    margin: 40px 40px 171px;
 }
 
 .card__image {
@@ -10,7 +8,7 @@
     height: 328px;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    position: relative;
 }
 
 .card__name {
@@ -21,11 +19,21 @@
     font-weight: 700;
     line-height: normal;
     text-align: center;
+    position: absolute;
+    top:18px;
+    left:140px;
+
 }
 
 .card__items {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap:17px;
+    margin-top: 34px;
+  
+}
+
+.card__title {
+    display: flex;
+align-items: center;    
 }

@@ -1,5 +1,6 @@
 import WeatherCard from "../components/weatherCard";
 import ItemCard from "../components/itemCard";
+import "../blocks/itemCard/itemCard.css"
 const defaultClothingItems = [
   {
     _id: 0,
@@ -38,15 +39,15 @@ const defaultClothingItems = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
-const main = (weatherTemp) => {
+const Main = ({weatherTemp}) => {
   return (
     <main className="main">
       <WeatherCard day={true} type="rainy" weatherTemp={weatherTemp} />
       <section className="card__section" id="card-section">
-        Today is {weatherTemp} / You may want to wear:
+     Today is {weatherTemp} / You may want to wear:
         <div className="card__items">
           {defaultClothingItems.map((item) => {
-            <ItemCard item={item} />;
+            return <ItemCard key ={item._id} item={item} />;
           })}
         </div>
       </section>
@@ -54,4 +55,4 @@ const main = (weatherTemp) => {
   );
 };
 
-export default main;
+export default Main;

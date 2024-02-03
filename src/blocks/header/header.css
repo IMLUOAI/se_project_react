@@ -3,20 +3,20 @@
     background-color: #fff;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 1360px;
     height: 40px;
-    top:32px;
-    left: 40px;
-    
+    margin: 32px 40px 0;
     }
     
     .header__logo {
         width: 89px;
     height: 40px;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 24px;
+    position: absolute;
+    top: 10px;
+    left: 0;
     }
     
     .header__date {
@@ -33,7 +33,6 @@
     
     .header__add-button {
         display: flex;
-        justify-content: center;
     align-items: center;
         width: 116px;
     height: 24px;
@@ -62,6 +61,9 @@
         justify-content: space-between;
         align-items: center;
     gap: 12px;
+    position: absolute;
+    top: 10px;
+    right: 0;
     }
     
     .header__avatar {
