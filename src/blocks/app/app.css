@@ -1,5 +1,5 @@
 .main {
     display: flex;
-    margin: 28px 40px 0;
+    max-width: 1360px;
 }
 

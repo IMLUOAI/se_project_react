@@ -1,7 +1,7 @@
 
 .weather__bar {
     position: relative;
-    width: 1360px;
+    max-width: 1360px;
     height: 40px;
     margin: 28px 40px 0;
 }   

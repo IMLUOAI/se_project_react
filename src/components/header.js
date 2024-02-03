@@ -7,7 +7,7 @@ const header = () => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={require("../images/logo.svg")} alt="logo" />
+          <img src={"../images/logo.svg"} alt="logo" />
         </div>
         <div className="header__date">date </div>
       </div>
@@ -19,7 +19,7 @@ const header = () => {
         <div>
           <img
             className="header__avatar"
-            src={require("../images/avatar.svg") } alt="avatar"
+            src={"../images/avatar.svg" } alt="avatar"
           />
         </div>
       </div>

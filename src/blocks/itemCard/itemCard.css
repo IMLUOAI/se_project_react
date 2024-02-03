@@ -1,5 +1,6 @@
 .card__section {
     display: flex;
+    max-width: 1156px;
     margin: 40px 40px 171px;
 }
 
@@ -8,7 +9,6 @@
     height: 328px;
     border-radius: 10px;
     display: flex;
-    position: relative;
 }
 
 .card__name {
@@ -27,13 +27,13 @@
 
 .card__items {
     display: flex;
-    justify-content: center;
     gap:17px;
     margin-top: 34px;
-  
+    position: relative;
 }
 
 .card__title {
     display: flex;
 align-items: center;    
+max-width: 330px;
 }
