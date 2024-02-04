@@ -1,9 +1,12 @@
-
 import "../blocks/weatherCard/weatherCard.css";
 
 const weatherOptions = [
   { url: require("../images/day/Sunny.svg").default, day: true, type: "sunny" },
-  { url: require("../images/day/Cloudy.svg").default, day: true, type: "cloudy" },
+  {
+    url: require("../images/day/Cloudy.svg").default,
+    day: true,
+    type: "cloudy",
+  },
   { url: require("../images/day/Rainy.svg").default, day: true, type: "rainy" },
   { url: require("../images/day/Storm.svg").default, day: true, type: "storm" },
   { url: require("../images/day/Snow.svg").default, day: true, type: "snow" },
@@ -28,8 +31,16 @@ const weatherOptions = [
     night: false,
     type: "storm",
   },
-  { url: require("../images/night/Snow night.svg").default, night: false, type: "snow" },
-  { url: require("../images/night/Fog night.svg").default, night: false, type: "fog" },
+  {
+    url: require("../images/night/Snow night.svg").default,
+    night: false,
+    type: "snow",
+  },
+  {
+    url: require("../images/night/Fog night.svg").default,
+    night: false,
+    type: "fog",
+  },
 ];
 
 const WeatherCard = ({ day, type, weatherTemp }) => {
@@ -39,7 +50,7 @@ const WeatherCard = ({ day, type, weatherTemp }) => {
 
     return i.day === day && i.type === type;
   });
-  const imageSrcUrl = imageSrc[0]?.url || "";
+  const imageSrcUrl = imageSrc[0].url || "";
 
   return (
     <section className="weather__bar" id="weather">

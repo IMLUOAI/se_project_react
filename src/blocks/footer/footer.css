@@ -2,6 +2,8 @@
    display: flex; 
    justify-content: space-between;
    align-items: center;
+   max-width: 1360px;
+   margin: 85px 40px 24px;
 }
 
 .footer__description {
@@ -11,16 +13,13 @@
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    margin: 171px auto 24px 40px;
 }
 
 .footer__date {
     color: #000;
-    text-align: right;
     font-family: "Cabinet Grotesk";
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; 
-    margin: 171px 40px 24px auto;
 }

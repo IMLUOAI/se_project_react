@@ -2,21 +2,22 @@
 .weather__bar {
     position: relative;
     max-width: 1360px;
-    height: 40px;
-    margin: 28px 40px 0;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    margin: 28px 40px auto;
 }   
 
 .weather__info {
     position: absolute;
     top:20px;
     left: 16px;
-    width: 69px;
-    height: 40px;
-    font-family: Cabinet Grotesk;
+    color: #FFF;
+font-family: "Cabinet Grotesk";
 font-size: 36px;
+font-style: normal;
 font-weight: 700;
 line-height: 40px;
-letter-spacing: 0em;
 }
 .weather__image {
     width: 100%;
