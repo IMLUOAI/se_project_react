@@ -10,7 +10,7 @@
     
     .header__logo {
     display: flex;
-    width: 89px;
+    max-width: 89px;
     height: 40px;
     align-items: center;
     gap: 24px;
@@ -22,7 +22,7 @@
     }
 
     .header__date {
-    width: 116px;
+    max-width: 116px;
     height: 24px;
     font-family: "Cabinet Grotesk";
     font-size: 1.25rem;
@@ -40,12 +40,11 @@
     line-height: 24px;
     border: none;
     background-color: initial;
-    display: flex;
-    align-items: center;
+    padding: 0;
     }  
     
     .header__user-name {
-    width: 157px;
+    max-width: 157px;
     height: 25px;
     font-family: "Cabinet Grotesk";
     font-size: 1.25rem;
@@ -61,7 +60,7 @@
     }
     
     .header__avatar {
-    width:40px;
+    max-width:40px;
     height:40px;
     border-radius: 50%;
     object-fit: cover;
