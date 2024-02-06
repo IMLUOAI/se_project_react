@@ -4,7 +4,7 @@ import "../blocks/itemCard/itemCard.css";
 import "../blocks/main/main.css";
 import { defaultClothingItems } from "../utils/constants";
 
-const main = ({ weatherTemp, onSelectedCard }) => {
+const main = ({ weatherTemp, onSelectCard }) => {
   return (
     <main className="main">
       <WeatherCard day={true} type="sunny" weatherTemp={weatherTemp} />
@@ -14,7 +14,7 @@ const main = ({ weatherTemp, onSelectedCard }) => {
         </div>
         <div className="card__items">
           {defaultClothingItems.map((item) => {
-            return <ItemCard item={item} onSelectedCard={onSelectedCard} />;
+            return <ItemCard item={item} onSelectCard={onSelectCard} />;
           })}
         </div>
       </section>
