@@ -26,3 +26,31 @@
     object-fit: cover;
 }
 
+/* @media screen and (max-width: 667px) {
+    .weather__bar {
+        position: relative;
+        max-width: 667px;
+        height: 80px;
+        margin: 28px 40px 0;
+        border-radius: 12px;
+    }   
+    
+    .weather__info {
+        position: absolute;
+        top:20px;
+        left: 16px;
+        z-index: 3;
+        color: #FFF;
+        max-width: 69px;
+        height: 40px;
+        font-family: "Cabinet Grotesk";
+        font-size: 2.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 40px;
+    }
+    .weather__image {
+        width: 100%;
+        object-fit: cover;
+    }
+} */

@@ -4,11 +4,11 @@ import Main from "../components/main";
 import Footer from "../components/footer";
 import "../blocks/app/app.css";
 import ModalWithForm from "../components/modalWithForm";
-
+import ItemModal from "../components/itemModal";
 function App() {
   const weatherTemp = "108°F";
   const [activeModal, setActiveModal] = useState("");
-
+  const [selectedCard, setSelectedCard] = useState({});
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -16,11 +16,15 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
+  const handleSelectedCard = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
 
   return (
     <div className="page__section">
       <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={weatherTemp} />
+      <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm title="New garment" onClose={handleCloseModal}>
@@ -68,6 +72,9 @@ function App() {
             </div>
           </div>
         </ModalWithForm>
+      )}
+      {activeModal === "preview" && (
+        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
     </div>
   );

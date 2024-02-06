@@ -1,9 +1,9 @@
 .footer {
-   display: flex; 
-   justify-content: space-between;
-   align-items: center;
-   max-width: 1360px;
-   margin: 85px 40px 24px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1360px;
+    margin: 85px 40px 24px;
 }
 
 .footer__description {

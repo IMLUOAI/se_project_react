@@ -3,3 +3,10 @@
     height: 1084px;
     background-color: #f3f3f3;
 }
+
+@media screen and (max-width: 414px) {
+   .page__section{
+    max-width: 414px;
+    height: auto;
+   }
+}
