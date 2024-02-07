@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Main from "../components/main";
 import Footer from "../components/footer";
@@ -6,7 +6,7 @@ import "../blocks/app/app.css";
 import ModalWithForm from "../components/modalWithForm";
 import ItemModal from "../components/itemModal";
 function App() {
-  const weatherTemp = "108°F";
+  const weatherTemp = "30°F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const handleCreateModal = () => {
@@ -20,6 +20,8 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  useEffect(() => {});
 
   return (
     <div className="page__section">

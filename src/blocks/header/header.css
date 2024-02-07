@@ -11,7 +11,7 @@
     
     .header__logo {
     display: flex;
-    max-width: 89px;
+    max-width: 273px;
     height: 40px;
     align-items: center;
     gap: 24px;
@@ -24,7 +24,7 @@
     }
 
     .header__date {
-    max-width: 116px;
+    max-width: 160px;
     height: 24px;
     font-family: "Cabinet Grotesk";
     font-size: 1.25rem;

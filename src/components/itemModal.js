@@ -3,7 +3,7 @@ import "../blocks/itemModal/itemModal.css";
 const itemModal = ({ selectedCard, onClose }) => {
   console.log("click me to see the weather");
   return (
-    <div className={"modal"}>
+    <div className={`modal`}>
       <div className="modal__content">
         <button className="modal__close-button" type="button" onClick={onClose}>
           <svg

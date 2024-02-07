@@ -2,6 +2,10 @@ import "../blocks/header/header.css";
 
 const header = ({ onCreateModal }) => {
   console.log("header");
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <header className="header">
@@ -13,7 +17,7 @@ const header = ({ onCreateModal }) => {
             alt="logo"
           />
         </div>
-        <div className="header__date">date </div>
+        <div className="header__date">{currentDate}</div>
       </div>
       <div className="header__avatar-bar">
         <button
