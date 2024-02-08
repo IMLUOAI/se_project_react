@@ -5,10 +5,11 @@ import Footer from "../components/footer";
 import "../blocks/app/app.css";
 import ModalWithForm from "../components/modalWithForm";
 import ItemModal from "../components/itemModal";
+import { getForcastWeather, ParseWeatherData } from "../utils/weatherApi";
 function App() {
-  const weatherTemp = "30°F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [weatherTemp, setWeatherTemp] = useState(null);
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -21,8 +22,14 @@ function App() {
     setSelectedCard(card);
   };
 
-  useEffect(() => {});
-
+  useEffect(() => {
+    getForcastWeather().then((data) => {
+      console.log(data);
+      const temperature = ParseWeatherData(data);
+      setWeatherTemp(temperature);
+    });
+  }, []);
+  console.log(weatherTemp);
   return (
     <div className="page__section">
       <Header onCreateModal={handleCreateModal} />
@@ -61,15 +68,15 @@ function App() {
           <p className="modal__weather">Select the weather type:</p>
           <div className="modal__weather-type">
             <div>
-              <input type="radio" id="hot" value="hot" />
+              <input type="radio" name="weatherType" id="hot" value="hot" />
               <label>Hot</label>
             </div>
             <div>
-              <input type="radio" id="cold" value="cold" />
+              <input type="radio" name="weatherType" id="cold" value="cold" />
               <label>Cold</label>
             </div>
             <div>
-              <input type="radio" id="warm" value="warm" />
+              <input type="radio" name="weatherType" id="warm" value="warm" />
               <label>Warm</label>
             </div>
           </div>
