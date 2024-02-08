@@ -6,6 +6,7 @@ const modalWithForm = ({
   title,
   onClose,
   name,
+  formStyle,
 }) => {
   console.log("modalWithForm");
 
@@ -31,7 +32,7 @@ const modalWithForm = ({
           </svg>
         </button>
         <h3 className="modal__title">{title}</h3>
-        <form className="mdoal__form">{children}</form>
+        <form className={"mdoal__form ${formStyle}"}>{children}</form>
         <button type="submit" className="modal__submit-button">
           {buttonText}
         </button>

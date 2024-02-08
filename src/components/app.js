@@ -36,7 +36,11 @@ function App() {
       <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          formStyle="form1"
+          title="New garment"
+          onClose={handleCloseModal}
+        >
           <label className="modal__label">
             Name
             <input
@@ -83,7 +87,11 @@ function App() {
         </ModalWithForm>
       )}
       {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        <ItemModal
+          formStyle="form2"
+          selectedCard={selectedCard}
+          onClose={handleCloseModal}
+        />
       )}
     </div>
   );

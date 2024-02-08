@@ -23,9 +23,15 @@ const itemModal = ({ selectedCard, onClose }) => {
             />
           </svg>
         </button>
-        <img src={selectedCard.link} alt="preview card" />
-        <div>{selectedCard.name}</div>
-        <div>Weather type:{selectedCard.weather}</div>
+        <img
+          className="modal__preview"
+          src={selectedCard.link}
+          alt="preview card"
+        />
+        <div className="modal__preview-name">{selectedCard.name}</div>
+        <div className="modal__weather-type">
+          Weather type:{selectedCard.weather}
+        </div>
       </div>
     </div>
   );
