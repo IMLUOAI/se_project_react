@@ -4,9 +4,8 @@
     background-color: #f3f3f3;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 780px) {
    .page__section{
-    max-width: 414px;
-    height: auto;
+    max-width: calc(100%-40px);
    }
 }
