@@ -1,6 +1,6 @@
 import "../blocks/itemModal/itemModal.css";
 
-const itemModal = ({ selectedCard, onClose, preview }) => {
+const ItemModal = ({ selectedCard, onClose, preview }) => {
   console.log("click me to see the weather");
   return (
     <div className={`modal modal_type_${preview}`}>
@@ -37,4 +37,4 @@ const itemModal = ({ selectedCard, onClose, preview }) => {
   );
 };
 
-export default itemModal;
+export default ItemModal;

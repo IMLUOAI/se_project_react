@@ -1,6 +1,6 @@
 import "../blocks/header/header.css";
 
-const header = ({ onCreateModal }) => {
+const Header = ({ onCreateModal }) => {
   console.log("header");
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -40,4 +40,4 @@ const header = ({ onCreateModal }) => {
   );
 };
 
-export default header;
+export default Header;

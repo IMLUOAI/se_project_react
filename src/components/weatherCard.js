@@ -1,7 +1,7 @@
 import "../blocks/weatherCard/weatherCard.css";
 import { weatherOptions } from "../utils/constants";
 
-const weatherCard = ({ day, type, weatherTemp }) => {
+const WeatherCard = ({ day, type, weatherTemp }) => {
   console.log("weather card");
   const imageSrc = weatherOptions.filter((i) => {
     console.log(i);
@@ -18,4 +18,4 @@ const weatherCard = ({ day, type, weatherTemp }) => {
   );
 };
 
-export default weatherCard;
+export default WeatherCard;

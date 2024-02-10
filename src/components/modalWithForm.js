@@ -1,6 +1,6 @@
 import "../blocks/modalWithForm/modalWithForm.css";
 
-const modalWithForm = ({
+const ModalWithForm = ({
   children,
   buttonText = "Add garment",
   title,
@@ -40,4 +40,4 @@ const modalWithForm = ({
   );
 };
 
-export default modalWithForm;
+export default ModalWithForm;

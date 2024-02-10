@@ -1,11 +1,13 @@
 .page__section {
     max-width: 1440px;
-    height: 1084px;
+    height: 100vh;
     background-color: #f3f3f3;
 }
 
 @media screen and (max-width: 780px) {
    .page__section{
-    max-width: calc(100%-40px);
+    width: 100%;
+    min-width: calc(100%-40px);
+    overflow-x: hidden;
    }
 }

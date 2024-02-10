@@ -1,6 +1,6 @@
 import "../blocks/itemCard/itemCard.css";
 
-const itemCard = ({ item, onSelectCard }) => {
+const ItemCard = ({ item, onSelectCard }) => {
   return (
     <div className="card__items">
       <div>
@@ -16,4 +16,4 @@ const itemCard = ({ item, onSelectCard }) => {
   );
 };
 
-export default itemCard;
+export default ItemCard;
