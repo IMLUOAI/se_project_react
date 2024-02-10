@@ -40,3 +40,31 @@ font-weight: 700;
 line-height: normal;
 margin-bottom: 34px;
 }
+
+@media screen  and (max-width: 780px){
+    .card__section {
+        max-width: 780px;
+    }
+    
+    .card__image {
+        max-width: 328px;
+        height: 328px;
+        border-radius: 12px;
+    }
+    
+    .card__name {
+        font-size: 1rem;    
+    }
+    
+    .card__items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 17px;
+        position: relative;
+    }
+    
+    .card__items-title {
+    max-width: 780px;
+    font-size: 1rem;
+    }
+}

@@ -20,7 +20,6 @@
     .header__logo-image{
     width: 89px;
     height: 40px;
-   
     }
 
     .header__date {
@@ -67,3 +66,54 @@
     object-fit: cover;
     border: 1px solid rgba(0, 0, 0, 0.50);
     }
+
+    @media screen and (max-width: 780px) {
+        .header {
+            max-width: 780px;
+            }
+            
+            .header__logo {
+            max-width: 140px;
+            height: 35px;
+            align-items: center;
+            gap: 15px;
+            }
+            
+            .header__logo-image{
+            width: 65px;
+            height: 35px;
+            }
+        
+            .header__date {
+            max-width: 130px;
+            height: 20px;
+            font-size: 0.7rem;
+            }
+            
+            .header__avatar-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            }
+        
+            .header__add-button {
+            width: 100px;
+            height: 24px;    
+            font-size: 0.9rem;
+            }  
+            
+            .header__user-name {
+            max-width: 140px;
+            height: 25px;
+            font-weight: 0;
+            font-size: 0.8rem;
+            }
+            
+            .header__avatar {
+            max-width:32px;
+            height:32px;
+            }
+    
+    
+    }
+

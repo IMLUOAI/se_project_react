@@ -18,8 +18,23 @@
 .footer__date {
     color: #000;
     font-family: "Cabinet Grotesk";
-    font-size: 16px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; 
+}
+
+
+@media screen and (max-width: 780px) {
+    .footer {
+        max-width: 780px;
+    }
+    
+    .footer__description {
+        font-size: 0.8rem;
+    }
+    
+    .footer__date {
+        font-size: 0.8rem;
+    }
 }
