@@ -3,15 +3,16 @@
     position: relative;
     max-width: 1360px;
     height: 80px;
-    margin: 28px 40px 0;
+    overflow: auto;
     border-radius: 12px;
+    margin: 28px 40px 0;
 }   
 
 .weather__info {
     position: absolute;
     top:20px;
     left: 16px;
-    z-index: 3;
+    z-index: 9;
     color: #FFF;
     max-width: 69px;
     height: 40px;
@@ -24,33 +25,17 @@
 .weather__image {
     width: 100%;
     object-fit: cover;
+
+
 }
 
-/* @media screen and (max-width: 667px) {
+ @media screen and (max-width: 780px) {
     .weather__bar {
         position: relative;
-        max-width: 667px;
+        max-width: 780px;
         height: 80px;
         margin: 28px 40px 0;
         border-radius: 12px;
     }   
     
-    .weather__info {
-        position: absolute;
-        top:20px;
-        left: 16px;
-        z-index: 3;
-        color: #FFF;
-        max-width: 69px;
-        height: 40px;
-        font-family: "Cabinet Grotesk";
-        font-size: 2.25rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 40px;
-    }
-    .weather__image {
-        width: 100%;
-        object-fit: cover;
-    }
-} */
+ }

@@ -36,11 +36,7 @@ function App() {
       <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm
-          formStyle="form1"
-          title="New garment"
-          onClose={handleCloseModal}
-        >
+        <ModalWithForm title="New garment" onClose={handleCloseModal}>
           <label className="modal__label">
             Name
             <input
@@ -69,29 +65,27 @@ function App() {
             />
             <span className="modal__error"></span>
           </label>
-          <p className="modal__weather">Select the weather type:</p>
-          <div className="modal__weather-type">
-            <div>
-              <input type="radio" name="weatherType" id="hot" value="hot" />
-              <label>Hot</label>
-            </div>
-            <div>
-              <input type="radio" name="weatherType" id="cold" value="cold" />
-              <label>Cold</label>
-            </div>
-            <div>
-              <input type="radio" name="weatherType" id="warm" value="warm" />
-              <label>Warm</label>
+          <div className="modal__weather">
+            <p className="modal__weather-title">Select the weather type:</p>
+            <div className="modal__weather-type">
+              <div>
+                <input type="radio" name="weatherType" id="hot" value="hot" />
+                <label>Hot</label>
+              </div>
+              <div>
+                <input type="radio" name="weatherType" id="cold" value="cold" />
+                <label>Cold</label>
+              </div>
+              <div>
+                <input type="radio" name="weatherType" id="warm" value="warm" />
+                <label>Warm</label>
+              </div>
             </div>
           </div>
         </ModalWithForm>
       )}
       {activeModal === "preview" && (
-        <ItemModal
-          formStyle="form2"
-          selectedCard={selectedCard}
-          onClose={handleCloseModal}
-        />
+        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
     </div>
   );

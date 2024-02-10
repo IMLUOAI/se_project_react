@@ -1,10 +1,10 @@
 import "../blocks/itemModal/itemModal.css";
 
-const itemModal = ({ selectedCard, onClose }) => {
+const itemModal = ({ selectedCard, onClose, preview }) => {
   console.log("click me to see the weather");
   return (
-    <div className={`modal`}>
-      <div className="modal__content">
+    <div className={`modal modal_type_${preview}`}>
+      <div className="modal__preview-container">
         <button className="modal__close-button" type="button" onClick={onClose}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ const itemModal = ({ selectedCard, onClose }) => {
             viewBox="0 0 20 20"
             fill="none"
           >
-            <rect width="20" height="20" fill="white" />
+            <rect width="20" height="20" fill="" />
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"
@@ -24,13 +24,13 @@ const itemModal = ({ selectedCard, onClose }) => {
           </svg>
         </button>
         <img
-          className="modal__preview"
+          className="modal__preview-image"
           src={selectedCard.link}
           alt="preview card"
         />
         <div className="modal__preview-name">{selectedCard.name}</div>
-        <div className="modal__weather-type">
-          Weather type:{selectedCard.weather}
+        <div className="modal__preview-weather">
+          Weather:{selectedCard.weather}
         </div>
       </div>
     </div>
