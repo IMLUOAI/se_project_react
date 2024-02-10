@@ -26,8 +26,7 @@
 .modal__preview-image {
     max-width: 496px;
     height: 496px;
-    border-top-right-radius: 20px; 
-    border-top-left-radius: 20px; 
+    border-radius: 20px 20px 0 0; 
 }
 
 .modal__preview-name {
@@ -47,4 +46,30 @@
     line-height: 24px;
     letter-spacing: 0em;
     margin: 16px auto 0 36px;
+}
+
+
+@media screen and (max-width: 780px) {
+    
+.modal__preview-container {
+    max-width: 330px;
+    height: 430px;
+    border-radius: 16px;
+}
+
+
+
+.modal__preview-image {
+    max-width: 330px;
+    height: 330px;
+    border-radius: 16px 16px 0 0; 
+}
+
+.modal__preview-name {
+    font-size: 1rem;
+}
+
+.modal__preview-weather {
+    font-size: 1rem;
+}
 }

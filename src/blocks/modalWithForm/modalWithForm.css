@@ -41,7 +41,7 @@
 .modal__title{
     color: #000;
     font-family: "Cabinet Grotesk";
-    font-size: 16px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     line-height: 20px; 
@@ -165,4 +165,67 @@
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.30);
     margin: 34px auto 36px 28px;
+}
+
+@media screen  and (max-width: 780px){
+  
+    
+    .modal__content {
+        max-width: 330px;
+        height: 330px;
+        border-radius: 16px;
+    }
+    
+    .modal__content .modal__close-button {
+        top: 20px;
+        right: 28px;
+    }
+    
+    
+    .modal__title{
+        font-size: 0.8rem;
+        margin: 20px auto 0 28px;
+    }
+    
+    .modal__form {
+        display: flex;
+        flex-direction: column;
+        margin: 0 28px 0;
+    }
+    
+    .modal__label{
+        font-size: 0.8rem;
+        height: 32px;
+        margin-top: 14px;
+    }
+    
+    .modal__input{
+        font-size: 0.8rem;
+        margin: 6px 0 0;
+        width: 274px;
+    }
+    
+    
+    
+    .modal__weather-title{
+        font-size: 0.8rem;
+    }
+    
+    .modal__weather-type  {
+        font-size: 0.8rem;
+    }
+    
+    .modal__weather-type input[type="radio"] {
+        margin: 4px 11px 0 0;
+    }
+    
+    .modal__weather-type label {
+        font-size: 0.8rem;
+        margin: 4px auto 0 0;
+    }
+    
+    .modal__submit-button{
+        margin: 12px auto 36px 28px;
+    }
+    
 }
