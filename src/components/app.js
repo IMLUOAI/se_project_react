@@ -10,10 +10,25 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    imageUrl: "",
+  });
   const handleCreateModal = () => {
     setActiveModal("create");
   };
-
+  const handleChange = (e) => {
+    if (e.target && e.target.name) {
+      const { name, value } = e.target;
+      console.log(`Name:${name}, value:${value}`);
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else {
+      console.error("Event target or name property is undefined");
+    }
+  };
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -36,7 +51,12 @@ function App() {
       <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          title="New garment"
+          onClose={handleCloseModal}
+          formData={formData}
+          onChange={handleChange}
+        >
           <label className="modal__label">
             Name
             <input
@@ -44,7 +64,9 @@ function App() {
               name="name"
               className="modal__input"
               id="profile-name-input"
-              placeholder="Name"
+              placeholder="Garment Name"
+              value={formData.name}
+              onChange={handleChange}
               minLength="2"
               maxLength="40"
               required
@@ -55,10 +77,12 @@ function App() {
             Image
             <input
               type="text"
-              name="name"
+              name="imageUrl"
               className="modal__input"
-              id="profile-name-input"
+              id="profile-Url-input"
               placeholder="Image URL"
+              value={formData.imageUrl}
+              onChange={handleChange}
               minLength="2"
               maxLength="40"
               required
