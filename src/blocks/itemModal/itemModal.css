@@ -22,6 +22,11 @@
     right: 28px;
     z-index: 6px;
 }
+.modal__preview-container .modal__close-button:hover {
+    visibility: visible;
+    opacity: 0.5;
+    cursor: pointer;
+}
 
 .modal__preview-image {
     max-width: 496px;
