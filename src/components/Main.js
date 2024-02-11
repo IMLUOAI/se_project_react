@@ -34,7 +34,7 @@ const Main = ({ weatherTemp, onSelectCard }) => {
       <WeatherCard day={true} type="sunny" weatherTemp={weatherTemp} />
       <section className="card__section" id="card-section">
         <div className="card__items-title">
-          Today is {weatherTemp} / You may want to wear:
+          Today is {weatherTemp}°F / You may want to wear:
         </div>
         <div className="card__items">
           {filteredCards.map((item, index) => {
