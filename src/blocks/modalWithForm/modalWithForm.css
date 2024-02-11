@@ -36,11 +36,7 @@
     right: 28px;
     z-index: 6px;
 }
-.modal__content .modal__close-button:hover {
-    visibility: visible;
-    opacity: 0.5;
-    cursor: pointer;
-}
+
 
 .modal__title{
     color: #000;
@@ -169,12 +165,6 @@
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.30);
     margin: 34px auto 36px 28px;
-}
-
-.modal__submit-button:hover {
-    visibility: visible;
-    opacity: 0.5;
-    cursor: pointer;
 }
 
 @media screen  and (max-width: 780px){

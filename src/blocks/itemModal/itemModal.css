@@ -28,6 +28,12 @@
     cursor: pointer;
 }
 
+.modal__preview-container .modal__close-button:hover {
+    visibility: visible;
+    opacity: 0.5;
+    cursor: pointer
+}
+
 .modal__preview-image {
     max-width: 496px;
     height: 496px;
