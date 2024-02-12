@@ -26,11 +26,16 @@ function App() {
   };
 
   useEffect(() => {
-    getForcastWeather().then((data) => {
-      console.log(data);
-      const temperature = parseWeatherData(data);
-      setWeatherTemp(temperature);
-    });
+    getForcastWeather()
+      .then((data) => {
+        console.log(data);
+        const temperature = parseWeatherData(data);
+        setWeatherTemp(temperature);
+      })
+      .catch((err) => {
+        console.err(err);
+        return Promise.reject("Error fetching weather data");
+      });
   }, []);
   console.log(weatherTemp);
   return (

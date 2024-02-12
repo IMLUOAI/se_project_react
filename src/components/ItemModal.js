@@ -11,7 +11,7 @@ const ItemModal = ({ selectedCard, onClose, preview }) => {
         <img
           className="modal__preview-image"
           src={selectedCard.link}
-          alt="Garment card"
+          alt={selectedCard.name}
         />
         <h3 className="modal__preview-name">{selectedCard.name}</h3>
         <p className="modal__preview-weather">Weather:{selectedCard.weather}</p>
