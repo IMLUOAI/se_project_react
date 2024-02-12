@@ -16,15 +16,16 @@
     width: 20px;
     height: 20px;
     border: none;
-    background-color: transparent;
+    background-image: url('../../images/cross.svg');
     position: absolute;
     top: 28px;
     right: 28px;
     z-index: 6px;
 }
+
 .modal__preview-container .modal__close-button:hover {
     opacity: 0.5;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .modal__preview-image {

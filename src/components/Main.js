@@ -28,16 +28,15 @@ const Main = ({ weatherTemp, onSelectCard }) => {
     return item.weather.toLowerCase() === weatherType;
   });
   console.log(filteredCards);
-  console.log("where are you?");
   return (
     <main className="main">
-      <WeatherCard day={true} type="sunny" weatherTemp={weatherTemp} />
+      <WeatherCard day={true} type="rainy" weatherTemp={weatherTemp} />
       <section className="card__section" id="card-section">
-        <div className="card__items-title">
+        <h2 className="card__items-title">
           Today is {weatherTemp}°F / You may want to wear:
-        </div>
+        </h2>
         <div className="card__items">
-          {filteredCards.map((item, index) => {
+          {filteredCards.map((item, _id) => {
             return (
               <ItemCard
                 key={item._id}

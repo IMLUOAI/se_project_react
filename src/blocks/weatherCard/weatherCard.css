@@ -2,9 +2,6 @@
 .weather__bar {
     position: relative;
     max-width: 1360px;
-    height: 80px;
-    overflow: auto;
-    border-radius: 12px;
     margin: 28px 40px 0;
 }   
 
@@ -12,7 +9,7 @@
     position: absolute;
     top:20px;
     left: 16px;
-    z-index: 9;
+    z-index: 999;
     color: #FFF;
     max-width: 69px;
     height: 40px;
@@ -21,27 +18,31 @@
     font-style: normal;
     font-weight: 700;
     line-height: 40px;
+    margin: 0;
 }
 .weather__image {
-    width: 100%;
-    object-fit: cover;
+    width:100%;
+    max-width: 1360px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit:cover;
 }
 
  @media screen and (max-width: 780px) {
     .weather__bar {
-        position: relative;
         max-width: 780px;
-        height: 48px;
-        border-radius: 8px;
     }   
     .weather__info {
-        position: absolute;
-        top:7px;
-        left: 6px;
+        top:3px;
+        left: 8px;
         z-index: 9;
-        max-width: 69px;
-        height: 40px;
-        font-size: 1.8rem;
+        max-width: 46px;
+        height: 30px;
+        font-size: 1.6rem;
     }
-
+  .weather__image{
+        height: 40px;
+        max-width: 780px;
+        border-radius: 10px;
+  }
  }

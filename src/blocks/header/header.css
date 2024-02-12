@@ -1,17 +1,17 @@
 .header {
-    background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1360px;
     height: 40px;
-    margin: 32px 40px 0;
-    /* padding-top: 32px; */
+    margin: 0 40px 0;
+    padding-top: 32px;
     }
     
     .header__logo {
     display: flex;
-    max-width: 273px;
+    flex-direction: row;
+    min-width: 273px;
     height: 40px;
     align-items: center;
     gap: 24px;
@@ -23,7 +23,7 @@
     }
 
     .header__date {
-    max-width: 160px;
+    min-width: 160px;
     height: 24px;
     font-family: "Cabinet Grotesk";
     font-size: 1.25rem;
@@ -33,13 +33,16 @@
     }
     
     .header__avatar-bar {
+    max-width: 345px;
     display: flex;
+    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
     gap: 12px;
     }
 
     .header__add-button {
-    width: 116px;
+    min-width: 116px;
     height: 24px;
     font-family: "Cabinet Grotesk";
     font-size: 1.25rem;
@@ -73,40 +76,38 @@
             }
             
             .header__logo {
-            max-width: 140px;
-            height: 35px;
-            align-items: center;
-            gap: 15px;
+            min-width: 140px;
+            height: 32px;
+            gap: 10px;
             }
             
             .header__logo-image{
-            width: 65px;
-            height: 35px;
+            max-width: 60px;
+            height: 24px;
             }
         
             .header__date {
-            max-width: 130px;
+            max-width: 70px;
             height: 20px;
             font-size: 0.7rem;
             }
             
             .header__avatar-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            max-width: 248px;
+            gap: 8px;
             }
         
             .header__add-button {
-            width: 100px;
+            min-width: 90px;
             height: 24px;    
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             }  
             
             .header__user-name {
-            max-width: 140px;
+            max-width: 100px;
             height: 25px;
             font-weight: 0;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             }
             
             .header__avatar {

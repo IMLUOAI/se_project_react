@@ -10,25 +10,10 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    imageUrl: "",
-  });
   const handleCreateModal = () => {
     setActiveModal("create");
   };
-  const handleChange = (e) => {
-    if (e.target && e.target.name) {
-      const { name, value } = e.target;
-      console.log(`Name:${name}, value:${value}`);
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    } else {
-      console.error("Event target or name property is undefined");
-    }
-  };
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -51,12 +36,7 @@ function App() {
       <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm
-          title="New garment"
-          onClose={handleCloseModal}
-          formData={formData}
-          onChange={handleChange}
-        >
+        <ModalWithForm title="New garment" onClose={handleCloseModal}>
           <label className="modal__label">
             Name
             <input
@@ -65,8 +45,6 @@ function App() {
               className="modal__input"
               id="profile-name-input"
               placeholder="Garment Name"
-              value={formData.name}
-              onChange={handleChange}
               minLength="2"
               maxLength="40"
               required
@@ -81,8 +59,6 @@ function App() {
               className="modal__input"
               id="profile-Url-input"
               placeholder="Image URL"
-              value={formData.imageUrl}
-              onChange={handleChange}
               minLength="2"
               maxLength="40"
               required
@@ -94,15 +70,15 @@ function App() {
             <div className="modal__weather-type">
               <div>
                 <input type="radio" name="weatherType" id="hot" value="hot" />
-                <label>Hot</label>
+                <label htmlFor="hot">Hot</label>
               </div>
               <div>
                 <input type="radio" name="weatherType" id="cold" value="cold" />
-                <label>Cold</label>
+                <label htmlFor="cold">Cold</label>
               </div>
               <div>
                 <input type="radio" name="weatherType" id="warm" value="warm" />
-                <label>Warm</label>
+                <label htmlFor="warm">Warm</label>
               </div>
             </div>
           </div>

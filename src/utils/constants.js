@@ -83,8 +83,8 @@ export const defaultClothingItems = [
 export const weatherData = [
   {
     coord: {
-      lon: 10.99,
-      lat: 44.34,
+      lon: 33.02,
+      lat: 96.7,
     },
     weather: [
       {
