@@ -10,6 +10,9 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
+
+  const userName = "Samuel Luo";
+
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -32,7 +35,7 @@ function App() {
   console.log(weatherTemp);
   return (
     <div className="page__section">
-      <Header onCreateModal={handleCreateModal} />
+      <Header onCreateModal={handleCreateModal} userName={userName} />
       <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
