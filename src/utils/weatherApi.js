@@ -20,7 +20,7 @@ export const getForcastWeather = () => {
   return weatherApi;
 };
 
-export const ParseWeatherData = (weatherData) => {
+export const parseWeatherData = (weatherData) => {
   const main = weatherData.main;
   console.log(main);
   const temperature = weatherData.main.temp;

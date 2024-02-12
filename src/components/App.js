@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import "../blocks/app/app.css";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
-import { getForcastWeather, ParseWeatherData } from "../utils/weatherApi";
+import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     getForcastWeather().then((data) => {
       console.log(data);
-      const temperature = ParseWeatherData(data);
+      const temperature = parseWeatherData(data);
       setWeatherTemp(temperature);
     });
   }, []);
