@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/itemCard/itemCard.css";

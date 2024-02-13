@@ -33,8 +33,7 @@ function App() {
         setWeatherTemp(temperature);
       })
       .catch((err) => {
-        console.err(err);
-        return Promise.reject("Error fetching weather data");
+        console.error(err);
       });
   }, []);
   console.log(weatherTemp);
