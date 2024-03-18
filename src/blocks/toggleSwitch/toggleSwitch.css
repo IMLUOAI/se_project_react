@@ -1,0 +1,46 @@
+.toggleSwitch {
+    display: flex;
+    position: relative;
+}
+
+.toggleSwitch__box {
+    width: 56px;
+    height: 28px;
+    border-radius: 20px;
+    border: 2px solid #000;
+}
+
+.toggleSwitch__slider {
+    border-radius: 20px;
+    width: 28px;
+    height: 28px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+}
+.toggleSwitch__slider-F {
+
+    font-family: Cabinet Grotesk;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+   top: 3px;
+   left: 5px;
+}
+
+.toggleSwitch__slider-C {
+    width: 28px;
+    height: 28px;
+    font-family: Cabinet Grotesk;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    top: 3px;
+    left: 28px;
+}
