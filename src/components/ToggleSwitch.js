@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../blocks/toggleSwitch/toggleSwitch.css";
 
 const ToggleSwitch = () => {

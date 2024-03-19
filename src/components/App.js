@@ -6,7 +6,6 @@ import "../blocks/app/app.css";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
-import ToggleSwitch from "./ToggleSwitch";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});

@@ -1,6 +1,7 @@
 import "../blocks/header/header.css";
 import headerLogo from "../images/logo.svg";
 import headerAvatar from "../images/avatar.svg";
+import ToggleSwitch from "./ToggleSwitch";
 const Header = ({ userName, onCreateModal }) => {
   console.log("header");
   const currentDate = new Date().toLocaleString("default", {
@@ -17,6 +18,7 @@ const Header = ({ userName, onCreateModal }) => {
         </div>
         <h3 className="header__date">{dateTimeString}</h3>
       </div>
+      <ToggleSwitch />
       <div className="header__avatar-bar">
         <button
           className="header__add-button"
