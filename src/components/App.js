@@ -6,10 +6,13 @@ import "../blocks/app/app.css";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
   const [checked, setChecked] = useState(false);
   const userName = "Samuel Luo";
 
