@@ -17,8 +17,13 @@ export const getForcastWeather = () => {
 
 export const parseWeatherData = (weatherData) => {
   const main = weatherData.main;
-  console.log(main);
-  const temperature = weatherData.main.temp;
-  console.log(temperature);
-  return Math.ceil(temperature);
+  const temperature = main.temp;
+  const weather = {
+    temperature: {
+      F: Math.round(temperature),
+      C: Math.round(((temperature - 32) * 5) / 9),
+    },
+  };
+  console.log(weather);
+  return weather;
 };
