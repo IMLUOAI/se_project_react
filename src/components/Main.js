@@ -9,7 +9,7 @@ const Main = ({ weatherTemp, onSelectCard }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(currentTemperatureUnit);
 
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 212;
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
   const weatherType = useMemo(() => {
     if (temp >= 86) {
       return "hot";
@@ -36,7 +36,7 @@ const Main = ({ weatherTemp, onSelectCard }) => {
         day={true}
         type="rainy"
         weatherTemp={temp}
-        temperatureUnit={currentTemperatureUnit}
+        temperature={currentTemperatureUnit}
       />
       <section className="card__section" id="card-section">
         <h2 className="card__items-title">
