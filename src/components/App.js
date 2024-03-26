@@ -3,7 +3,6 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import "../blocks/app/app.css";
-import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
@@ -27,8 +26,8 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-  const onAddItem = (e) => {
-    console.log(e);
+  const onAddItem = (value) => {
+    console.log(value);
   };
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"

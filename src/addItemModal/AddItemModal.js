@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import ModalWithForm from "../components/ModalWithForm";
-const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
+const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
+  const [name, setNmae] = useState("");
+  const handleNameChange = (e) => {
+    console.log(e.target.value);
+    setNmae(e.target.value);
+  };
+
+  const [url, setUrl] = useState("");
+  const handleUrlChange = (e) => {
+    console.log(e.target.value);
+    setUrl(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddItem({ name, url });
+  };
   return (
-    <ModalWithForm title="New garment" onClose={handleCloseModal}>
-      <label className="modal__label">
+    <ModalWithForm
+      title="New garment"
+      onClose={handleCloseModal}
+      isOpen={isOpen}
+      onAddItem={handleSubmit}
+    >
+      <label className="modal__label" value={name} onChange={handleNameChange}>
         Name
         <input
           type="text"
@@ -17,7 +38,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         />
         <span className="modal__error"></span>
       </label>
-      <label className="modal__label">
+      <label className="modal__label" value={url} onChange={handleUrlChange}>
         Image
         <input
           type="text"

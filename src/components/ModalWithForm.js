@@ -7,6 +7,8 @@ const ModalWithForm = ({
   title,
   onClose,
   name,
+  isOpen,
+  onSubmit,
 }) => {
   console.log("modalWithForm");
 
@@ -19,7 +21,7 @@ const ModalWithForm = ({
           onClick={onClose}
         ></button>
         <h3 className="modal__title">{title}</h3>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={onSubmit}>
           {React.Children.map(children, (child) => {
             return React.cloneElement(child);
           })}
