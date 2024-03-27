@@ -2,6 +2,8 @@ import "../blocks/header/header.css";
 import headerLogo from "../images/logo.svg";
 import headerAvatar from "../images/avatar.svg";
 import ToggleSwitch from "./ToggleSwitch";
+import { Link } from "react-router-dom";
+
 const Header = ({ userName, onCreateModal }) => {
   console.log("header");
   const currentDate = new Date().toLocaleString("default", {
@@ -18,6 +20,16 @@ const Header = ({ userName, onCreateModal }) => {
         </div>
         <h3 className="header__date">{dateTimeString}</h3>
       </div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+        </ul>
+      </nav>
       <ToggleSwitch />
       <div className="header__avatar-bar">
         <button
