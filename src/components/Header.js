@@ -3,8 +3,8 @@ import headerLogo from "../images/logo.svg";
 import headerAvatar from "../images/avatar.svg";
 import ToggleSwitch from "./ToggleSwitch";
 import { Link } from "react-router-dom";
-
-const Header = ({ userName, onCreateModal }) => {
+import Profile from "./Profile";
+const Header = ({ userName, onCreateModal, onCreateProfile }) => {
   console.log("header");
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -39,7 +39,9 @@ const Header = ({ userName, onCreateModal }) => {
         >
           +Add clothes
         </button>
-        <h3 className="header__user-name">{userName}</h3>
+        <h3 className="header__user-name" type="text" onClick={onCreateProfile}>
+          {userName}
+        </h3>
         <div>
           <img className="header__avatar" src={headerAvatar} alt="Avatar" />
         </div>

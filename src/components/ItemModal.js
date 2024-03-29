@@ -1,5 +1,5 @@
 import "../blocks/itemModal/itemModal.css";
-const ItemModal = ({ selectedCard, onClose, preview }) => {
+const ItemModal = ({ selectedCard, onClose, preview, onDelete }) => {
   return (
     <div className={`modal modal_type_${preview}`}>
       <div className="modal__preview-container">
@@ -14,6 +14,13 @@ const ItemModal = ({ selectedCard, onClose, preview }) => {
           alt={selectedCard.name}
         />
         <h3 className="modal__preview-name">{selectedCard.name}</h3>
+        <button
+          className="modal__delete-button"
+          type="button"
+          onClick={onDelete}
+        >
+          Delete item
+        </button>
         <p className="modal__preview-weather">Weather:{selectedCard.weather}</p>
       </div>
     </div>

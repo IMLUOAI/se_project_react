@@ -1,6 +1,6 @@
 import React from "react";
-
-const Profile = ({ userName, userAvatar, clothingItems }) => {
+import userAvatar from "../images/avatar.svg";
+const Profile = ({ userName, clothingItems }) => {
   return (
     <div className="profile__section">
       <div className="profile__sidebar-section">

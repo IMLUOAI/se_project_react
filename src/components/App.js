@@ -9,16 +9,19 @@ import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
+import ConfirmationModal from "./ConfirmationModal";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
-  const userName = "";
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+  const userName = "Samuel Luo";
   const userAvatar = "";
   const clothingItems = [];
-
+  const handleDeleteConfirmation = () => {
+    setIsConfirmationModalOpen(true);
+  };
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -91,7 +94,21 @@ function App() {
             />
           )}
           {activeModal === "preview" && (
-            <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+            <ItemModal
+              selectedCard={selectedCard}
+              onClose={handleCloseModal}
+              onDelete={handleDeleteConfirmation}
+            />
+          )}
+          {isConfirmationModalOpen && (
+            <ConfirmationModal
+              selectedCard={selectedCard}
+              onClose={() => setIsConfirmationModalOpen(false)}
+              onDelete={() => {
+                handleDeleteConfirmation();
+              }}
+              onCancel={() => setIsConfirmationModalOpen(false)}
+            />
           )}
         </CurrentTemperatureUnitContext.Provider>
       </div>
