@@ -21,6 +21,10 @@
             right: 28px;
             z-index: 6px;
         }
+        .modal__close-button:hover {
+           cursor: pointer;
+           opacity: 0.5;
+        }
 
         .modal__confirmation-content {
             width: 367px;
@@ -34,8 +38,7 @@
         justify-content: center;
     
         }
-
-
+       
         .modal__confirmation-button {
             width: 138px;
         height: 24px;
@@ -52,7 +55,10 @@
         text-align: center;
         margin: 46px 266px 0;
         }
-
+        .modal__confirmatin-button:hover {
+            cursor: pointer;
+            opacity: 0.5;
+         }
         .modal__cancel-button {
             width: 61px;
         height: 24px;
@@ -66,3 +72,8 @@
         margin: 43px 304px auto;
 
         }
+        
+        .modal__cancel-button:hover {
+            cursor: pointer;
+            opacity: 0.5;
+         }

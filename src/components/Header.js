@@ -3,8 +3,7 @@ import headerLogo from "../images/logo.svg";
 import headerAvatar from "../images/avatar.svg";
 import ToggleSwitch from "./ToggleSwitch";
 import { Link } from "react-router-dom";
-import Profile from "./Profile";
-const Header = ({ userName, onCreateModal, onCreateProfile }) => {
+const Header = ({ userName, onCreateModal, handleProfileClick }) => {
   console.log("header");
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -12,24 +11,18 @@ const Header = ({ userName, onCreateModal, onCreateProfile }) => {
   });
   const cityName = "Plano";
   const dateTimeString = `${currentDate}, ${cityName}`;
+
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={headerLogo} className="header__logo-image" alt="Logo" />
+          <Link to="/">
+            <img src={headerLogo} className="header__logo-image" alt="Logo" />
+          </Link>
         </div>
         <h3 className="header__date">{dateTimeString}</h3>
       </div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-        </ul>
-      </nav>
+
       <ToggleSwitch />
       <div className="header__avatar-bar">
         <button
@@ -39,9 +32,11 @@ const Header = ({ userName, onCreateModal, onCreateProfile }) => {
         >
           +Add clothes
         </button>
-        <h3 className="header__user-name" type="text" onClick={onCreateProfile}>
-          {userName}
-        </h3>
+        <Link to="/profile">
+          <h3 className="header__user-name" onClick={handleProfileClick}>
+            {userName}
+          </h3>
+        </Link>
         <div>
           <img className="header__avatar" src={headerAvatar} alt="Avatar" />
         </div>

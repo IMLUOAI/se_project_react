@@ -24,14 +24,18 @@ function App() {
   };
   const handleCreateModal = () => {
     setActiveModal("create");
+    setIsConfirmationModalOpen(false);
   };
 
   const handleCloseModal = () => {
     setActiveModal("");
+    setIsConfirmationModalOpen(false);
   };
+
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+    setIsConfirmationModalOpen(false);
   };
   const onAddItem = (value) => {
     console.log(value);
@@ -77,7 +81,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  userName=""
+                  userName={userName}
                   userAvatar={userAvatar}
                   clothingItems={clothingItems}
                 />
