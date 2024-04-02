@@ -10,7 +10,9 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
+import { getAllItems, addItem, deleteItem } from "../utils/api";
 function App() {
+  const [items, setItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
@@ -19,6 +21,37 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const userName = "Samuel Luo";
   const userAvatar = "";
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const fetchedItems = await getAllItems();
+        setItems(fetchedItems);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  const handleAddItem = async (name, imageUrl, weather) => {
+    try {
+      const newItem = await addItem(name, imageUrl, weather);
+      setItems([...items, newItem]);
+    } catch (error) {
+      console.error("Error adding item:", error);
+    }
+  };
+
+  const handleDeleteItem = async (id) => {
+    try {
+      await deleteItem(id);
+      setItems(items.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
   const handleDeleteConfirmation = () => {
     setIsConfirmationModalOpen(true);
   };
@@ -40,8 +73,8 @@ function App() {
   const onAddItem = (value) => {
     console.log(value);
   };
-  const handleAddItemSubmit = (newItem) => {
-    setClothingItems([newItem, ...clothingItems]);
+  const handleAddItemSubmit = (item) => {
+    setClothingItems([item, ...clothingItems]);
   };
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
