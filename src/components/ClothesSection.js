@@ -1,6 +1,8 @@
 import React from "react";
 import "../blocks/clothesSection/clothesSection.css";
-const ClothesSection = ({ clothingItems, onCreateModal }) => {
+import ItemCard from "./ItemCard";
+const ClothesSection = ({ clothingItems, onCreateModal, onAddItem }) => {
+  console.log("clothingItems:", clothingItems);
   return (
     <div className="clothesSection">
       <div className="clothesSection__header">
@@ -8,7 +10,9 @@ const ClothesSection = ({ clothingItems, onCreateModal }) => {
         <button
           className="clothesSection__add-button"
           type="text"
-          onClick={onCreateModal}
+          onClick={() => {
+            onCreateModal();
+          }}
         >
           + Add new
         </button>
@@ -16,12 +20,7 @@ const ClothesSection = ({ clothingItems, onCreateModal }) => {
       {clothingItems &&
         clothingItems.map((item) => (
           <div key={item._id} className="clothesSection__clothing-item">
-            <img
-              className="clothesSection__item-image"
-              src={item.link}
-              alt={item.name}
-            />
-            <p className="clothesSection__item-name">{item.name}</p>
+            <ItemCard item={item} />
           </div>
         ))}
     </div>

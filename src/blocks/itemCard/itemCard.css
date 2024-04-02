@@ -28,6 +28,7 @@
     flex-wrap: wrap;
     gap: 17px;
     position: relative;
+    padding:0;
 }
 
 .card__items-title {

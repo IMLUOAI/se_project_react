@@ -16,9 +16,9 @@ function App() {
   const [weatherTemp, setWeatherTemp] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+  const [clothingItems, setClothingItems] = useState([]);
   const userName = "Samuel Luo";
   const userAvatar = "";
-  const clothingItems = [];
   const handleDeleteConfirmation = () => {
     setIsConfirmationModalOpen(true);
   };
@@ -39,6 +39,9 @@ function App() {
   };
   const onAddItem = (value) => {
     console.log(value);
+  };
+  const handleAddItemSubmit = (newItem) => {
+    setClothingItems([newItem, ...clothingItems]);
   };
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -84,6 +87,8 @@ function App() {
                   userName={userName}
                   userAvatar={userAvatar}
                   clothingItems={clothingItems}
+                  onCreateModal={handleCreateModal}
+                  onAddItem={handleAddItemSubmit}
                 />
               }
             />

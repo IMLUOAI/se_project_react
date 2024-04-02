@@ -32,14 +32,14 @@ const Header = ({ userName, onCreateModal, handleProfileClick }) => {
         >
           +Add clothes
         </button>
-        <Link to="/profile">
+        <Link to="/profile" className="header__link">
           <h3 className="header__user-name" onClick={handleProfileClick}>
             {userName}
           </h3>
+          <div>
+            <img className="header__avatar" src={headerAvatar} alt="Avatar" />
+          </div>
         </Link>
-        <div>
-          <img className="header__avatar" src={headerAvatar} alt="Avatar" />
-        </div>
       </div>
     </header>
   );
