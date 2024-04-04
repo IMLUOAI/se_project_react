@@ -15,8 +15,8 @@ const ConfirmationModal = ({ confirmation, onDelete, onCancel, onClose }) => {
         </h3>
         <button
           className="modal__confirmation-button"
-          type="button"
-          onClick={onDelete}
+          type="text"
+          onDelete={onDelete}
         >
           Yes, delete item
         </button>

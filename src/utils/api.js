@@ -1,8 +1,5 @@
-// utils/api.js
-
 const baseUrl = "http://localhost:3001";
 
-// Function to fetch all clothing items
 export const getAllItems = async () => {
   try {
     const response = await fetch(`${baseUrl}/items`);
@@ -16,7 +13,6 @@ export const getAllItems = async () => {
   }
 };
 
-// Function to add a new clothing item
 export const addItem = async (name, imageUrl, weather) => {
   try {
     const response = await fetch(`${baseUrl}/items`, {
@@ -36,7 +32,6 @@ export const addItem = async (name, imageUrl, weather) => {
   }
 };
 
-// Function to delete a clothing item by ID
 export const deleteItem = async (id) => {
   try {
     const response = await fetch(`${baseUrl}/items/${id}`, {

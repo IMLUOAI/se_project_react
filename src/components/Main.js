@@ -5,7 +5,7 @@ import "../blocks/itemCard/itemCard.css";
 import "../blocks/main/main.css";
 import { defaultClothingItems } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-const Main = ({ weatherTemp, onSelectCard }) => {
+const Main = ({ weatherTemp, handleAddItem, onSelectCard }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(currentTemperatureUnit);
 
@@ -38,7 +38,7 @@ const Main = ({ weatherTemp, onSelectCard }) => {
         weatherTemp={temp}
         temperature={currentTemperatureUnit}
       />
-      <section className="card__section" id="card-section">
+      <section className="card__section" _id="card-section">
         <h2 className="card__items-title">
           Today is {temp + "°" + currentTemperatureUnit} / You may want to wear:
         </h2>
@@ -48,7 +48,8 @@ const Main = ({ weatherTemp, onSelectCard }) => {
               <ItemCard
                 key={item._id}
                 item={item}
-                onSelectCard={onSelectCard}
+                onAddItem={handleAddItem}
+                onSelectedCard={onSelectCard}
               />
             );
           })}

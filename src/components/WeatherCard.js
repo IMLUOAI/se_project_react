@@ -1,7 +1,6 @@
 import React from "react";
 import "../blocks/weatherCard/weatherCard.css";
 import { weatherOptions } from "../utils/constants";
-// import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
 const WeatherCard = ({ sunny, type, weatherTemp, temperature }) => {
   const imageSrc = weatherOptions.filter((i) => {

@@ -1,5 +1,9 @@
 import "../blocks/itemModal/itemModal.css";
 const ItemModal = ({ selectedCard, onClose, preview, onDelete }) => {
+  const handleDelete = () => {
+    onDelete(selectedCard.id);
+    onClose();
+  };
   return (
     <div className={`modal modal_type_${preview}`}>
       <div className="modal__preview-container">
@@ -17,7 +21,7 @@ const ItemModal = ({ selectedCard, onClose, preview, onDelete }) => {
         <button
           className="modal__delete-button"
           type="button"
-          onClick={onDelete}
+          onClick={handleDelete}
         >
           Delete item
         </button>

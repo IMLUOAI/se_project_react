@@ -11,13 +11,13 @@ import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
 import { getAllItems, addItem, deleteItem } from "../utils/api";
+import 
 function App() {
   const [items, setItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const [clothingItems, setClothingItems] = useState([]);
   const userName = "Samuel Luo";
   const userAvatar = "";
@@ -26,6 +26,7 @@ function App() {
       try {
         const fetchedItems = await getAllItems();
         setItems(fetchedItems);
+        setClothingItems(fetchedItems);
       } catch (error) {
         console.error("Error fetching items:", error);
       }
@@ -38,12 +39,14 @@ function App() {
     try {
       const newItem = await addItem(name, imageUrl, weather);
       setItems([...items, newItem]);
+      handleAddItemSubmit(newItem);
     } catch (error) {
       console.error("Error adding item:", error);
     }
   };
 
   const handleDeleteItem = async (id) => {
+    setActiveModal("confirmation");
     try {
       await deleteItem(id);
       setItems(items.filter((item) => item.id !== id));
@@ -52,30 +55,23 @@ function App() {
     }
   };
 
-  const handleDeleteConfirmation = () => {
-    setIsConfirmationModalOpen(true);
-  };
   const handleCreateModal = () => {
     setActiveModal("create");
-    setIsConfirmationModalOpen(false);
   };
 
   const handleCloseModal = () => {
     setActiveModal("");
-    setIsConfirmationModalOpen(false);
   };
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
-    setIsConfirmationModalOpen(false);
   };
-  const onAddItem = (value) => {
-    console.log(value);
-  };
+
   const handleAddItemSubmit = (item) => {
     setClothingItems([item, ...clothingItems]);
   };
+
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -93,8 +89,6 @@ function App() {
         console.error(err);
       });
   }, []);
-  console.log(weatherTemp);
-  console.log(currentTemperatureUnit);
 
   return (
     <Router>
@@ -102,14 +96,20 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <Header onCreateModal={handleCreateModal} userName={userName} />
+          <Header
+            onCreateModal={handleCreateModal}
+            userName={userName}
+            onClose={handleCloseModal}
+          />
           <Routes>
             <Route
               path="/"
               element={
                 <Main
                   weatherTemp={weatherTemp}
+                  onAddItem={handleAddItem}
                   onSelectCard={handleSelectedCard}
+                  clothingItems={clothingItems}
                 />
               }
             />
@@ -121,7 +121,7 @@ function App() {
                   userAvatar={userAvatar}
                   clothingItems={clothingItems}
                   onCreateModal={handleCreateModal}
-                  onAddItem={handleAddItemSubmit}
+                  onAddItem={handleAddItem}
                 />
               }
             />
@@ -132,24 +132,25 @@ function App() {
             <AddItemModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "create"}
-              onAddItem={onAddItem}
+              handleAddItem={handleAddItem}
+              onClose={handleCloseModal}
             />
           )}
           {activeModal === "preview" && (
             <ItemModal
-              selectedCard={selectedCard}
+              selectedCard={handleSelectedCard}
               onClose={handleCloseModal}
-              onDelete={handleDeleteConfirmation}
+              onDelete={handleDeleteItem}
             />
           )}
-          {isConfirmationModalOpen && (
+          {activeModal === "confirmation" && (
             <ConfirmationModal
-              selectedCard={selectedCard}
-              onClose={() => setIsConfirmationModalOpen(false)}
+              selectedCard={handleSelectedCard}
+              onClose={handleCloseModal}
               onDelete={() => {
-                handleDeleteConfirmation();
+                handleDeleteItem(selectedCard.id);
               }}
-              onCancel={() => setIsConfirmationModalOpen(false)}
+              onCancel={handleCloseModal}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
