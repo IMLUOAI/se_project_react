@@ -10,6 +10,8 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
+import userAvatar from "../images/avatar.svg";
+
 import { getAllItems, addItem, deleteItem } from "../utils/api";
 function App() {
   const [items, setItems] = useState([]);
@@ -19,7 +21,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const userName = "Samuel Luo";
-  const userAvatar = "";
+  // const userAvatar = "";
   useEffect(() => {
     const fetchItems = async () => {
       try {

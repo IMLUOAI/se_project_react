@@ -49,7 +49,7 @@ const Main = ({ weatherTemp, handleAddItem, onSelectCard }) => {
                 key={item._id}
                 item={item}
                 onAddItem={handleAddItem}
-                onSelectedCard={onSelectCard}
+                onSelectCard={onSelectCard}
               />
             );
           })}
