@@ -11,7 +11,6 @@ import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
 import userAvatar from "../images/avatar.svg";
-
 import { getAllItems, addItem, deleteItem } from "../utils/api";
 function App() {
   const [items, setItems] = useState([]);
@@ -21,7 +20,6 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const userName = "Samuel Luo";
-  // const userAvatar = "";
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -46,11 +44,11 @@ function App() {
     }
   };
 
-  const handleDeleteItem = async (id) => {
-    setActiveModal("confirmation");
+  const handleDeleteItem = async (_id) => {
     try {
-      await deleteItem(id);
-      setItems(items.filter((item) => item.id !== id));
+      await deleteItem(_id);
+      setItems(items.filter((item) => item._id !== _id));
+      setActiveModal("confirmation");
     } catch (error) {
       console.error("Error deleting item:", error);
     }
@@ -64,9 +62,9 @@ function App() {
     setActiveModal("");
   };
 
-  const handleSelectedCard = (card) => {
+  const handleSelectedCard = (item) => {
     setActiveModal("preview");
-    setSelectedCard(card);
+    setSelectedCard(item);
   };
 
   const handleAddItemSubmit = (item) => {
@@ -139,17 +137,17 @@ function App() {
           )}
           {activeModal === "preview" && (
             <ItemModal
-              selectedCard={handleSelectedCard}
+              selectedCard={selectedCard}
               onClose={handleCloseModal}
               onDelete={handleDeleteItem}
             />
           )}
           {activeModal === "confirmation" && (
             <ConfirmationModal
-              selectedCard={handleSelectedCard}
+              selectedCard={selectedCard}
               onClose={handleCloseModal}
               onDelete={() => {
-                handleDeleteItem(selectedCard.id);
+                handleDeleteItem(selectedCard._id);
               }}
               onCancel={handleCloseModal}
             />

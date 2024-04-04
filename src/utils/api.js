@@ -32,9 +32,9 @@ export const addItem = async (name, imageUrl, weather) => {
   }
 };
 
-export const deleteItem = async (id) => {
+export const deleteItem = async (_id) => {
   try {
-    const response = await fetch(`${baseUrl}/items/${id}`, {
+    const response = await fetch(`${baseUrl}/items/${_id}`, {
       method: "DELETE",
     });
     if (!response.ok) {

@@ -2,10 +2,10 @@ import React from "react";
 import SideBar from "./SideBar";
 import "../blocks/profile/profile.css";
 import ClothesSection from "./ClothesSection";
-const Profile = ({ userName, onCreateModal, clothingItems }) => {
+const Profile = ({ userName, onCreateModal, clothingItems, userAvatar }) => {
   return (
     <div className="profile__section">
-      <SideBar userName={userName} />
+      <SideBar userName={userName} userAvatar={userAvatar} />
       <ClothesSection
         onCreateModal={onCreateModal}
         clothingItems={clothingItems}

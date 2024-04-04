@@ -1,7 +1,7 @@
 import "../blocks/itemModal/itemModal.css";
 const ItemModal = ({ selectedCard, onClose, preview, onDelete }) => {
   const handleDelete = () => {
-    onDelete(selectedCard.id);
+    onDelete(selectedCard._id);
     onClose();
   };
   return (
@@ -14,7 +14,7 @@ const ItemModal = ({ selectedCard, onClose, preview, onDelete }) => {
         ></button>
         <img
           className="modal__preview-image"
-          src={selectedCard.link}
+          src={selectedCard.imageUrl}
           alt={selectedCard.name}
         />
         <h3 className="modal__preview-name">{selectedCard.name}</h3>
