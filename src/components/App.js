@@ -11,7 +11,6 @@ import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
 import { getAllItems, addItem, deleteItem } from "../utils/api";
-import 
 function App() {
   const [items, setItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
