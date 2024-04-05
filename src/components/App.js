@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -11,48 +11,15 @@ import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
 import userAvatar from "../images/avatar.svg";
-import { getAllItems, addItem, deleteItem } from "../utils/api";
+import api from "../utils/api";
+
 function App() {
-  const [items, setItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherTemp, setWeatherTemp] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const userName = "Samuel Luo";
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const fetchedItems = await getAllItems();
-        setItems(fetchedItems);
-        setClothingItems(fetchedItems);
-      } catch (error) {
-        console.error("Error fetching items:", error);
-      }
-    };
-
-    fetchItems();
-  }, []);
-
-  const handleAddItem = async (name, imageUrl, weather) => {
-    try {
-      const newItem = await addItem(name, imageUrl, weather);
-      setItems([...items, newItem]);
-      handleAddItemSubmit(newItem);
-    } catch (error) {
-      console.error("Error adding item:", error);
-    }
-  };
-
-  const handleDeleteItem = async (_id) => {
-    try {
-      await deleteItem(_id);
-      setItems(items.filter((item) => item._id !== _id));
-      setActiveModal("confirmation");
-    } catch (error) {
-      console.error("Error deleting item:", error);
-    }
-  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -62,13 +29,29 @@ function App() {
     setActiveModal("");
   };
 
-  const handleSelectedCard = (item) => {
+  const handleSelectedCard = (card) => {
     setActiveModal("preview");
-    setSelectedCard(item);
+    setSelectedCard(card);
   };
 
-  const handleAddItemSubmit = (item) => {
-    setClothingItems([item, ...clothingItems]);
+  const handleDeleteItem = (selectedCard) => {
+    api.deleteItem(selectedCard).then(() => {
+      const newClothingItem = clothingItems.filter((card) => {
+        return card._id !== selectedCard._id;
+      });
+      setClothingItems(newClothingItem);
+      handleCloseModal();
+    });
+  };
+
+  const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
+    api
+      .addItem({ name, weather, imageUrl })
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleToggleSwitchChange = () => {
@@ -89,6 +72,17 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    api
+      .getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => {
+        console.log(`${err}`);
+      });
+  }, []);
+
   return (
     <Router>
       <div className="page__section">
@@ -100,13 +94,13 @@ function App() {
             userName={userName}
             onClose={handleCloseModal}
           />
+          {/* <Switch> */}
           <Routes>
             <Route
               path="/"
               element={
                 <Main
                   weatherTemp={weatherTemp}
-                  onAddItem={handleAddItem}
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
                 />
@@ -120,19 +114,18 @@ function App() {
                   userAvatar={userAvatar}
                   clothingItems={clothingItems}
                   onCreateModal={handleCreateModal}
-                  onAddItem={handleAddItem}
+                  onSelectCard={handleSelectedCard}
                 />
               }
             />
           </Routes>
-
+          {/* </Switch> */}
           <Footer />
           {activeModal === "create" && (
             <AddItemModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "create"}
-              handleAddItem={handleAddItem}
-              onClose={handleCloseModal}
+              onAddItem={handleAddItemSubmit}
             />
           )}
           {activeModal === "preview" && (

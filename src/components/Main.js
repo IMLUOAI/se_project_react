@@ -3,9 +3,8 @@ import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/itemCard/itemCard.css";
 import "../blocks/main/main.css";
-// import { defaultClothingItems } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-const Main = ({ weatherTemp, handleAddItem, onSelectCard, clothingItems }) => {
+const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(currentTemperatureUnit);
 
@@ -22,7 +21,7 @@ const Main = ({ weatherTemp, handleAddItem, onSelectCard, clothingItems }) => {
 
   console.log("weatherType:", weatherType);
   if (!clothingItems) {
-    console.error("cloingItems is undefined or null");
+    console.error("clothingItems is undefined or null");
     return null;
   }
 
@@ -48,7 +47,6 @@ const Main = ({ weatherTemp, handleAddItem, onSelectCard, clothingItems }) => {
               <ItemCard
                 key={item._id}
                 item={item}
-                onAddItem={handleAddItem}
                 onSelectCard={onSelectCard}
               />
             );

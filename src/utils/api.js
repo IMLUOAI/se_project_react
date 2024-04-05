@@ -1,47 +1,45 @@
 const baseUrl = "http://localhost:3001";
 
-export const getAllItems = async () => {
-  try {
-    const response = await fetch(`${baseUrl}/items`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch items");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching items:", error);
-    throw error;
-  }
+const checkResponse = (res) => {
+  return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
 };
 
-export const addItem = async (name, imageUrl, weather) => {
-  try {
-    const response = await fetch(`${baseUrl}/items`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, imageUrl, weather }),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add item");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error adding item:", error);
-    throw error;
-  }
+const getItems = () => {
+  return fetch(`${baseUrl}/items`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
 };
 
-export const deleteItem = async (_id) => {
-  try {
-    const response = await fetch(`${baseUrl}/items/${_id}`, {
-      method: "DELETE",
-    });
-    if (!response.ok) {
-      throw new Error("Failed to delete item");
-    }
-  } catch (error) {
-    console.error("Error deleting item:", error);
-    throw error;
-  }
+const addItem = ({ name, imageUrl, weather }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: name,
+      weather: weather,
+      imageUrl: imageUrl,
+    }),
+  }).then((res) => checkResponse(res));
 };
+
+const deleteItem = ({ _id }) => {
+  return fetch(`${baseUrl}/items/${_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
+};
+
+const api = {
+  getItems,
+  addItem,
+  deleteItem,
+};
+
+export default api;

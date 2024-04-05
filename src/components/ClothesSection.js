@@ -1,7 +1,7 @@
 import React from "react";
 import "../blocks/clothesSection/clothesSection.css";
 import ItemCard from "./ItemCard";
-const ClothesSection = ({ clothingItems, onCreateModal, handleCloseModal }) => {
+const ClothesSection = ({ clothingItems, onCreateModal, onSelectCard }) => {
   console.log("clothingItems:", clothingItems);
   return (
     <div className="clothesSection">
@@ -11,17 +11,15 @@ const ClothesSection = ({ clothingItems, onCreateModal, handleCloseModal }) => {
           className="clothesSection__add-button"
           type="text"
           onClick={onCreateModal}
-          onClose={handleCloseModal}
         >
           + Add new
         </button>
       </div>
-      {clothingItems &&
-        clothingItems.map((item) => (
-          <div key={item._id} className="clothesSection__clothing-item">
-            <ItemCard item={item} />
-          </div>
-        ))}
+      {clothingItems.map((item) => (
+        <div key={item._id} className="clothesSection__clothing-item">
+          <ItemCard item={item} onSelectCard={onSelectCard} />
+        </div>
+      ))}
     </div>
   );
 };
