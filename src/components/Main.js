@@ -29,6 +29,7 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
     return item.weather.toLowerCase() === weatherType;
   });
   console.log(filteredCards);
+
   return (
     <main className="main">
       <WeatherCard
@@ -37,7 +38,7 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems }) => {
         weatherTemp={temp}
         temperature={currentTemperatureUnit}
       />
-      <section className="card__section" _id="card-section">
+      <section className="card__section" _id="card">
         <h2 className="card__items-title">
           Today is {temp + "°" + currentTemperatureUnit} / You may want to wear:
         </h2>

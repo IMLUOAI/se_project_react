@@ -1,30 +1,26 @@
 import React, { useState } from "react";
 import ModalWithForm from "../components/ModalWithForm";
-const AddItemModal = ({ isOpen, handleAddItem, handleCloseModal }) => {
+const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [weatherType, setWeatherType] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [weather, setWeather] = useState("");
   const handleNameChange = (e) => {
     console.log(e.target.value);
     setName(e.target.value);
   };
 
-  const handleUrlChange = (e) => {
+  const handleImageUrlChange = (e) => {
     console.log(e.target.value);
-    setUrl(e.target.value);
+    setImageUrl(e.target.value);
   };
   const handleWeatherTypeChange = (e) => {
-    setWeatherType(e.target.value);
+    setWeather(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name.trim() && url.trim() && weatherType.trim()) {
-      handleAddItem(name, url);
-      setName("");
-      setUrl("");
-      setWeatherType("");
-    }
+    onAddItem({ name, imageUrl, weather });
   };
+
   return (
     <ModalWithForm
       title="New garment"
@@ -48,12 +44,16 @@ const AddItemModal = ({ isOpen, handleAddItem, handleCloseModal }) => {
         />
         <span className="modal__error"></span>
       </label>
-      <label className="modal__label" value={url} onChange={handleUrlChange}>
+      <label
+        className="modal__label"
+        value={imageUrl}
+        onChange={handleImageUrlChange}
+      >
         Image
         <input
           type="text"
-          value={url}
-          onChange={handleUrlChange}
+          value={imageUrl}
+          onChange={handleImageUrlChange}
           name="imageUrl"
           className="modal__input"
           id="profile-Url-input"
@@ -73,7 +73,7 @@ const AddItemModal = ({ isOpen, handleAddItem, handleCloseModal }) => {
               name="weatherType"
               id="hot"
               value="hot"
-              checked={weatherType === "hot"}
+              checked={weather === "hot"}
               onChange={handleWeatherTypeChange}
             />
             <label htmlFor="hot">Hot</label>
@@ -84,7 +84,7 @@ const AddItemModal = ({ isOpen, handleAddItem, handleCloseModal }) => {
               name="weatherType"
               id="cold"
               value="cold"
-              checked={weatherType === "cold"}
+              checked={weather === "cold"}
               onChange={handleWeatherTypeChange}
             />
             <label htmlFor="cold">Cold</label>
@@ -95,7 +95,7 @@ const AddItemModal = ({ isOpen, handleAddItem, handleCloseModal }) => {
               name="weatherType"
               id="warm"
               value="warm"
-              checked={weatherType === "warm"}
+              checked={weather === "warm"}
               onChange={handleWeatherTypeChange}
             />
             <label htmlFor="warm">Warm</label>
