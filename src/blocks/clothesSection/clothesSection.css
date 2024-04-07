@@ -36,21 +36,7 @@
     border: none;
     }
 
-    .clothesSection__clothing-item {
+  .clothesSection__clothing-items {
     width: 1015px;
-    height: 676px;
-    gap: 17px;
-    }
-
-    .clothesSection__item-image {
-    width: 323px;
-    height: 326px;
-    position: relative;
-
-    }
-
-    .clothesSection__item-name {
-    width: 91px;
-    height: 24px;
-    color: #fff;
-    }
+    margin: 20px 0 0;
+  }

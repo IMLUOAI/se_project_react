@@ -94,7 +94,6 @@ function App() {
             userName={userName}
             onClose={handleCloseModal}
           />
-          {/* <Switch> */}
           <Routes>
             <Route
               path="/"
@@ -119,7 +118,6 @@ function App() {
               }
             />
           </Routes>
-          {/* </Switch> */}
           <Footer />
           {activeModal === "create" && (
             <AddItemModal

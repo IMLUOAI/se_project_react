@@ -15,11 +15,13 @@ const ClothesSection = ({ clothingItems, onCreateModal, onSelectCard }) => {
           + Add new
         </button>
       </div>
-      {clothingItems.map((item) => (
-        <div key={item._id} className="clothesSection__clothing-item">
-          <ItemCard item={item} onSelectCard={onSelectCard} />
+      <div className="clothesSection__clothing-items">
+        <div className="card__items">
+          {clothingItems.map((item) => (
+            <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };

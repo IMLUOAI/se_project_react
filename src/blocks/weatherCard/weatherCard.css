@@ -1,8 +1,8 @@
 
 .weather__bar {
     position: relative;
-    max-width: 1360px;
-    margin: 28px 40px 0;
+    width: 1360px;
+    margin: 0;
 }   
 
 .weather__info {
@@ -21,11 +21,10 @@
     margin: 0;
 }
 .weather__image {
-    width:100%;
-    max-width: 1360px;
+    width: 1360px;
     height: 80px;
     border-radius: 12px;
-    object-fit:cover;
+    object-fit: contain;
 }
 
  @media screen and (max-width: 780px) {
@@ -33,15 +32,14 @@
         max-width: 780px;
     }   
     .weather__info {
-        top:3px;
-        left: 8px;
+        top:15px;
+        left: 12px;
         z-index: 9;
         max-width: 46px;
         height: 30px;
         font-size: 1.6rem;
     }
   .weather__image{
-        height: 40px;
         max-width: 780px;
         border-radius: 10px;
   }

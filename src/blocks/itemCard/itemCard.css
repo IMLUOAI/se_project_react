@@ -1,10 +1,11 @@
 .card__section {
-    max-width: 1360px;
-    margin: 40px 40px 85px;
+    width: 1360px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card__image {
-    max-width: 328px;
+    width: 325px;
     height: 328px;
     border-radius: 12px;
 }
@@ -12,7 +13,7 @@
 .card__name {
     color: #000;
     font-family: "Cabinet Grotesk";
-    font-size: 20px;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -28,18 +29,17 @@
     flex-wrap: wrap;
     gap: 17px;
     position: relative;
-    padding:0;
 }
 
 .card__items-title {
-max-width: 1360px;
+width: 1360px;
 color: #000;
 font-family: "Cabinet Grotesk";
 font-size: 20px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-margin-bottom: 34px;
+margin: 25px 0 34px;
 }
 
 @media screen  and (max-width: 780px){
@@ -47,21 +47,8 @@ margin-bottom: 34px;
         max-width: 780px;
     }
     
-    .card__image {
-        max-width: 328px;
-        height: 328px;
-        border-radius: 12px;
-    }
-    
     .card__name {
         font-size: 1rem;    
-    }
-    
-    .card__items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 17px;
-        position: relative;
     }
     
     .card__items-title {
