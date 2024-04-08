@@ -10,7 +10,6 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 import AddItemModal from "../addItemModal/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
-import userAvatar from "../images/avatar.svg";
 import api from "../utils/api";
 
 function App() {
@@ -119,7 +118,6 @@ function App() {
               element={
                 <Profile
                   userName={userName}
-                  userAvatar={userAvatar}
                   clothingItems={clothingItems}
                   onCreateModal={handleCreateModal}
                   onSelectCard={handleSelectedCard}

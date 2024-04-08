@@ -113,6 +113,12 @@
       "weather": "warm",
       "imageUrl": "https://media.istockphoto.com/id/1225397",
       "_id": 18
+    },
+    {
+      "name": "T-shirt",
+      "weather": "warm",
+      "imageUrl": "https://images.unsplash.com/photo-156215",
+      "_id": 19
     }
   ]
 }
