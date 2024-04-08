@@ -19,6 +19,8 @@ function App() {
   const [weatherTemp, setWeatherTemp] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [cardToDelete, setCardToDelete] = useState(null);
   const userName = "Samuel Luo";
 
   const handleCreateModal = () => {
@@ -34,12 +36,19 @@ function App() {
     setSelectedCard(card);
   };
 
+  const openConfirmationModal = (card) => {
+    setCardToDelete(card);
+    setShowConfirmationModal(true);
+  };
+
   const handleDeleteItem = (selectedCard) => {
     api.deleteItem(selectedCard).then(() => {
       const newClothingItem = clothingItems.filter((card) => {
         return card._id !== selectedCard._id;
       });
       setClothingItems(newClothingItem);
+      setShowConfirmationModal(false);
+      setCardToDelete(null);
       handleCloseModal();
     });
   };
@@ -131,16 +140,21 @@ function App() {
               selectedCard={selectedCard}
               onClose={handleCloseModal}
               onDelete={handleDeleteItem}
+              openConfirmationModal={openConfirmationModal}
             />
           )}
-          {activeModal === "confirmation" && (
+          {showConfirmationModal && (
             <ConfirmationModal
-              selectedCard={selectedCard}
-              onClose={handleCloseModal}
-              onDelete={() => {
-                handleDeleteItem(selectedCard._id);
+              confirmation={activeModal}
+              selectedCard={cardToDelete}
+              onClose={() => {
+                setShowConfirmationModal(false);
               }}
-              onCancel={handleCloseModal}
+              onDelete={() => {
+                handleDeleteItem(cardToDelete);
+                setShowConfirmationModal(false);
+              }}
+              onCancel={() => setShowConfirmationModal(false)}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
