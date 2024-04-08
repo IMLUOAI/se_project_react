@@ -7,7 +7,7 @@ import "../blocks/app/app.css";
 import ItemModal from "./ItemModal";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
-import AddItemModal from "../addItemModal/AddItemModal";
+import AddItemModal from "../components/AddItemModal";
 import Profile from "../components/Profile";
 import ConfirmationModal from "./ConfirmationModal";
 import api from "../utils/api";
