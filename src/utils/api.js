@@ -1,8 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { checkResponse } from "./utils";
 
-const checkResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
-};
+const baseUrl = "http://localhost:3001";
 
 const getItems = () => {
   return fetch(`${baseUrl}/items`, {
@@ -13,7 +11,7 @@ const getItems = () => {
   }).then((res) => checkResponse(res));
 };
 
-const addItem = ({ name, imageUrl, weather }) => {
+const addItem = ({ name, weather, imageUrl }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {

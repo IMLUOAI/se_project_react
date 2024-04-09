@@ -3,16 +3,15 @@ import "../blocks/weatherCard/weatherCard.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { weatherOptions } from "../utils/constants";
 
-const WeatherCard = ({ weatherTemp = "", day, type = "sunny" }) => {
+const WeatherCard = ({ weatherTemp = "", day, type = "rainy" }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log("weatehr card");
-  const imageSrc = weatherOptions.filter((i) => {
-    console.log(i);
-    return i.day === day && i.type === type;
+  const weatherOption = weatherOptions.find((option) => {
+    return option.day === day && option.type === type;
   });
 
-  const imageSrcUrl = imageSrc.length > 0 ? imageSrc[0].url : "";
-  const altText = imageSrc ? `weather: ${type}` : "weather icon";
+  const imageSrcUrl = weatherOption ? weatherOption.url : "";
+  const altText = weatherOption ? `weather: ${type}` : "weather icon";
   return (
     <section className="weather__bar" id="weather">
       <h2 className="weather__info">

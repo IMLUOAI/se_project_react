@@ -41,15 +41,18 @@ function App() {
   };
 
   const handleDeleteItem = (selectedCard) => {
-    api.deleteItem(selectedCard).then(() => {
-      const newClothingItem = clothingItems.filter((card) => {
-        return card._id !== selectedCard._id;
-      });
-      setClothingItems(newClothingItem);
-      setShowConfirmationModal(false);
-      setCardToDelete(null);
-      handleCloseModal();
-    });
+    api
+      .deleteItem(selectedCard)
+      .then(() => {
+        const newClothingItem = clothingItems.filter((card) => {
+          return card._id !== selectedCard._id;
+        });
+        setClothingItems(newClothingItem);
+        setShowConfirmationModal(false);
+        setCardToDelete(null);
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
@@ -63,20 +66,16 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-      ? setCurrentTemperatureUnit("C")
-      : setCurrentTemperatureUnit("F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
-
   useEffect(() => {
     getForcastWeather()
       .then((data) => {
-        console.log(data);
-        const temperature = parseWeatherData(data);
-        setWeatherTemp(temperature);
+        const temp = parseWeatherData(data);
+        setWeatherTemp(temp);
       })
       .catch((err) => {
-        console.error(err);
+        console.error(`Failed to fetch weather data: ${err}`);
       });
   }, []);
 

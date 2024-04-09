@@ -119,6 +119,12 @@
       "weather": "warm",
       "imageUrl": "https://images.unsplash.com/photo-156215",
       "_id": 19
+    },
+    {
+      "name": "hat",
+      "weather": "warm",
+      "imageUrl": "https://images.unsplash.com/photo-161835",
+      "_id": 20
     }
   ]
 }

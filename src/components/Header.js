@@ -4,7 +4,6 @@ import headerAvatar from "../images/MyAvatar.jpg";
 import ToggleSwitch from "./ToggleSwitch";
 import { Link } from "react-router-dom";
 const Header = ({ userName, onCreateModal, handleProfileClick }) => {
-  console.log("header");
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",

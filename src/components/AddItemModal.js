@@ -5,12 +5,10 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
   const handleNameChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 
   const handleImageUrlChange = (e) => {
-    console.log(e.target.value);
     setImageUrl(e.target.value);
   };
   const handleWeatherTypeChange = (e) => {
@@ -23,6 +21,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
 
   return (
     <ModalWithForm
+      buttonText="Add garment"
       title="New garment"
       onClose={handleCloseModal}
       isOpen={isOpen}

@@ -2,7 +2,6 @@ import React from "react";
 import "../blocks/clothesSection/clothesSection.css";
 import ItemCard from "./ItemCard";
 const ClothesSection = ({ clothingItems, onCreateModal, onSelectCard }) => {
-  console.log("clothingItems:", clothingItems);
   return (
     <div className="clothesSection">
       <div className="clothesSection__header">
