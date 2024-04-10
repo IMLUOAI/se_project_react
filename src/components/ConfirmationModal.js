@@ -2,7 +2,7 @@ import "../blocks/confirmationModal/confirmationModal.css";
 
 const ConfirmationModal = ({
   confirmation,
-  selectedCard,
+  // selectedCard,
   onConfirmDelete,
   onCancel,
   onClose,

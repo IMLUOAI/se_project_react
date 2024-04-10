@@ -12,6 +12,10 @@
 
 .card__name {
     color: #000;
+    background-color: white;
+    padding: 2px 12px;
+    display: inline-block;
+    border-radius: 4px;
     font-family: "Cabinet Grotesk";
     font-size: 1.25rem;
     font-style: normal;

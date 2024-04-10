@@ -40,7 +40,7 @@ function App() {
     setShowConfirmationModal(true);
   };
 
-  const handleDeleteItem = (selectedCard) => {
+  const handleDeleteItem = () => {
     api
       .deleteItem(selectedCard)
       .then(() => {
@@ -142,7 +142,7 @@ function App() {
           )}
           {showConfirmationModal && (
             <ConfirmationModal
-              selectedCard={selectedCard}
+              // selectedCard={selectedCard}
               confirmation={activeModal}
               onConfirmDelete={() => {
                 handleDeleteItem(cardToDelete);

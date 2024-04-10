@@ -58,7 +58,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
           id="profile-Url-input"
           placeholder="Image URL"
           minLength="2"
-          maxLength="40"
+          maxLength=""
           required
         />
         <span className="modal__error"></span>
