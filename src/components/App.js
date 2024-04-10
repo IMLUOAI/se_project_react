@@ -136,19 +136,19 @@ function App() {
             <ItemModal
               selectedCard={selectedCard}
               onClose={handleCloseModal}
-              onDelete={handleDeleteItem}
+              onDelete={openConfirmationModal}
               openConfirmationModal={openConfirmationModal}
             />
           )}
           {showConfirmationModal && (
             <ConfirmationModal
+              selectedCard={selectedCard}
               confirmation={activeModal}
-              selectedCard={cardToDelete}
-              onClose={() => {
+              onConfirmDelete={() => {
+                handleDeleteItem(cardToDelete);
                 setShowConfirmationModal(false);
               }}
-              onDelete={() => {
-                handleDeleteItem(cardToDelete);
+              onClose={() => {
                 setShowConfirmationModal(false);
               }}
               onCancel={() => setShowConfirmationModal(false)}

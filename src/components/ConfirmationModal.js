@@ -1,6 +1,12 @@
 import "../blocks/confirmationModal/confirmationModal.css";
 
-const ConfirmationModal = ({ confirmation, onDelete, onCancel, onClose }) => {
+const ConfirmationModal = ({
+  confirmation,
+  selectedCard,
+  onConfirmDelete,
+  onCancel,
+  onClose,
+}) => {
   return (
     <div className={`modal modal_type_${confirmation}`}>
       <div className="modal__confirmation-container">
@@ -16,7 +22,7 @@ const ConfirmationModal = ({ confirmation, onDelete, onCancel, onClose }) => {
         <button
           className="modal__confirmation-button"
           type="button"
-          onClick={onDelete}
+          onClick={onConfirmDelete}
         >
           Yes, delete item
         </button>

@@ -7,12 +7,6 @@ export const getForcastWeather = () => {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
 `)
     .then(checkResponse)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`Failed to fetch weather data: ${res.status}`);
-      }
-      return res.json();
-    })
     .then((data) => {
       console.log(data);
       return data;
