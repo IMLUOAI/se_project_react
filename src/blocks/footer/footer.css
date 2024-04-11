@@ -10,7 +10,7 @@
 .footer__description,
 .footer__date {
     color: #000;
-    font-family: "Cabinet Grotesk";
+    font-family: "Cabinet Grotesk", sans-serif;
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;

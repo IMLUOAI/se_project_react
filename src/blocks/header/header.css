@@ -25,7 +25,7 @@
     .header__date {
     min-width: 160px;
     height: 24px;
-    font-family: "Cabinet Grotesk";
+    font-family: "Cabinet Grotesk", sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
@@ -44,7 +44,7 @@
     .header__add-button {
     max-width: 116px;
     height: 24px;
-    font-family: "Cabinet Grotesk";
+    font-family: "Cabinet Grotesk", sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
@@ -64,7 +64,7 @@
     .header__user-name {
     max-width: 157px;
     height: 25px;
-    font-family: "Cabinet Grotesk";
+    font-family: "Cabinet Grotesk", sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 25px;

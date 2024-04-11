@@ -15,7 +15,7 @@
     .clothesSection__name {
     width: 94px;
     height: 25px;
-    font-family: "Cabinet Grotesk";
+    font-family: "Cabinet Grotesk", sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 24.8px;
@@ -27,7 +27,7 @@
     {
     width: 88px;
     height: 25px;
-    font-family: "Cabinet Grotesk";
+    font-family: "Cabinet Grotesk", sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 24.8px;

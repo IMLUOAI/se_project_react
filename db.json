@@ -89,12 +89,6 @@
       "weather": "cold",
       "imageUrl": "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "_id": 18
-    },
-    {
-      "name": "Hoody",
-      "weather": "cold",
-      "imageUrl": "https://media.istockphoto.com/id/1407082939/photo/black-sweatshirts-with-hoodie-for-logo-mockup-template.jpg?s=1024x1024&w=is&k=20&c=ab6YXK41VPNceLEjX0XQ-szWzDhzCPOkyO-OFNwBmV0=",
-      "_id": 19
     }
   ]
 }
