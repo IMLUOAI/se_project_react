@@ -44,12 +44,14 @@
     .header__add-button {
     max-width: 116px;
     height: 24px;
+    white-space: nowrap;
     font-family: "Cabinet Grotesk", sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 24px;
     border: none;
     padding: 0;
+    margin-right: 12px;
     }  
     
     .header__link {

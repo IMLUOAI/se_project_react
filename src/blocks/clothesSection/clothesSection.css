@@ -10,11 +10,13 @@
     flex-direction: row;
     gap: 24px;
     align-items: center;
+    flex-wrap: nowrap;
     }
 
     .clothesSection__name {
     width: 94px;
     height: 25px;
+    white-space: nowrap;
     font-family: "Cabinet Grotesk", sans-serif;
     font-size: 20px;
     font-weight: 700;
