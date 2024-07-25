@@ -32,6 +32,10 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleOpenRegisterModal = () => setActiveModal("register");
+  const handleOpenLoginModal = () => setActiveModal("login");
+  const handleCloseModal = () => setActiveModal("");
+
   const handleRegistration = ({ email, password, name, avatarUrl }) => {
     if (password) {
       auth
@@ -62,10 +66,6 @@ function App() {
 
   const handleCreateModal = () => {
     setActiveModal("create");
-  };
-
-  const handleCloseModal = () => {
-    setActiveModal("");
   };
 
   const handleSelectedCard = (card) => {
@@ -173,8 +173,8 @@ function App() {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === "register") {
-      setActiveModal("/register");
+    if (path === "/register") {
+      setActiveModal("register");
     } else if (path === "/login") {
       setActiveModal("login");
     } else {
@@ -189,12 +189,14 @@ function App() {
       >
         <div className="page__section">
           <Header
-            userName={currentUser ? currentUser.name : ""}
-            userAvatar={currentUser ? currentUser.avatarUrl : ""}
-            onCreateModal={handleCreateModal}
+            userName={currentUser?.name}
             isAuthorized={isLoggedIn}
+            onCreateModal={handleCreateModal}
             handleProfileClick={() => navigate("/profile")}
+            onRegisterModal={handleOpenRegisterModal}
+            onLoginModal={handleOpenLoginModal}
           />
+
           <Routes>
             <Route
               path="/"

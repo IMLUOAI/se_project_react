@@ -4,7 +4,15 @@ import ToggleSwitch from "./ToggleSwitch";
 import PlaceholderAvatar from "./PlaceholderAvatar";
 import { Link } from "react-router-dom";
 
-const Header = ({ userName, onCreateModal, handleProfileClick, isAuthorized, userAvatar }) => {
+const Header = ({
+  userName,
+  onCreateModal,
+  handleProfileClick,
+  isAuthorized,
+  userAvatar,
+  onRegisterModal,
+  onLoginModal,
+}) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -27,28 +35,32 @@ const Header = ({ userName, onCreateModal, handleProfileClick, isAuthorized, use
       <div className="header__avatar-bar">
         {isAuthorized ? (
           <>
-        <button
-          className="header__add-button"
-          type="button"
-          onClick={onCreateModal}
-        >
-          +Add clothes
-        </button>
-        <Link to="/profile" className="header__link">
-          <h3 className="header__user-name" onClick={handleProfileClick}>
-            {userName}
-          </h3>
-          {userAvatar ? (
-          <img className="header__avatar" src={userAvatar} alt="Avatar" />
-          ) : (
-            <PlaceholderAvatar name={userName} />
-          )}
-        </Link>
-        </>
+            <button
+              className="header__add-button"
+              type="button"
+              onClick={onCreateModal}
+            >
+              +Add clothes
+            </button>
+            <Link to="/profile" className="header__link">
+              <h3 className="header__user-name" onClick={handleProfileClick}>
+                {userName}
+              </h3>
+              {userAvatar ? (
+                <img className="header__avatar" src={userAvatar} alt="Avatar" />
+              ) : (
+                <PlaceholderAvatar name={userName} />
+              )}
+            </Link>
+          </>
         ) : (
           <nav>
-          <Link to="/register" className="header__link">Sign Up</Link>
-          <Link to="/login" className="header__link">Log In</Link>
+            <button className="header__link" onClick={onRegisterModal}>
+              Sign Up
+            </button>
+            <button className="header__link" onClick={onLoginModal}>
+              Log In
+            </button>
           </nav>
         )}
       </div>

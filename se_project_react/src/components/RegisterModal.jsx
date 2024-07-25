@@ -98,7 +98,7 @@ const RegisterModal = ({ isOpen, handleCloseModal, handleRegistration }) => {
         <span className="modal_error"></span>
       </label>
       <div className="modal_submit-container">
-        <Link to="login" className="modal__login-link">
+        <Link to="/login" className="modal__login-link">
           or Log in
         </Link>
       </div>

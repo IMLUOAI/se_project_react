@@ -24,14 +24,14 @@ const LoginModal = ({ isOpen, handleCloseModal, handleLogin }) => {
 
   return (
     <ModalWithForm
-    buttonText="Log in"
-    title="Log in"
-    onClose={handleCloseModal}
-    isOpen={isOpen}
-    onSubmit={handleSubmit}
+      buttonText="Log in"
+      title="Log in"
+      onClose={handleCloseModal}
+      isOpen={isOpen}
+      onSubmit={handleSubmit}
     >
-        <label className="modal_label">
-            Email
+      <label className="modal_label">
+        Email
         <input
           id="email"
           required
@@ -45,9 +45,9 @@ const LoginModal = ({ isOpen, handleCloseModal, handleLogin }) => {
           maxLength="40"
         />
         <span className="modal_error"></span>
-        </label>
-        <label className="modal_label">
-            Password
+      </label>
+      <label className="modal_label">
+        Password
         <input
           id="password"
           required
@@ -61,8 +61,8 @@ const LoginModal = ({ isOpen, handleCloseModal, handleLogin }) => {
           maxLength="16"
         />
         <span className="modal_error"></span>
-        </label>
-        <div className="modal__submit-container">
+      </label>
+      <div className="modal__submit-container">
         <Link to="/register" className="modal__register-link">
           or Register
         </Link>
