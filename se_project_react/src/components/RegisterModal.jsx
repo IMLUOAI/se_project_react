@@ -22,18 +22,19 @@ const RegisterModal = ({ isOpen, handleCloseModal, handleRegistration }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegistration(data);
-  }
+    console.log("click me ");
+  };
 
   return (
-    <ModalWithForm 
-    buttonText="Next"
-    title="Sign up"
-    onClose={handleCloseModal}
-    isOpen={isOpen}
-    onSubmit={handleSubmit}
+    <ModalWithForm
+      buttonText="Next"
+      title="Sign up"
+      onClose={handleCloseModal}
+      isOpen={isOpen}
+      onSubmit={handleSubmit}
     >
-        <label className="modal_label" >
-            Email*
+      <label className="modal_label">
+        Email*
         <input
           id="email"
           name="email"
@@ -47,9 +48,9 @@ const RegisterModal = ({ isOpen, handleCloseModal, handleRegistration }) => {
           required
         />
         <span className="modal_error"></span>
-        </label>
-        <label className="modal_label">
-            Password*
+      </label>
+      <label className="modal_label">
+        Password*
         <input
           id="password"
           name="password"
@@ -63,9 +64,9 @@ const RegisterModal = ({ isOpen, handleCloseModal, handleRegistration }) => {
           required
         />
         <span className="modal_error"></span>
-        </label>
-        <label className="modal_label" >
-            Name
+      </label>
+      <label className="modal_label">
+        Name
         <input
           id="name"
           name="name"
@@ -79,9 +80,9 @@ const RegisterModal = ({ isOpen, handleCloseModal, handleRegistration }) => {
           required
         />
         <span className="modal_error"></span>
-        </label>
-        <label className="modal_label" >
-            Avatar URL
+      </label>
+      <label className="modal_label">
+        Avatar URL
         <input
           id="avatar-url"
           name="avatarUrl"
@@ -95,7 +96,7 @@ const RegisterModal = ({ isOpen, handleCloseModal, handleRegistration }) => {
           required
         />
         <span className="modal_error"></span>
-        </label>
+      </label>
       <div className="modal_submit-container">
         <Link to="login" className="modal__login-link">
           or Log in
