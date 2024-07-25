@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import "../blocks/modalWithForm/modalWithForm.css";
 import ModalWithForm from "./ModalWithForm";
 
-const LoginModal = ({ isOpen, handleCloseModal, handleLogin }) => {
+const LoginModal = ({
+  isOpen,
+  handleCloseModal,
+  handleLogin,
+  handleOpenRegisterModal,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -63,9 +67,13 @@ const LoginModal = ({ isOpen, handleCloseModal, handleLogin }) => {
         <span className="modal_error"></span>
       </label>
       <div className="modal__submit-container">
-        <Link to="/register" className="modal__register-link">
+        <button
+          type="button"
+          className="modal__register-button"
+          onClick={handleOpenRegisterModal}
+        >
           or Register
-        </Link>
+        </button>
       </div>
     </ModalWithForm>
   );

@@ -171,16 +171,16 @@ function App() {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    const path = location.pathname;
-    if (path === "/register") {
-      setActiveModal("register");
-    } else if (path === "/login") {
-      setActiveModal("login");
-    } else {
-      setActiveModal("");
-    }
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   const path = location.pathname;
+  //   if (path === "/register") {
+  //     setActiveModal("register");
+  //   } else if (path === "/login") {
+  //     setActiveModal("login");
+  //   } else {
+  //     setActiveModal("");
+  //   }
+  // }, [location.pathname]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
