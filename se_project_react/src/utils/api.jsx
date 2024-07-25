@@ -34,10 +34,20 @@ const deleteItem = ({ _id }) => {
   }).then((res) => checkResponse(res));
 };
 
+const getUserInfo = (userId) => {
+  return fetch(`${baseUrl}/users/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
+};
+
 const api = {
   getItems,
   addItem,
   deleteItem,
+  getUserInfo,
 };
 
 export default api;
