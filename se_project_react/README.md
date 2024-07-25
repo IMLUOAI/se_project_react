@@ -8,14 +8,6 @@ _In this project, we have to hands on a few main parts of React. For intance, th
 
 _This project was start from the chapter 10 along with a basic react structure to a current well-organized and well-implemented app, whcih could user-friendly interact with any users on any devices,like our pc, laptop, and any type of smart phones, because it UI was designed in a responsive way_
 
-## Link for se_project_express:
-
-[github](https://github.com/IMLUOAI/se_project_express.git)
-
-## Link for WTWR_FB(frontend & backend):
-
-[github](https://github.com/IMLUOAI/WTWR_FB.git)
-
 ## Link for se_project_react:
 
 [github](https://github.com/IMLUOAI/se_project_react.git)

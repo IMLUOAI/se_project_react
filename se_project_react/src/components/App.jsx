@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -187,7 +187,6 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-      <Router>
         <div className="page__section">
           <Header
             userName={currentUser ? currentUser.name : ''}
@@ -270,7 +269,6 @@ function App() {
             />
           )}
           </div>
-          </Router>
         </CurrentTemperatureUnitContext.Provider> 
     </CurrentUserContext.Provider>
   );
