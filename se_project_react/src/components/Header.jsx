@@ -54,7 +54,7 @@ const Header = ({
             </Link>
           </>
         ) : (
-          <nav>
+          <nav className="header__link-bar">
             <button className="header__register-link" onClick={onRegisterModal}>
               Sign Up
             </button>

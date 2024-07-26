@@ -8,7 +8,6 @@ const ModalWithForm = ({
   isOpen,
   onClose,
   onSubmit,
-  // buttonText,
 }) => {
   if(!isOpen) {
     return null;
@@ -28,11 +27,6 @@ const ModalWithForm = ({
             return React.cloneElement(child);
           })}
         </form>
-          {/* <div className="modal__submit-container">
-            <button type="submit" className="modal__submit-button">
-              {buttonText}
-            </button>
-          </div> */}
       </div>
     </div>
   );
