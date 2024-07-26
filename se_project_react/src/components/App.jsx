@@ -238,6 +238,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "register"}
               handleRegistration={handleRegistration}
+              handleOpenLoginModal={handleOpenLoginModal}
             />
           )}
           {activeModal === "login" && (
@@ -245,6 +246,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "login"}
               handleLogin={handleLogin}
+              handleOpenRegisterModal={handleOpenRegisterModal}
             />
           )}
           {activeModal === "preview" && (

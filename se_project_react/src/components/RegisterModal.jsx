@@ -31,13 +31,13 @@ const RegisterModal = ({
 
   return (
     <ModalWithForm
-      buttonText="Next"
+      // buttonText="Next"
       title="Sign up"
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label className="modal_label">
+      <label className="modal__label">
         Email*
         <input
           id="email"
@@ -45,15 +45,15 @@ const RegisterModal = ({
           type="email"
           value={data.email}
           onChange={handleChange}
-          className="modal_input"
+          className="modal__input"
           placeholder="Email"
           minLength="2"
           maxLength="40"
           required
         />
-        <span className="modal_error"></span>
+        <span className="modal__error"></span>
       </label>
-      <label className="modal_label">
+      <label className="modal__label">
         Password*
         <input
           id="password"
@@ -61,15 +61,15 @@ const RegisterModal = ({
           type="password"
           value={data.password}
           onChange={handleChange}
-          className="modal_input"
+          className="modal__input"
           placeholder="Password"
           minLength="2"
           maxLength="16"
           required
         />
-        <span className="modal_error"></span>
+        <span className="modal__error"></span>
       </label>
-      <label className="modal_label">
+      <label className="modal__label">
         Name
         <input
           id="name"
@@ -77,15 +77,15 @@ const RegisterModal = ({
           type="text"
           value={data.name}
           onChange={handleChange}
-          className="modal_input"
+          className="modal__input"
           placeholder="Name"
           minLength="2"
           maxLength="40"
           required
         />
-        <span className="modal_error"></span>
+        <span className="modal__error"></span>
       </label>
-      <label className="modal_label">
+      <label className="modal__label">
         Avatar URL
         <input
           id="avatar-url"
@@ -93,18 +93,21 @@ const RegisterModal = ({
           type="text"
           value={data.avatarUrl}
           onChange={handleChange}
-          className="modal_input"
+          className="modal__input"
           placeholder="Avatar URL"
           minLength="2"
           maxLength=""
           required
         />
-        <span className="modal_error"></span>
+        <span className="modal__error"></span>
       </label>
-      <div className="modal_submit-container">
+      <div className="modal__submit-container">
+      <button type="submit" className="modal__submit-button">
+              Next
+            </button>
         <button
           type="button"
-          className="modal__login-button"
+          className="modal__option-button"
           onClick={handleOpenLoginModal}
         >
           or Log in

@@ -55,10 +55,10 @@ const Header = ({
           </>
         ) : (
           <nav>
-            <button className="header__link" onClick={onRegisterModal}>
+            <button className="header__register-link" onClick={onRegisterModal}>
               Sign Up
             </button>
-            <button className="header__link" onClick={onLoginModal}>
+            <button className="header__login-link" onClick={onLoginModal}>
               Log In
             </button>
           </nav>

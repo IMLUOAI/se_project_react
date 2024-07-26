@@ -15,7 +15,6 @@
 
 .modal__content {
     max-width: 496px;
-    height: 436px;
     border-radius: 20px;
     background: #FFF;
     position: absolute;
@@ -153,29 +152,23 @@
 }
 
 .modal__submit-container {
+    max-width: 164px;
+    height: 35px;
     display: flex;
     flex-direction: row;
-    margin: 0 28px auto;
+    margin: 32px auto 36px 0;
 }
 
-.modal__register-link {
+.modal__option-button {
+    background: none;
+    border: none;
+    white-space: nowrap;
     color:  rgba(0, 0, 0, 0.5);
     font-family: "Cabinet Grotesk", sans-serif;
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
-    text-align: left;
-    margin: 34px auto 0 12px;
-}
-
-.modal__login-link {
-    color:  rgba(0, 0, 0, 0.5);
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 20px;
-    text-align: left;
-    margin: 34px auto 0 12px;
+    padding: 0;
 }
 
 .modal__submit-button{
@@ -185,15 +178,14 @@
     font-style: normal;
     font-weight: 700;
     line-height: 20px; 
-    max-width: 124px;
+    max-width: 73px;
     height: 36px;
-    display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px dashed #000;
+    border: 1px solid rgba(0, 0, 0, 0.30) ;
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.30);
-    margin: 34px auto 36px 0;
+    margin:  0 12px 0 0;
 }
 
 .modal__submit-button:hover {

@@ -28,13 +28,13 @@ const LoginModal = ({
 
   return (
     <ModalWithForm
-      buttonText="Log in"
+      // buttonText="Log in"
       title="Log in"
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label className="modal_label">
+      <label className="modal__label">
         Email
         <input
           id="email"
@@ -43,14 +43,14 @@ const LoginModal = ({
           type="email"
           value={data.email}
           onChange={handleChange}
-          className="modal_input"
+          className="modal__input"
           placeholder="Email"
           minLength="2"
           maxLength="40"
         />
-        <span className="modal_error"></span>
+        <span className="modal__error"></span>
       </label>
-      <label className="modal_label">
+      <label className="modal__label">
         Password
         <input
           id="password"
@@ -59,22 +59,25 @@ const LoginModal = ({
           type="password"
           value={data.password}
           onChange={handleChange}
-          className="modal_input"
+          className="modal__input"
           placeholder="Password"
           minLength="2"
           maxLength="16"
         />
-        <span className="modal_error"></span>
+        <span className="modal__error"></span>
       </label>
       <div className="modal__submit-container">
+      <button type="submit" className="modal__submit-button">
+             Log in
+            </button>
         <button
           type="button"
-          className="modal__register-button"
+          className="modal__option-button"
           onClick={handleOpenRegisterModal}
         >
           or Register
         </button>
-      </div>
+     </div>
     </ModalWithForm>
   );
 };
