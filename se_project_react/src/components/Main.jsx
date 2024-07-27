@@ -4,6 +4,7 @@ import ItemCard from "./ItemCard";
 import "../blocks/itemCard/itemCard.css";
 import "../blocks/main/main.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+import { weatherData } from "../utils/constants";
 
 const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
@@ -18,8 +19,18 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
       return "cold";
     }
   };
+  
+  const getCurrentDayStatus = () => {
+    const hour = new Date().getHours();
+    return hour >= 6 && hour < 18;
+  }
 
-  const weatherType = getWeatherType();
+  const weatherType = getWeatherType(temp);
+  const isDay = getCurrentDayStatus();
+  
+  if (!weatherData) {
+    return <p>Loading...</p>
+  }
 
   if (!clothingItems) {
     console.error("clothingItems is undefined or null");
@@ -32,8 +43,8 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
   return (
     <main className="main">
       <WeatherCard
-        day={true}
-        type="sunny"
+        day={isDay}
+        type={weatherType}
         weatherTemp={temp}
         temperature={currentTemperatureUnit}
       />

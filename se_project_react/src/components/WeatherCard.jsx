@@ -3,9 +3,10 @@ import "../blocks/weatherCard/weatherCard.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { weatherOptions } from "../utils/constants";
 
-const WeatherCard = ({ weatherTemp="N/A", day, type="" }) => {
+const WeatherCard = ({ weatherTemp= "N/A", day, type= "sunny" }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log("weatehr card");
+  
   const weatherOption = weatherOptions.find((option) => {
     return option.day === day && option.type === type;
   });
