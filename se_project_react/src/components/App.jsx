@@ -36,10 +36,10 @@ function App() {
   const handleOpenLoginModal = () => setActiveModal("login");
   const handleCloseModal = () => setActiveModal("");
 
-  const handleRegistration = ({ email, password, name, avatarUrl }) => {
+  const handleRegistration = ({ email, password, name, avatar }) => {
     if (password) {
       auth
-        .register(email, password, name, avatarUrl)
+        .register(email, password, name, avatar)
         .then(() => {
           navigate("/login");
         })
@@ -171,16 +171,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  // useEffect(() => {
-  //   const path = location.pathname;
-  //   if (path === "/register") {
-  //     setActiveModal("register");
-  //   } else if (path === "/login") {
-  //     setActiveModal("login");
-  //   } else {
-  //     setActiveModal("");
-  //   }
-  // }, [location.pathname]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

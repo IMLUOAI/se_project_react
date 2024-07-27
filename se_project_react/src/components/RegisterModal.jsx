@@ -12,7 +12,7 @@ const RegisterModal = ({
     email: "",
     password: "",
     name: "",
-    avatarUrl: "",
+    avatar: "",
   });
 
   const handleChange = (e) => {
@@ -31,7 +31,6 @@ const RegisterModal = ({
 
   return (
     <ModalWithForm
-      // buttonText="Next"
       title="Sign up"
       onClose={handleCloseModal}
       isOpen={isOpen}
@@ -88,10 +87,10 @@ const RegisterModal = ({
       <label className="modal__label">
         Avatar URL
         <input
-          id="avatar-url"
-          name="avatarUrl"
+          id="avatar"
+          name="avatar"
           type="text"
-          value={data.avatarUrl}
+          value={data.avatar}
           onChange={handleChange}
           className="modal__input"
           placeholder="Avatar URL"

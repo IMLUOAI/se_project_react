@@ -3,7 +3,7 @@ import { checkResponse } from "./utils";
 const BASE_URL = "http://localhost:3001";
 
 const authorize = (email, password) => {
-    return fetch(`${BASE_URL}/auth/local`, {
+    return fetch(`${BASE_URL}/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body:JSON.stringify({ email, password })
@@ -11,14 +11,13 @@ const authorize = (email, password) => {
   }
 
 
-const register = (name, avatarUrl, email, password) => {
-  return fetch(`${BASE_URL}/auth/local/register`, {
+const register = (name, avatar, email, password) => {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
-        // Accept: "application/json",
         "Content-Type": "application/json"
     },
-    body:JSON.stringify({ name, avatarUrl, email, password })
+    body:JSON.stringify({ name, avatar, email, password })
   }).then((res) => checkResponse(res))
 }
 
