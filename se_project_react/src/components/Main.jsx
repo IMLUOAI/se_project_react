@@ -18,6 +18,7 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
       return "cold";
     }
   };
+
   const weatherType = getWeatherType();
 
   if (!clothingItems) {
@@ -32,7 +33,7 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
     <main className="main">
       <WeatherCard
         day={true}
-        type="rainy"
+        type="sunny"
         weatherTemp={temp}
         temperature={currentTemperatureUnit}
       />
