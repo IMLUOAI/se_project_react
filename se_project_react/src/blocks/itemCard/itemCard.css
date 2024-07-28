@@ -33,9 +33,13 @@
 .item-card__like-button {
     width: 18px;
     height: 15px;
-    gap: 0px;
-    border: 2px rgba(0,0,0,0.6);
-    opacity: 0px;  
+    border: 2px rgba(0,0,0,1);
+    background: rgba(0,0,0,1); 
+    margin: 5px auto 4px 10px;
+}
+
+.item-card__like-icon {
+  
 }
 
 @media screen  and (max-width: 780px){

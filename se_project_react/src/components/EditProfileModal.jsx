@@ -31,6 +31,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
       const handleSubmit = (e) => {
         e.preventDefault();
         handleEditProfile(data);
+        handleCloseModal();
       };
 
     return (

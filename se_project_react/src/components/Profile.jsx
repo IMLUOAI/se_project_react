@@ -17,6 +17,7 @@ const Profile = ({ userName, onCreateModal, clothingItems, onSelectCard, handleE
    }
 
    const handleLogout = () => {
+    localStorage.removeItem("jwt");
     console.log("User logged out");
    }
 

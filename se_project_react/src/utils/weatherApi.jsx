@@ -1,11 +1,11 @@
 import { checkResponse } from "./utils";
 
-const latitude = 33.02;
-const longitude = 96.7;
-const APIkey = "a313c01e4bd951f91080f60dcd8c193e";
+const lat = 33.02;
+const lon = 94.7;
+const APIkey = "209200beaee4d83b0d302dc8b8621a4a";
 export const getForcastWeather = () => {
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
-`)
+  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`)
+
     .then(checkResponse)
     .then((data) => {
       console.log(data);

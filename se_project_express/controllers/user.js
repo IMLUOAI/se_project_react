@@ -52,8 +52,8 @@ module.exports.updateCurrentUser = async (req, res) => {
 // createUser
 
 module.exports.createUser = async (req, res) => {
-  const { name, avatar, email, password } = req.body;
-  if (!name || !avatar || !email || !password) {
+  const { email, password, name, avatar } = req.body;
+  if (!email || !password || !name || !avatar) {
     return res
       .status(INVALID_ID)
       .send({ message: "Name, email, password are required" });
@@ -70,10 +70,10 @@ module.exports.createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
-      name,
-      avatar,
       email,
       password: hashedPassword,
+      name,
+      avatar,
     });
 
     const saveUser = await newUser.save();

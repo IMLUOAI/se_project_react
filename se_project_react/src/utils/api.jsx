@@ -25,6 +25,25 @@ const addItem = ({ name, weather, imageUrl }) => {
   }).then((res) => checkResponse(res));
 };
 
+const addCardLike= (id, token) => {
+  return fetch(`${baseUrl}/clothingItems/${id}/likes`, {
+    method: "PUT",
+    header: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`,
+  },
+  }).then((res) => checkResponse(res));
+}
+
+const removeCardLike = (id, token) => {
+  return fetch(`${baseUrl}/clothingItems/${id}/likes`, {
+    method: "DELETE",
+    header: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    }
+  }).then((res) => checkResponse(res));
+}
 const deleteItem = ({ _id }) => {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
@@ -34,11 +53,12 @@ const deleteItem = ({ _id }) => {
   }).then((res) => checkResponse(res));
 };
 
-const getUserInfo = (userId) => {
-  return fetch(`${baseUrl}/users/${userId}`, {
+const getUserInfo = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer${token}`
     },
   }).then((res) => checkResponse(res));
 };
@@ -47,6 +67,8 @@ const api = {
   getItems,
   addItem,
   deleteItem,
+  addCardLike,
+  removeCardLike,
   getUserInfo,
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { setToken, getToken } from "../utils/token";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import Header from "./Header";
@@ -30,7 +30,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleOpenRegisterModal = () => setActiveModal("register");
   const handleOpenLoginModal = () => setActiveModal("login");
@@ -41,7 +41,7 @@ function App() {
       auth
         .register(email, password, name, avatar)
         .then(() => {
-          navigate("/login");
+          setActiveModal("login");
         })
         .catch(console.error);
     }
@@ -57,12 +57,16 @@ function App() {
           setToken(data.jwt);
           setCurrentUser(data.user);
           setIsLoggedIn(true);
-          const redirectPath = location.state?.pathname || "/profile";
-          navigate(redirectPath);
+          setActiveModal("");
+          navigate("/profile");
         }
       })
       .catch(console.error);
   };
+  
+  const handleEditProfile = () => {
+    navigate("/profile");
+  }
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -133,8 +137,7 @@ function App() {
   useEffect(() => {
     getForcastWeather()
       .then((data) => {
-        const temp = parseWeatherData(data);
-        setWeatherTemp(temp);
+        setWeatherTemp(parseWeatherData(data));
       })
       .catch((err) => {
         console.error(`Failed to fetch weather data: ${err}`);
@@ -164,9 +167,9 @@ function App() {
     }
     api
       .getUserInfo(jwt)
-      .then(({ password, email, name, avatarUrl }) => {
+      .then(({ email, password, name, avatar }) => {
         setIsLoggedIn(true);
-        setCurrentUser({ password, email, name, avatarUrl });
+        setCurrentUser({ email, password, name, avatar });
       })
       .catch(console.error);
   }, []);
@@ -210,6 +213,7 @@ function App() {
                     clothingItems={clothingItems}
                     onCreateModal={handleCreateModal}
                     onSelectCard={handleSelectedCard}
+                    handleEditProfile={handleEditProfile}
                   />
                 </ProtectedRoute>
               }
