@@ -25,30 +25,32 @@ const addItem = ({ name, weather, imageUrl }) => {
   }).then((res) => checkResponse(res));
 };
 
-const addCardLike= (id, token) => {
-  return fetch(`${baseUrl}/clothingItems/${id}/likes`, {
+const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
-    header: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`,
-  },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   }).then((res) => checkResponse(res));
-}
+};
 
 const removeCardLike = (id, token) => {
-  return fetch(`${baseUrl}/clothingItems/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
-    header: {
+    headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    }
+      Authorization: `Bearer ${token}`,
+    },
   }).then((res) => checkResponse(res));
-}
-const deleteItem = ({ _id }) => {
+};
+
+const deleteItem = ({ _id }, token) => {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   }).then((res) => checkResponse(res));
 };
@@ -58,7 +60,7 @@ const getUserInfo = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer${token}`
+      Authorization: `Bearer${token}`,
     },
   }).then((res) => checkResponse(res));
 };

@@ -63,10 +63,10 @@ function App() {
       })
       .catch(console.error);
   };
-  
+
   const handleEditProfile = () => {
     navigate("/profile");
-  }
+  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -137,7 +137,10 @@ function App() {
   useEffect(() => {
     getForcastWeather()
       .then((data) => {
-        setWeatherTemp(parseWeatherData(data));
+        const weather = parseWeatherData(data);
+        if (weather) {
+          setWeatherTemp(weather);
+        }
       })
       .catch((err) => {
         console.error(`Failed to fetch weather data: ${err}`);
@@ -173,7 +176,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

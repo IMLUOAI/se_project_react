@@ -8,18 +8,33 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
-  
+
   const getWeatherType = () => {
-    if (temp >= 86) {
-      return "hot";
-    } else if (temp >= 66 && temp <= 85) {
-      return "warm";
-    } else if (temp <= 66) {
-      return "cold";
+    if (currentTemperatureUnit === "F") {
+      if (temp >= 86) {
+        return "hot";
+      } else if (temp >= 66 && temp <= 85) {
+        return "warm";
+      } else {
+        return "cold";
+      }
+    }
+    if (currentTemperatureUnit === "C") {
+      if (temp >= 30) {
+        return "hot";
+      } else if (temp >= 19 && temp <= 30) {
+        return "warm";
+      } else {
+        return "cold";
+      }
     }
   };
 
   const weatherType = getWeatherType();
+
+  if (!weatherTemp) {
+    return <p>Loading...</p>;
+  }
 
   if (!clothingItems) {
     console.error("clothingItems is undefined or null");
