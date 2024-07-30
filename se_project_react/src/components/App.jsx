@@ -211,7 +211,7 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Profile
-                    userData={currentUser}
+                    userName={currentUser}
                     clothingItems={clothingItems}
                     onCreateModal={handleCreateModal}
                     onSelectCard={handleSelectedCard}

@@ -6,8 +6,20 @@ const SideBar = ({ userName, userAvatar, onEditProfile, onLogout }) => {
     <div className="sideBar__section">
       <img src={userAvatar} className="sideBar__avatar" alt="avatar" />
       <h3 className="sideBar__user-name">{userName}</h3>
-      <button type="button" className="sideBar__button" onClick={onEditProfile}>Change profile data</button>
-      <button type="button" className="sideBar__button" onClick={onLogout}>Log out</button>
+      <button
+        type="button"
+        className="sideBar__profile-button"
+        onClick={onEditProfile}
+      >
+        Change profile data
+      </button>
+      <button
+        type="button"
+        className="sideBar__logout-button"
+        onClick={onLogout}
+      >
+        Log out
+      </button>
     </div>
   );
 };
