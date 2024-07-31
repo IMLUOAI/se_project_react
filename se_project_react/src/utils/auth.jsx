@@ -1,12 +1,13 @@
 import { checkResponse } from "./utils";
 
 const BASE_URL = "http://localhost:3000";
-
+debugger;
 const register = (email, password, name, avatar) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+
     },
     body:JSON.stringify({email, password, name, avatar})
   }).then((res) => checkResponse(res))
@@ -15,7 +16,8 @@ const register = (email, password, name, avatar) => {
 const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json",
+  },
     body:JSON.stringify({ email, password })
   }).then((res) => checkResponse(res))
 }
@@ -25,7 +27,7 @@ const checkTokenValidity = (token) => {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
     },
    }).then((res) => checkResponse(res))
 }

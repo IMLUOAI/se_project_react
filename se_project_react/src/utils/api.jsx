@@ -45,8 +45,8 @@ const removeCardLike = (id, token) => {
   }).then((res) => checkResponse(res));
 };
 
-const deleteItem = ({ _id }, token) => {
-  return fetch(`${baseUrl}/items/${_id}`, {
+const deleteItem = (id , token) => {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

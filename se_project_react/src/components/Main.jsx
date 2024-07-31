@@ -11,18 +11,18 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
 
   const getWeatherType = () => {
     if (currentTemperatureUnit === "F") {
-      if (temp >= 86) {
+      if (temp >= 80) {
         return "hot";
-      } else if (temp >= 66 && temp <= 85) {
+      } else if (temp >= 66 && temp <= 80) {
         return "warm";
       } else {
         return "cold";
       }
     }
     if (currentTemperatureUnit === "C") {
-      if (temp >= 30) {
+      if (temp >= 27) {
         return "hot";
-      } else if (temp >= 19 && temp <= 30) {
+      } else if (temp >= 19 && temp <= 27) {
         return "warm";
       } else {
         return "cold";
@@ -41,6 +41,10 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
     return null;
   }
   const filteredCards = clothingItems.filter((item) => {
+    if (!item.weather){
+      console.error("Item weather is undefined", item);
+      return false;
+    }
     return item.weather.toLowerCase() === weatherType;
   });
 

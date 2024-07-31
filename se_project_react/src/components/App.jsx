@@ -20,7 +20,7 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
+  const [selectedCard, setSelectedCard] = useState([]);
   const [weatherTemp, setWeatherTemp] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
@@ -84,7 +84,7 @@ function App() {
 
   const handleDeleteItem = () => {
     api
-      .deleteItem(selectedCard)
+      .deleteItem(selectedCard._id)
       .then(() => {
         const newClothingItem = clothingItems.filter((card) => {
           return card._id !== selectedCard._id;
@@ -94,14 +94,14 @@ function App() {
         setCardToDelete(null);
         handleCloseModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("Failed to delete:",err));
   };
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
     api
       .addItem({ name, weather, imageUrl })
-      .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => console.log(err));
@@ -118,7 +118,7 @@ function App() {
           .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err))
@@ -126,7 +126,7 @@ function App() {
           .removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err));
@@ -138,9 +138,7 @@ function App() {
     getForcastWeather()
       .then((data) => {
         const weather = parseWeatherData(data);
-        if (weather) {
           setWeatherTemp(weather);
-        }
       })
       .catch((err) => {
         console.error(`Failed to fetch weather data: ${err}`);
