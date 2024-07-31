@@ -1,41 +1,39 @@
 import { checkResponse } from "./utils";
 
 const BASE_URL = "http://localhost:3000";
-debugger;
+
 const register = (email, password, name, avatar) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
-        "Content-Type": "application/json",
-
+      "Content-Type": "application/json",
     },
-    body:JSON.stringify({email, password, name, avatar})
-  }).then((res) => checkResponse(res))
-}
+    body: JSON.stringify({ email, password, name, avatar }),
+  }).then((res) => checkResponse(res));
+};
 
 const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
-    headers: { "Content-Type": "application/json",
-  },
-    body:JSON.stringify({ email, password })
-  }).then((res) => checkResponse(res))
-}
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  }).then((res) => checkResponse(res));
+};
 
 const checkTokenValidity = (token) => {
-   return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-   }).then((res) => checkResponse(res))
-}
+  }).then((res) => checkResponse(res));
+};
 
 const auth = {
-    register,
-    authorize,
-    checkTokenValidity
-}
+  register,
+  authorize,
+  checkTokenValidity,
+};
 
 export default auth;

@@ -94,7 +94,7 @@ function App() {
         setCardToDelete(null);
         handleCloseModal();
       })
-      .catch((err) => console.log("Failed to delete:",err));
+      .catch((err) => console.log("Failed to delete:", err));
   };
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
@@ -111,22 +111,23 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = (item) => {
     const token = localStorage.getItem("jwt");
+    const { _id, isLiked } = item;
     !isLiked
       ? api
-          .addCardLike(id, token)
+          .addCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard.data : item))
+              cards.map((card) => (card._id === _id ? updatedCard.data : card))
             );
           })
           .catch((err) => console.log(err))
       : api
-          .removeCardLike(id, token)
+          .removeCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard.data : item))
+              cards.map((card) => (card._id === _id ? updatedCard.data : card))
             );
           })
           .catch((err) => console.log(err));
@@ -138,7 +139,7 @@ function App() {
     getForcastWeather()
       .then((data) => {
         const weather = parseWeatherData(data);
-          setWeatherTemp(weather);
+        setWeatherTemp(weather);
       })
       .catch((err) => {
         console.error(`Failed to fetch weather data: ${err}`);
