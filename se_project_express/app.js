@@ -26,5 +26,5 @@ app.use((_, res) => {
 });
 
 app.listen(PORT, () => {
-  // console.log(`Server is runnning on port ${PORT}`);
+  console.log(`Server is runnning on port ${PORT}`);
 });

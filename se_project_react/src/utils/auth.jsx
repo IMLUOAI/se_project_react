@@ -1,6 +1,6 @@
 import { checkResponse } from "./utils";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3001";
 
 const register = (email, password, name, avatar) => {
   return fetch(`${BASE_URL}/signup`, {

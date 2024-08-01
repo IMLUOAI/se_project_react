@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { setToken, getToken } from "../utils/token";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import Header from "./Header";
@@ -38,7 +38,7 @@ function App() {
 
   const handleRegistration = ({ email, password, name, avatar }) => {
     if (password) {
-      auth
+            auth
         .register(email, password, name, avatar)
         .then(() => {
           setActiveModal("login");
@@ -53,9 +53,9 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        if (data.jwt) {
-          setToken(data.jwt);
-          setCurrentUser(data.user);
+        if (data.token) {
+          setToken(data.token);
+          // setCurrentUser(data.user);
           setIsLoggedIn(true);
           setActiveModal("");
           navigate("/profile");
@@ -110,7 +110,6 @@ function App() {
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
-
   const handleCardLike = (item) => {
     const token = localStorage.getItem("jwt");
     const { _id, isLiked } = item;
@@ -118,8 +117,12 @@ function App() {
       ? api
           .addCardLike(_id, token)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((card) => (card._id === _id ? updatedCard.data : card))
+            // I bet the issue is here. Check what updatedCard is, it may not be the card. I bet it is an object like this
+            // { data: { .. }}
+            // and the card inside the data property
+            
+             setClothingItems((cards) =>
+              cards.map((card) => (card._id === item._id ? updatedCard: card))
             );
           })
           .catch((err) => console.log(err))
@@ -127,7 +130,7 @@ function App() {
           .removeCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((card) => (card._id === _id ? updatedCard.data : card))
+              cards.map((card) => (card._id === item._id ? updatedCard: card))
             );
           })
           .catch((err) => console.log(err));
@@ -174,7 +177,7 @@ function App() {
         setCurrentUser({ email, password, name, avatar });
       })
       .catch(console.error);
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -219,6 +222,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
+             <Route
+          path="*"
+          element={
+            isLoggedIn ? (
+            <Navigate to="/profile" replace />
+            ) : (
+            <Navigate to="/" replace />
+            )
+          }
+         /> 
           </Routes>
           <Footer />
           {activeModal === "create" && (

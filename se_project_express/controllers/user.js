@@ -51,7 +51,7 @@ module.exports.updateCurrentUser = async (req, res) => {
 
 // createUser
 
-module.exports.createUser = async (req, res) => {
+module.exports.registerUser = async (req, res) => {
   const { email, password, name, avatar } = req.body;
   if (!email || !password || !name || !avatar) {
     return res
@@ -88,7 +88,7 @@ module.exports.createUser = async (req, res) => {
 
 // login
 
-module.exports.login = async (req, res) => {
+module.exports.authorization = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res

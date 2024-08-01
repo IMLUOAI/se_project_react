@@ -4,20 +4,12 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 import heartHollow from "../images/heartHollow.png";
 import heartSolid from "../images/heartSolid.png";
 
-const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
+const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const itemLikeButtonClassName = `card__like-button ${
     isLiked ? "card__like-button_liked" : "card__like-button"
   }`;
-
-  // const handleSelectedCard = () => {
-  //   onSelectedCard(item);
-  // };
-
-  // const handleCardLike = () => {
-  //   onCardLike(item);
-  // };
 
   return (
     <div className="card__item">
@@ -25,7 +17,7 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
         src={item.imageUrl}
         className="card__image"
         alt={item.name}
-        onClick={() => onSelectedCard(item)}
+        onClick={() => onSelectCard(item)}
       />
       <div className="card__description">
         <h2 className="card__name">{item.name}</h2>
