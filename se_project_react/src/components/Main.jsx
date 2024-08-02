@@ -42,7 +42,6 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
   }
   const filteredCards = clothingItems.filter((item) => {
     if (!item.weather){
-      console.error("Item weather is undefined", item);
       return false;
     }
     return item.weather.toLowerCase() === weatherType;

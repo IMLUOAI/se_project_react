@@ -62,9 +62,8 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
         />
         <span className="modal__error"></span>
       </label>
-      <div className="modal__weather">
+      <div className="modal__weather-type">
         <p className="modal__weather-title">Select the weather type:</p>
-        <div className="modal__weather-type">
           <div>
             <input
               type="radio"
@@ -98,13 +97,10 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
             />
             <label htmlFor="warm">Warm</label>
           </div>
-          <div className="modal_submit-container">
-            <button type="button" className="modal_submit-button" onClick={handleSubmit}>
-              Add garment
-            </button>
           </div>
-        </div>
-      </div>
+            <button type="button" className="modal__submit-button" onClick={handleSubmit}>
+              Add garment
+            </button> 
     </ModalWithForm>
   );
 };

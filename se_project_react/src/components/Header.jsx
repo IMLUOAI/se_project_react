@@ -42,7 +42,7 @@ const Header = ({
             >
               +Add clothes
             </button>
-            <Link to="/profile" className="header__link">
+            <Link to="/profile" className="header__link-bar">
               <h3 className="header__user-name" onClick={handleProfileClick}>
                 {userName}
               </h3>
@@ -54,7 +54,7 @@ const Header = ({
             </Link>
           </>
         ) : (
-          <nav className="header__link-bar">
+          <nav className="header__nav-bar">
             <button className="header__register-link" onClick={onRegisterModal}>
               Sign Up
             </button>

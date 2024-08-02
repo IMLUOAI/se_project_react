@@ -120,7 +120,7 @@ function App() {
             // I bet the issue is here. Check what updatedCard is, it may not be the card. I bet it is an object like this
             // { data: { .. }}
             // and the card inside the data property
-            
+
              setClothingItems((cards) =>
               cards.map((card) => (card._id === item._id ? updatedCard: card))
             );
@@ -222,7 +222,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+             {/* <Route
           path="*"
           element={
             isLoggedIn ? (
@@ -231,7 +231,7 @@ function App() {
             <Navigate to="/" replace />
             )
           }
-         /> 
+         />  */}
           </Routes>
           <Footer />
           {activeModal === "create" && (

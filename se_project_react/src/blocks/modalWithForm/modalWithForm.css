@@ -53,7 +53,7 @@
 .modal__form {
     display: flex;
     flex-direction: column;
-    margin: 0 28px 0;
+    margin: 0 28px;
 }
 
 .modal__label{
@@ -111,35 +111,28 @@
     opacity: 1;
 }
 
-.modal__weather {
+.modal__weather-type {
     max-width: 173px;
     height: 108px;
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
+    margin: 24px auto 32px 0;
 }
 
-.modal__weather-title{
+.modal__weather-title {
+    max-width: 173px;
+    height: 20px;
     color: #000;
     font-family: "Cabinet Grotesk", sans-serif;
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 20px; 
-    margin: 0;
-}
-
-.modal__weather-type  {
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    margin: 12px auto 8px 0;
+    white-space: nowrap;
+    margin:0;
 }
 
 .modal__weather-type input[type="radio"] {
-    margin: 8px 11px 0 0;
+    margin: 12px 11px 0 0;
 }
 
 .modal__weather-type label {
@@ -148,16 +141,16 @@
     font-style: normal;
     font-weight: 700;
     line-height: 20px;
-    margin: 8px auto 0 0;
+    margin: 12px auto 0 0;
 }
 
-.modal__submit-container {
+ .modal__submit-container {
     max-width: 164px;
     height: 35px;
     display: flex;
     flex-direction: row;
-    margin: 32px auto 36px 0;
-}
+    margin: 32px auto 36px 28px;
+}  
 
 .modal__option-button {
     background: none;
@@ -169,7 +162,6 @@
     font-weight: 700;
     line-height: 20px;
     margin: 8px auto 8px 12px;
-    padding: 0;
 }
 
 .modal__submit-button{
@@ -179,14 +171,14 @@
     font-style: normal;
     font-weight: 700;
     line-height: 1.25px; 
-    max-width: 73px;
+    width: auto;
     height: 36px;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     border: none;
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.30);
     padding: 8px, 16px, 8px, 16px;
+    margin: 0 auto 36px 0;
 }
 
 .modal__submit-button:hover {
