@@ -3,6 +3,8 @@ import "../blocks/clothesSection/clothesSection.css";
 import ItemCard from "./ItemCard";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
+debugger;
+
 const ClothesSection = ({ clothingItems, onCreateModal, onSelectCard }) => {
   const currentUser = useContext(CurrentUserContext);
   return (

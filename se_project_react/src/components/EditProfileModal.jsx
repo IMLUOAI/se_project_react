@@ -42,7 +42,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
             isOpen={isOpen}
             onSubmit={handleSubmit}
             >
-                <label className="modal_label">
+                <label className="modal__label">
                    Name*
                 <input
                   id="name"
@@ -51,13 +51,13 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
                   type="text"
                   value={data.name}
                   onChange={handleChange}
-                  className="modal_input"
+                  className="modal__input"
                   minLength="2"
                   maxLength="40"
                 />
-                <span className="modal_error"></span>
+                <span className="modal__error"></span>
                 </label>
-                <label className="modal_label">
+                <label className="modal__label">
                     Avatar
                 <input
                   id="avatar"
@@ -66,12 +66,15 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
                   type="text"
                   value={data.avatar}
                   onChange={handleChange}
-                  className="modal_input"
+                  className="modal__input"
                   minLength="2"
                   maxLength=""
                 />
-                <span className="modal_error"></span>
+                <span className="modal__error"></span>
                 </label>
+                <button type="button" className="modal__submit-button" onClick={handleSubmit}>
+              Save changes
+            </button> 
             </ModalWithForm>
     )
 }
