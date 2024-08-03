@@ -4,10 +4,9 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const ProtectedRoute = ({ children, anonymous = false }) => {
   const location = useLocation();
-  const from = location.state?.from || "/";
+  const from = location.state?.from || "/profile";
   const navigate = useNavigate();
   const { isLoggedIn } = useContext(CurrentUserContext);
-
 
   useEffect(() => {
     if (anonymous && isLoggedIn) {
@@ -15,9 +14,9 @@ const ProtectedRoute = ({ children, anonymous = false }) => {
     }
 
     if (!anonymous && !isLoggedIn) {
-     navigate("/");
+      navigate("/");
     }
-  }, [isLoggedIn, anonymous, from, navigate])
+  }, [isLoggedIn, anonymous, from, navigate]);
   return children;
 };
 

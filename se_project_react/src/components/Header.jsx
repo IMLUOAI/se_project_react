@@ -5,11 +5,11 @@ import PlaceholderAvatar from "./PlaceholderAvatar";
 import { Link } from "react-router-dom";
 
 const Header = ({
-  userName,
+  userName = "GUEST",
+  userAvatar = "",
   onCreateModal,
   handleProfileClick,
   isAuthorized,
-  userAvatar,
   onRegisterModal,
   onLoginModal,
 }) => {
@@ -19,7 +19,6 @@ const Header = ({
   });
   const cityName = "Plano";
   const dateTimeString = `${currentDate}, ${cityName}`;
-
   return (
     <header className="header">
       <div className="header__logo">
@@ -43,9 +42,7 @@ const Header = ({
               +Add clothes
             </button>
             <Link to="/profile" className="header__link-bar">
-              <h3 className="header__user-name" onClick={handleProfileClick}>
-                {userName}
-              </h3>
+              <h3 className="header__user-name">{userName}</h3>
               {userAvatar ? (
                 <img className="header__avatar" src={userAvatar} alt="Avatar" />
               ) : (

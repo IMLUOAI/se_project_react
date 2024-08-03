@@ -4,8 +4,14 @@ import "../blocks/sideBar/sideBar.css";
 const SideBar = ({ userName, userAvatar, onEditProfile, onLogout }) => {
   return (
     <div className="sideBar__section">
-      <img src={userAvatar} className="sideBar__avatar" alt="avatar" />
-      <h3 className="sideBar__user-name">{userName}</h3>
+      <div>
+        <img
+          src={userAvatar?.avatar}
+          className="sideBar__avatar"
+          alt="avatar"
+        />
+      </div>
+      <h3 className="sideBar__user-name">{userName?.name}</h3>
       <button
         type="button"
         className="sideBar__profile-button"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import { setToken, getToken } from "../utils/token";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { setToken, getToken, removeToken } from "../utils/token";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import Header from "./Header";
 import Main from "./Main";
@@ -38,7 +38,7 @@ function App() {
 
   const handleRegistration = ({ email, password, name, avatar }) => {
     if (password) {
-            auth
+      auth
         .register(email, password, name, avatar)
         .then(() => {
           setActiveModal("login");
@@ -55,13 +55,22 @@ function App() {
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          // setCurrentUser(data.user);
+          setCurrentUser(data.user);
+          localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           setActiveModal("");
           navigate("/profile");
         }
       })
       .catch(console.error);
+  };
+
+  const handleLogout = () => {
+    removeToken();
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    navigate("/");
+    setActiveModal("login");
   };
 
   const handleEditProfile = () => {
@@ -121,8 +130,10 @@ function App() {
             // { data: { .. }}
             // and the card inside the data property
 
-             setClothingItems((cards) =>
-              cards.map((card) => (card._id === item._id ? updatedCard: card))
+            setClothingItems((cards) =>
+              cards.map((card) =>
+                card._id === item._id ? updatedCard.data : card
+              )
             );
           })
           .catch((err) => console.log(err))
@@ -130,7 +141,9 @@ function App() {
           .removeCardLike(_id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((card) => (card._id === item._id ? updatedCard: card))
+              cards.map((card) =>
+                card._id === item._id ? updatedCard.data : card
+              )
             );
           })
           .catch((err) => console.log(err));
@@ -180,7 +193,7 @@ function App() {
   }, [isLoggedIn]);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -213,25 +226,18 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Profile
-                    userName={currentUser}
+                    userName={currentUser?.name}
+                    userAvatar={currentUser?.avatar}
                     clothingItems={clothingItems}
                     onCreateModal={handleCreateModal}
                     onSelectCard={handleSelectedCard}
                     handleEditProfile={handleEditProfile}
+                    onLogout={handleLogout}
                   />
                 </ProtectedRoute>
               }
             />
-             {/* <Route
-          path="*"
-          element={
-            isLoggedIn ? (
-            <Navigate to="/profile" replace />
-            ) : (
-            <Navigate to="/" replace />
-            )
-          }
-         />  */}
+            <Route path="/" element={<Main />}></Route>
           </Routes>
           <Footer />
           {activeModal === "create" && (

@@ -3,7 +3,7 @@ import { checkResponse } from "./utils";
 const baseUrl = "http://localhost:3001";
 
 const getItems = () => {
-  return fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/items/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -12,10 +12,13 @@ const getItems = () => {
 };
 
 const addItem = ({ name, weather, imageUrl }) => {
-  return fetch(`${baseUrl}/items`, {
+  const token = localStorage.getItem("jwt");
+
+  return fetch(`${baseUrl}/items/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: name,
@@ -45,7 +48,7 @@ const removeCardLike = (id, token) => {
   }).then((res) => checkResponse(res));
 };
 
-const deleteItem = (id , token) => {
+const deleteItem = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {

@@ -5,11 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
+            "trace": true
+
+        },
+        {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Chrome against localhost",
             "skipFiles": [
-                "<node_internals>/**"
+                "<node_internals>/**",
+                "<ode_modules>/**"
             ],
             "program": "${workspaceFolder}/se_project_react/src/components/ItemCard.jsx",
             "outFiles": [
