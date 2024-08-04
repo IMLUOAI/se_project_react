@@ -17,7 +17,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
   const handleWeatherTypeChange = (e) => {
     setWeather(e.target.value);
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem({ name, imageUrl, weather });
@@ -31,7 +31,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label className="modal__label" >
+      <label className="modal__label">
         Name
         <input
           type="text"
@@ -47,7 +47,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
         />
         <span className="modal__error"></span>
       </label>
-      <label className="modal__label" >
+      <label className="modal__label">
         Image
         <input
           type="text"
@@ -65,43 +65,47 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
       </label>
       <div className="modal__weather-type">
         <p className="modal__weather-title">Select the weather type:</p>
-          <div>
-            <input
-              type="radio"
-              name="weatherType"
-              id="hot"
-              value="hot"
-              checked={weather === "hot"}
-              onChange={handleWeatherTypeChange}
-            />
-            <label htmlFor="hot">Hot</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="weatherType"
-              id="cold"
-              value="cold"
-              checked={weather === "cold"}
-              onChange={handleWeatherTypeChange}
-            />
-            <label htmlFor="cold">Cold</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="weatherType"
-              id="warm"
-              value="warm"
-              checked={weather === "warm"}
-              onChange={handleWeatherTypeChange}
-            />
-            <label htmlFor="warm">Warm</label>
-          </div>
-          </div>
-            <button type="button" className="modal__submit-button" onClick={handleSubmit}>
-              Add garment
-            </button> 
+        <div>
+          <input
+            type="radio"
+            name="weatherType"
+            id="hot"
+            value="hot"
+            checked={weather === "hot"}
+            onChange={handleWeatherTypeChange}
+          />
+          <label htmlFor="hot">Hot</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="weatherType"
+            id="cold"
+            value="cold"
+            checked={weather === "cold"}
+            onChange={handleWeatherTypeChange}
+          />
+          <label htmlFor="cold">Cold</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="weatherType"
+            id="warm"
+            value="warm"
+            checked={weather === "warm"}
+            onChange={handleWeatherTypeChange}
+          />
+          <label htmlFor="warm">Warm</label>
+        </div>
+      </div>
+      <button
+        type="button"
+        className="modal__submit-button_profile"
+        onClick={handleSubmit}
+      >
+        Add garment
+      </button>
     </ModalWithForm>
   );
 };

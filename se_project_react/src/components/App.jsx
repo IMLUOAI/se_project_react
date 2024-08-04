@@ -17,6 +17,7 @@ import LoginModal from "./LoginModal";
 import ProtectedRoute from "./ProtectedRoute";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+import EditProfileModal from "./EditProfileModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -74,6 +75,7 @@ function App() {
   };
 
   const handleEditProfile = () => {
+    setActiveModal("edit");
     navigate("/profile");
   };
 
@@ -245,6 +247,13 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "create"}
               onAddItem={handleAddItemSubmit}
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfileModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "edit"}
+              handleEditProfile={handleEditProfile}
             />
           )}
           {activeModal === "register" && (

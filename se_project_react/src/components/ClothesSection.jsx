@@ -13,7 +13,7 @@ const ClothesSection = ({ clothingItems, onCreateModal, onSelectCard }) => {
         <h3 className="clothesSection__name">Your items</h3>
         <button
           className="clothesSection__add-button"
-          type="text"
+          type="button"
           onClick={onCreateModal}
         >
           + Add new
