@@ -1,6 +1,7 @@
 .page__section {
     max-width: 1440px;
     background-color: #f3f3f3;
+    margin: 0;
 }
 
 @media screen and (max-width: 780px) {

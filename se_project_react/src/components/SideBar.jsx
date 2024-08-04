@@ -6,12 +6,12 @@ const SideBar = ({ userName, userAvatar, onEditProfile, onLogout }) => {
     <div className="sideBar__section">
       <div>
         <img
-          src={userAvatar?.avatar}
+          src={userAvatar}
           className="sideBar__avatar"
           alt="avatar"
         />
       </div>
-      <h3 className="sideBar__user-name">{userName?.name}</h3>
+      <h3 className="sideBar__user-name">{userName}</h3>
       <button
         type="button"
         className="sideBar__profile-button"

@@ -5,7 +5,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 
 const ClothesSection = ({ clothingItems, onCreateModal, onSelectCard, onCardLike }) => {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="clothesSection">
       <div className="clothesSection__header">

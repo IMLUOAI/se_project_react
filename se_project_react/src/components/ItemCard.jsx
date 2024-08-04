@@ -5,7 +5,7 @@ import heartHollow from "../images/heartHollow.png";
 import heartSolid from "../images/heartSolid.png";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   if (!item) {
     return null;

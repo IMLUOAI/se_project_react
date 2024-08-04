@@ -198,9 +198,9 @@ function App() {
     }
     api
       .getUserInfo()
-      .then(({ email, password, name, avatar }) => {
+      .then((data) => {
         setIsLoggedIn(true);
-        setCurrentUser({ email, password, name, avatar });
+        setCurrentUser(data.data);
       })
       .catch(console.error);
   }, [isLoggedIn]);

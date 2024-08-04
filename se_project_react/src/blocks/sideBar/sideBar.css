@@ -1,7 +1,4 @@
 .sideBar__section {
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; */
   display: grid;
   grid-template-columns: 56px 1fr;
   grid-template-rows: auto auto auto;
@@ -37,6 +34,7 @@
   line-height: 24.8px;
   text-align: left;
   color: #000;
+  margin: 16px auto 15px 16px;
 }
 
 .sideBar__profile-button {
