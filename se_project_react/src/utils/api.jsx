@@ -1,4 +1,5 @@
 import { checkResponse } from "./utils";
+import { getToken } from "../utils/token";
 
 const baseUrl = "http://localhost:3001";
 
@@ -12,7 +13,7 @@ const getItems = () => {
 };
 
 const addItem = ({ name, weather, imageUrl }) => {
-  const token = localStorage.getItem("jwt");
+  const token = getToken();
 
   return fetch(`${baseUrl}/items/`, {
     method: "POST",
@@ -28,7 +29,9 @@ const addItem = ({ name, weather, imageUrl }) => {
   }).then((res) => checkResponse(res));
 };
 
-const addCardLike = (id, token) => {
+const addCardLike = (id) => {
+  const token = getToken();
+
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
@@ -38,7 +41,9 @@ const addCardLike = (id, token) => {
   }).then((res) => checkResponse(res));
 };
 
-const removeCardLike = (id, token) => {
+const removeCardLike = (id) => {
+  const token = getToken();
+
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
@@ -48,7 +53,9 @@ const removeCardLike = (id, token) => {
   }).then((res) => checkResponse(res));
 };
 
-const deleteItem = (id, token) => {
+const deleteItem = (id) => {
+  const token = getToken();
+
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -58,7 +65,9 @@ const deleteItem = (id, token) => {
   }).then((res) => checkResponse(res));
 };
 
-const getUserInfo = (token) => {
+const getUserInfo = () => {
+  const token = getToken();
+
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {

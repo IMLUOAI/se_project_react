@@ -27,7 +27,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [cardToDelete, setCardToDelete] = useState(null);
-  const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
@@ -56,12 +56,14 @@ function App() {
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          setCurrentUser(data.user);
-          localStorage.setItem("jwt", data.token);
-          setIsLoggedIn(true);
-          setActiveModal("");
-          navigate("/profile");
+          return api.getUserInfo();
         }
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        setActiveModal("");
+        navigate("/profile");
       })
       .catch(console.error);
   };
@@ -122,19 +124,23 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
   const handleCardLike = (item) => {
-    const token = localStorage.getItem("jwt");
+    const token = getToken();
     const { _id, isLiked } = item;
+
+    console.log("Item ID", _id);
+    console.log("Token", token);
+
     !isLiked
       ? api
           .addCardLike(_id, token)
           .then((updatedCard) => {
-            // I bet the issue is here. Check what updatedCard is, it may not be the card. I bet it is an object like this
-            // { data: { .. }}
-            // and the card inside the data property
-
-            setClothingItems((cards) =>
+       
+        console.log("Updated card response from addCardLike:", updatedCard);
+        const updatedCardData = updatedCard.data;
+            
+        setClothingItems((cards) =>
               cards.map((card) =>
-                card._id === item._id ? updatedCard.data : card
+                card._id === item._id ? updatedCardData : card
               )
             );
           })
@@ -142,9 +148,14 @@ function App() {
       : api
           .removeCardLike(_id, token)
           .then((updatedCard) => {
+            
+            console.log("Updated card response from addCardLike:", updatedCard);
+            const updatedCardData = updatedCard.data;
+    
+            
             setClothingItems((cards) =>
               cards.map((card) =>
-                card._id === item._id ? updatedCard.data : card
+                card._id === item._id ? updatedCardData : card
               )
             );
           })
@@ -186,7 +197,7 @@ function App() {
       return;
     }
     api
-      .getUserInfo(jwt)
+      .getUserInfo()
       .then(({ email, password, name, avatar }) => {
         setIsLoggedIn(true);
         setCurrentUser({ email, password, name, avatar });
@@ -233,6 +244,7 @@ function App() {
                     clothingItems={clothingItems}
                     onCreateModal={handleCreateModal}
                     onSelectCard={handleSelectedCard}
+                    onCardLike={handleCardLike}
                     handleEditProfile={handleEditProfile}
                     onLogout={handleLogout}
                   />

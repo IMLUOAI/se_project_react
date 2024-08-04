@@ -10,6 +10,7 @@ const Profile = ({
   onCreateModal,
   clothingItems,
   onSelectCard,
+  onCardLike,
   handleEditProfile,
   onLogout,
 }) => {
@@ -35,6 +36,7 @@ const Profile = ({
         onCreateModal={onCreateModal}
         clothingItems={clothingItems}
         onSelectCard={onSelectCard}
+        onCardLike={onCardLike}
       />
       <EditProfileModal
         isOpen={isEditProfileModalOpen}
