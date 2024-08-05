@@ -52,6 +52,7 @@
   border: none;
   white-space: nowrap;
   margin: 24px auto 0 0;
+  padding: 0;
 }
 
 .sideBar__logout-button {
@@ -69,4 +70,5 @@
   border: none;
   white-space: nowrap;
   margin-top: 8px;
+  padding: 0;
 }

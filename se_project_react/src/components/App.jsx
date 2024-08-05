@@ -76,10 +76,16 @@ function App() {
     setActiveModal("login");
   };
 
-  const handleEditProfile = () => {
-    setActiveModal("edit");
-    navigate("/profile");
-  };
+
+  const handleEditProfileSubmit = (data) => {
+    api
+    .editProfile(data)
+    .then((updatedUser) => {
+      setCurrentUser(updatedUser);
+      navigate('/profile');
+    })
+    .catch((err) => console.log(err));
+  }
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -125,7 +131,8 @@ function App() {
   };
   const handleCardLike = (item) => {
     const token = getToken();
-    const { _id, isLiked } = item;
+    const { _id } = item;
+    const isLiked = item.likes.some((id) => id === currentUser._id);
 
     console.log("Item ID", _id);
     console.log("Token", token);
@@ -148,14 +155,10 @@ function App() {
       : api
           .removeCardLike(_id, token)
           .then((updatedCard) => {
-            
-            console.log("Updated card response from addCardLike:", updatedCard);
-            const updatedCardData = updatedCard.data;
-    
-            
+              
             setClothingItems((cards) =>
               cards.map((card) =>
-                card._id === item._id ? updatedCardData : card
+                card._id === item._id ? updatedCard : card
               )
             );
           })
@@ -245,7 +248,7 @@ function App() {
                     onCreateModal={handleCreateModal}
                     onSelectCard={handleSelectedCard}
                     onCardLike={handleCardLike}
-                    handleEditProfile={handleEditProfile}
+                    handleEditProfile={handleEditProfileSubmit}
                     onLogout={handleLogout}
                   />
                 </ProtectedRoute>
@@ -265,7 +268,7 @@ function App() {
             <EditProfileModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "edit"}
-              handleEditProfile={handleEditProfile}
+              handleEditProfile={handleEditProfileSubmit}
             />
           )}
           {activeModal === "register" && (

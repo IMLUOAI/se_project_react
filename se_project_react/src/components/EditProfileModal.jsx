@@ -4,7 +4,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 import { useContext, useEffect, useState } from "react";
 
 const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const [data, setData] = useState({
     name: currentUser.name || "",
@@ -12,7 +12,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
   });
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && currentUser) {
       setData({
         name: currentUser.name || "",
         avatar: currentUser.avatar || "",
@@ -73,7 +73,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
         <span className="modal__error"></span>
       </label>
       <button
-        type="button"
+        type="submit"
         className="modal__submit-button_profile"
         onClick={handleSubmit}
       >
