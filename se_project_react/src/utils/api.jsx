@@ -77,25 +77,18 @@ const getUserInfo = () => {
   }).then((res) => checkResponse(res));
 };
 
-
-const editProfile = ({ name, avatar }) => {
+const editProfile = (data) => {
   const token = getToken();
-  const payload = {
-    name,
-    avatar
-  }
- 
-   console.log("Payload for editProfile:", payload);
 
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    body:JSON.stringify(payload)
+    body: JSON.stringify(data),
   }).then((res) => checkResponse(res));
-}
+};
 
 const api = {
   getItems,
@@ -104,7 +97,7 @@ const api = {
   addCardLike,
   removeCardLike,
   getUserInfo,
-  editProfile
+  editProfile,
 };
 
 export default api;

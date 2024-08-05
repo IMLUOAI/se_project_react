@@ -76,16 +76,20 @@ function App() {
     setActiveModal("login");
   };
 
-
   const handleEditProfileSubmit = (data) => {
-    api
-    .editProfile(data)
-    .then((updatedUser) => {
-      setCurrentUser(updatedUser);
-      navigate('/profile');
-    })
-    .catch((err) => console.log(err));
-  }
+    if (!data) {
+      setActiveModal("edit");
+    } else {
+      api
+        .editProfile(data)
+        .then((updatedUser) => {
+          setCurrentUser(updatedUser);
+          // navigate("/profile");
+          setActiveModal("");
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -134,18 +138,13 @@ function App() {
     const { _id } = item;
     const isLiked = item.likes.some((id) => id === currentUser._id);
 
-    console.log("Item ID", _id);
-    console.log("Token", token);
-
     !isLiked
       ? api
           .addCardLike(_id, token)
           .then((updatedCard) => {
-       
-        console.log("Updated card response from addCardLike:", updatedCard);
-        const updatedCardData = updatedCard.data;
-            
-        setClothingItems((cards) =>
+            const updatedCardData = updatedCard.data;
+
+            setClothingItems((cards) =>
               cards.map((card) =>
                 card._id === item._id ? updatedCardData : card
               )
@@ -155,11 +154,8 @@ function App() {
       : api
           .removeCardLike(_id, token)
           .then((updatedCard) => {
-              
             setClothingItems((cards) =>
-              cards.map((card) =>
-                card._id === item._id ? updatedCard : card
-              )
+              cards.map((card) => (card._id === item._id ? updatedCard : card))
             );
           })
           .catch((err) => console.log(err));
@@ -268,7 +264,7 @@ function App() {
             <EditProfileModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "edit"}
-              handleEditProfile={handleEditProfileSubmit}
+              onSubmit={handleEditProfileSubmit}
             />
           )}
           {activeModal === "register" && (

@@ -31,7 +31,6 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleEditProfile(data);
-    handleCloseModal();
   };
 
   return (
@@ -75,7 +74,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
       <button
         type="submit"
         className="modal__submit-button_profile"
-        onClick={handleSubmit}
+        onClick={handleCloseModal}
       >
         Save changes
       </button>

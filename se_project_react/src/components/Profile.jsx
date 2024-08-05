@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import SideBar from "./SideBar";
 import "../blocks/profile/profile.css";
 import ClothesSection from "./ClothesSection";
 import EditProfileModal from "./EditProfileModal";
-import userAvatar from "../images/MyAvatar.jpg";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+// import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const Profile = ({
   userName,
+  userAvatar,
   onCreateModal,
   clothingItems,
   onSelectCard,
@@ -15,8 +15,7 @@ const Profile = ({
   handleEditProfile,
   onLogout,
 }) => {
-
-  const { currentUser } = useContext(CurrentUserContext);
+  // const { currentUser } = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setEditProfileModalOpen] = useState(false);
 
   const handleOpenEditProfileModal = () => {
@@ -45,7 +44,6 @@ const Profile = ({
         isOpen={isEditProfileModalOpen}
         handleCloseModal={handleCloseEditProfileModal}
         handleEditProfile={handleEditProfile}
-        currentUser={currentUser}
       />
     </div>
   );

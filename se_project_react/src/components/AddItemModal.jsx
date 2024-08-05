@@ -99,11 +99,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal }) => {
           <label htmlFor="warm">Warm</label>
         </div>
       </div>
-      <button
-        type="button"
-        className="modal__submit-button_profile"
-        onClick={handleSubmit}
-      >
+      <button type="submit" className="modal__submit-button_profile">
         Add garment
       </button>
     </ModalWithForm>
