@@ -252,7 +252,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="*" element={<Navigate to="./" />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
           {activeModal === "create" && (
