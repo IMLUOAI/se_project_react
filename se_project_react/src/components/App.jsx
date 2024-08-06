@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { setToken, getToken, removeToken } from "../utils/token";
 import { getForcastWeather, parseWeatherData } from "../utils/weatherApi";
 import Header from "./Header";
@@ -56,7 +56,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          return api.getUserInfo();
+          return api.getUserInfo(data.token);
         }
       })
       .then((user) => {
@@ -85,6 +85,7 @@ function App() {
         .then((updatedUser) => {
           setCurrentUser(updatedUser.data);
           setActiveModal("");
+          navigate("profile");
         })
         .catch((err) => console.log(err));
     }
@@ -114,7 +115,7 @@ function App() {
         setClothingItems(newClothingItem);
         setShowConfirmationModal(false);
         setCardToDelete(null);
-        handleCloseModal();
+        setActiveModal("");
       })
       .catch((err) => console.log("Failed to delete:", err));
   };
@@ -122,9 +123,9 @@ function App() {
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
     api
       .addItem({ name, weather, imageUrl })
-      .then((data) => {
-        setClothingItems([data, ...clothingItems]);
-        handleCloseModal();
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        setActiveModal("");
       })
       .catch((err) => console.log(err));
   };
@@ -181,10 +182,11 @@ function App() {
       .then((items) => {
         setClothingItems(items);
       })
-      .catch((err) => {
-        console.log(`${err}`);
+      .catch((error) => {
+        console.error("Failed to fetch items:", error);
+        setClothingItems([]);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   // useEffect to check the token and get user info
 
@@ -195,10 +197,10 @@ function App() {
       return;
     }
     api
-      .getUserInfo()
-      .then((data) => {
+      .getUserInfo(jwt)
+      .then((user) => {
         setIsLoggedIn(true);
-        setCurrentUser(data.data);
+        setCurrentUser(user.data);
       })
       .catch(console.error);
   }, [isLoggedIn]);
@@ -211,6 +213,7 @@ function App() {
         <div className="page__section">
           <Header
             userName={currentUser?.name}
+            userAvatar={currentUser?.avatar}
             isAuthorized={isLoggedIn}
             onCreateModal={handleCreateModal}
             handleProfileClick={() => navigate("/profile")}
@@ -249,7 +252,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/" element={<Main />}></Route>
+            <Route path="*" element={<Navigate to="./" />} />
           </Routes>
           <Footer />
           {activeModal === "create" && (

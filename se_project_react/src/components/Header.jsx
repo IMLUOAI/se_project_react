@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({
   userName = "GUEST",
-  userAvatar = "",
+  userAvatar = " ",
   onCreateModal,
   handleProfileClick,
   isAuthorized,
@@ -41,7 +41,11 @@ const Header = ({
             >
               +Add clothes
             </button>
-            <Link to="/profile" className="header__link-bar">
+            <Link
+              to="/profile"
+              className="header__link-bar"
+              onClick={handleProfileClick}
+            >
               <h3 className="header__user-name">{userName}</h3>
               {userAvatar ? (
                 <img className="header__avatar" src={userAvatar} alt="Avatar" />
@@ -52,10 +56,18 @@ const Header = ({
           </>
         ) : (
           <nav className="header__nav-bar">
-            <button className="header__register-link" onClick={onRegisterModal}>
+            <button
+              type="button"
+              className="header__register-link"
+              onClick={onRegisterModal}
+            >
               Sign Up
             </button>
-            <button className="header__login-link" onClick={onLoginModal}>
+            <button
+              type="button"
+              className="header__login-link"
+              onClick={onLoginModal}
+            >
               Log In
             </button>
           </nav>
