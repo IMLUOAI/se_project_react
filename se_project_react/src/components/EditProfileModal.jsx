@@ -31,6 +31,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleEditProfile(data);
+    handleCloseModal();
   };
 
   return (
@@ -71,11 +72,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
         />
         <span className="modal__error"></span>
       </label>
-      <button
-        type="submit"
-        className="modal__submit-button_profile"
-        onClick={handleCloseModal}
-      >
+      <button type="submit" className="modal__submit-button_profile">
         Save changes
       </button>
     </ModalWithForm>

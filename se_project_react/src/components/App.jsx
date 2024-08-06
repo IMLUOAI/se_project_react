@@ -83,8 +83,7 @@ function App() {
       api
         .editProfile(data)
         .then((updatedUser) => {
-          setCurrentUser(updatedUser);
-          // navigate("/profile");
+          setCurrentUser(updatedUser.data);
           setActiveModal("");
         })
         .catch((err) => console.log(err));
