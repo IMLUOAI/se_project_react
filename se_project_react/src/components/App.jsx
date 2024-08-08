@@ -136,6 +136,12 @@ function App() {
   const handleCardLike = (item) => {
     const token = getToken();
     const { _id } = item;
+
+    if (!currentUser) {
+      console.log("CurrentUser is not available");
+      return;
+    }
+
     const isLiked = item.likes.some((id) => id === currentUser._id);
 
     !isLiked
