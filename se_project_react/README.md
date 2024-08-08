@@ -1,12 +1,20 @@
-## Sprint 14 (frontend & backend)
+## Sprint 14
 
-**Introduction of the WTWR APP**
+**Introduction of the WTWR APP** fullstack
 
-_WTWR(What Is The Weather) is a self-study app-like project which was associated with the React study of chapter 11 from @Tripleten.tech. In this app, we designed the api live weather, clothing gallery, and +add clothing items functions, which could help you to choose your daily dress according to the live weather at that day. For exploring more details, you can download our app later from github later on._
+\*In this Sprint, the whole app almost reaches its tail. Since we have well done with the se_project_express in Sprint 13, and se_project_react in Sprint 11, which are the backend and frontend accordingly. Currently, I need to set up the sign up modal and log in modal for the app to make it work on internet safely for massive users. In this case, the konwledge of the identification, authentication, and authorization will be use throughout the signup and login modal. Based on the code of the Sprint 11, I will need to add in more handle functions for the two modals, and set up the navigation for the two buttons right the header part. In particularly, the previous two buttons: "+Add Items & userName" buttons will be replaced by the two new buttons:" Sign up & Log in" respectively. Other than this, I will add another two new features in the Sidebar part, which will be the:"Change profile data, and Logout button" respectively.
 
-_In this project, we have to hands on a few main parts of React. For intance, the useContext hook, useState hook, Routes && Router, and passing down Props from the parence to the children componenets logically. Finally, we still need to master how to correctly install the json-server to perform the project's api locally. On this point, it's totally differ the project's api from its previous status, which was rely on the internet's api data. Because of this, it's will be unable to deploy on Github to public later on._
+\*Since the backend api and frontend api were connected through the MongoDB in this project, the previous local data.json will be deleted from the work, and new data will be fetch from the new users who sign up in the app later on. The new datas will be store in the MongoDB of each developer's. Additionaly, the clothing card now will be able to let the signed up user put "Like & dislike", and delete those dislike cards for each of them. Indeed, these features are corresponding to the identification, authentication and authorization processes in reality.
 
-_This project was start from the chapter 10 along with a basic react structure to a current well-organized and well-implemented app, whcih could user-friendly interact with any users on any devices,like our pc, laptop, and any type of smart phones, because it UI was designed in a responsive way_
+\*The entire work had added many new handler functions and currentUserContext.provider, userNavigate, etc to improve the security and Logic, in which will deeply effect the user experience later on.
+
+## Link for WTWR_FB(frontend & backend):
+
+[github](https://github.com/IMLUOAI/WTWR_FB.git)
+
+## Link for the WTWR_FB backend:
+
+[github](https://github.com/IMLUOAI/se_project_express.git)
 
 ## Link for se_project_react:
 
