@@ -3,7 +3,6 @@ import SideBar from "./SideBar";
 import "../blocks/profile/profile.css";
 import ClothesSection from "./ClothesSection";
 import EditProfileModal from "./EditProfileModal";
-// import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const Profile = ({
   userName,
@@ -15,7 +14,6 @@ const Profile = ({
   handleEditProfile,
   onLogout,
 }) => {
-  // const { currentUser } = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setEditProfileModalOpen] = useState(false);
 
   const handleOpenEditProfileModal = () => {
