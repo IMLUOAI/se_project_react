@@ -48,10 +48,10 @@ function App() {
   };
 
   const handleRegistration = ({ email, password, name, avatar }) => {
-    if (password) return;
+    if (!password || !email) return;
 
     const makeRequest = () => {
-      auth.register(email, password, name, avatar).then(() => {
+      return auth.register(email, password, name, avatar).then(() => {
         setActiveModal("login");
       });
     };
@@ -62,20 +62,22 @@ function App() {
     if (!email || !password) {
       return;
     }
-    auth
-      .authorize(email, password)
-      .then((data) => {
-        if (data.token) {
-          setToken(data.token);
-          return api.getUserInfo(data.token);
-        }
-      })
-      .then((user) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-        navigate("/profile");
-      })
-      .catch(console.error);
+    const makeRequest = () => {
+      return auth
+        .authorize(email, password)
+        .then((data) => {
+          if (data.token) {
+            setToken(data.token);
+            return api.getUserInfo(data.token);
+          }
+        })
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+          navigate("/profile");
+        });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleLogout = () => {
@@ -89,9 +91,11 @@ function App() {
   const handleEditProfileSubmit = (inputValues) => {
     const makeRequest = () => {
       if (!inputValues.name || !inputValues.avatar) {
-        return Promise.reject("Invalid input values");
+        return Promise.reject("Input value invalid");
       }
-      api.editProfile(inputValues).then(setCurrentUser);
+      return api.editProfile(inputValues).then(() => {
+        setCurrentUser(inputValues);
+      });
     };
     handleSubmit(makeRequest);
   };
@@ -112,7 +116,7 @@ function App() {
 
   const handleDeleteItem = () => {
     const makeRequest = () => {
-      api.deleteItem(selectedCard._id).then(() => {
+      return api.deleteItem(selectedCard._id).then(() => {
         const newClothingItem = clothingItems.filter((card) => {
           return card._id !== selectedCard._id;
         });
@@ -304,6 +308,7 @@ function App() {
               isOpen={activeModal === "register"}
               handleRegistration={handleRegistration}
               handleOpenLoginModal={handleOpenLoginModal}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "login" && (
@@ -312,6 +317,7 @@ function App() {
               isOpen={activeModal === "login"}
               handleLogin={handleLogin}
               handleOpenRegisterModal={handleOpenRegisterModal}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "preview" && (

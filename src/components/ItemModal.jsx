@@ -35,7 +35,9 @@ const ItemModal = ({ selectedCard, onClose, preview, onDelete, isLoading }) => {
             {isLoading ? "Deleting..." : "Delete item"}
           </button>
         )}
-        <p className="modal__preview-weather">Weather:{selectedCard.weather}</p>
+        <p className="modal__preview-weather">
+          Weather: {selectedCard.weather}
+        </p>
       </div>
     </div>
   );

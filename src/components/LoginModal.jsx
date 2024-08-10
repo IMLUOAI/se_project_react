@@ -4,6 +4,7 @@ import useForm from "../hooks/useForm";
 
 const LoginModal = ({
   isOpen,
+  isLoading,
   handleCloseModal,
   handleLogin,
   handleOpenRegisterModal,
@@ -62,7 +63,7 @@ const LoginModal = ({
       </label>
       <div className="modal__submit-container">
         <button type="submit" className="modal__submit-button">
-          Log in
+          {isLoading ? "Logging..." : "Log in"}
         </button>
         <button
           type="button"

@@ -4,6 +4,7 @@ import useForm from "../hooks/useForm";
 
 const RegisterModal = ({
   isOpen,
+  isLoading,
   handleCloseModal,
   handleRegistration,
   handleOpenLoginModal,
@@ -98,7 +99,7 @@ const RegisterModal = ({
       </label>
       <div className="modal__submit-container">
         <button type="submit" className="modal__submit-button">
-          Next
+          {isLoading ? "Next..." : "Next"}
         </button>
         <button
           type="button"
