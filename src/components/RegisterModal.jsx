@@ -1,6 +1,6 @@
-import { useState } from "react";
 import "../blocks/modalWithForm/modalWithForm.css";
 import ModalWithForm from "./ModalWithForm";
+import useForm from "../hooks/useForm";
 
 const RegisterModal = ({
   isOpen,
@@ -8,25 +8,21 @@ const RegisterModal = ({
   handleRegistration,
   handleOpenLoginModal,
 }) => {
-  const [data, setData] = useState({
+  const { values, handleChange } = useForm({
     email: "",
     password: "",
     name: "",
     avatar: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(data);
-    console.log("click me ");
+    handleRegistration({
+      email: values.email,
+      password: values.password,
+      name: values.name,
+      avatar: values.avatar,
+    });
   };
 
   return (
@@ -42,7 +38,7 @@ const RegisterModal = ({
           id="email"
           name="email"
           type="email"
-          value={data.email}
+          value={values.email}
           onChange={handleChange}
           className="modal__input"
           placeholder="Email"
@@ -58,7 +54,7 @@ const RegisterModal = ({
           id="password"
           name="password"
           type="password"
-          value={data.password}
+          value={values.password}
           onChange={handleChange}
           className="modal__input"
           placeholder="Password"
@@ -74,7 +70,7 @@ const RegisterModal = ({
           id="name"
           name="name"
           type="text"
-          value={data.name}
+          value={values.name}
           onChange={handleChange}
           className="modal__input"
           placeholder="Name"
@@ -90,7 +86,7 @@ const RegisterModal = ({
           id="avatar"
           name="avatar"
           type="text"
-          value={data.avatar}
+          value={values.avatar}
           onChange={handleChange}
           className="modal__input"
           placeholder="Avatar URL"
@@ -101,9 +97,9 @@ const RegisterModal = ({
         <span className="modal__error"></span>
       </label>
       <div className="modal__submit-container">
-      <button type="submit" className="modal__submit-button">
-              Next
-            </button>
+        <button type="submit" className="modal__submit-button">
+          Next
+        </button>
         <button
           type="button"
           className="modal__option-button"

@@ -14,7 +14,7 @@ import AddItemModal from "./AddItemModal";
 import ConfirmationModal from "./ConfirmationModal";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
-import ProtectedRoute from "../utils/ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import EditProfileModal from "./EditProfileModal";
@@ -29,24 +29,35 @@ function App() {
   const [cardToDelete, setCardToDelete] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
-  // const location = useLocation();
 
   const handleOpenRegisterModal = () => setActiveModal("register");
   const handleOpenLoginModal = () => setActiveModal("login");
   const handleCloseModal = () => setActiveModal("");
 
-  const handleRegistration = ({ email, password, name, avatar }) => {
-    if (password) {
-      auth
-        .register(email, password, name, avatar)
-        .then(() => {
-          setActiveModal("login");
-        })
-        .catch(console.error);
-    }
+  const handleSubmit = (request) => {
+    setIsLoading(true);
+    request()
+      .then(() => {
+        handleCloseModal();
+      })
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
+
+  const handleRegistration = ({ email, password, name, avatar }) => {
+    if (password) return;
+
+    const makeRequest = () => {
+      auth.register(email, password, name, avatar).then(() => {
+        setActiveModal("login");
+      });
+    };
+    handleSubmit(makeRequest);
+  };
+
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
       return;
@@ -62,7 +73,6 @@ function App() {
       .then((user) => {
         setCurrentUser(user);
         setIsLoggedIn(true);
-        setActiveModal("");
         navigate("/profile");
       })
       .catch(console.error);
@@ -76,19 +86,14 @@ function App() {
     setActiveModal("login");
   };
 
-  const handleEditProfileSubmit = (data) => {
-    if (!data) {
-      setActiveModal("edit");
-    } else {
-      api
-        .editProfile(data)
-        .then((updatedUser) => {
-          setCurrentUser(updatedUser.data);
-          setActiveModal("");
-          navigate("profile");
-        })
-        .catch((err) => console.log(err));
-    }
+  const handleEditProfileSubmit = (inputValues) => {
+    const makeRequest = () => {
+      if (!inputValues.name || !inputValues.avatar) {
+        return Promise.reject("Invalid input values");
+      }
+      api.editProfile(inputValues).then(setCurrentUser);
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleCreateModal = () => {
@@ -106,28 +111,26 @@ function App() {
   };
 
   const handleDeleteItem = () => {
-    api
-      .deleteItem(selectedCard._id)
-      .then(() => {
+    const makeRequest = () => {
+      api.deleteItem(selectedCard._id).then(() => {
         const newClothingItem = clothingItems.filter((card) => {
           return card._id !== selectedCard._id;
         });
         setClothingItems(newClothingItem);
         setShowConfirmationModal(false);
         setCardToDelete(null);
-        setActiveModal("");
-      })
-      .catch((err) => console.log("Failed to delete:", err));
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
-    api
-      .addItem({ name, weather, imageUrl })
-      .then((newItem) => {
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
-        setActiveModal("");
-      })
-      .catch((err) => console.log(err));
+    const makeRequest = () => {
+      return api.addItem({ name, weather, imageUrl }).then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleToggleSwitchChange = () => {
@@ -164,8 +167,26 @@ function App() {
               cards.map((card) => (card._id === item._id ? updatedCard : card))
             );
           })
-          .catch((err) => console.log(err));
+          .catch(console.error);
   };
+
+  // useEffect to handleCloseModal;
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   // useEffect to fetch weather data
 
@@ -266,6 +287,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "create"}
               onAddItem={handleAddItemSubmit}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "edit" && (
@@ -273,6 +295,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "edit"}
               onSubmit={handleEditProfileSubmit}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "register" && (
@@ -297,6 +320,7 @@ function App() {
               onClose={handleCloseModal}
               onDelete={openConfirmationModal}
               openConfirmationModal={openConfirmationModal}
+              isLoading={isLoading}
             />
           )}
           {showConfirmationModal && (

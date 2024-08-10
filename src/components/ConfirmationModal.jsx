@@ -23,7 +23,7 @@ const ConfirmationModal = ({
           type="button"
           onClick={onConfirmDelete}
         >
-          Yes, delete item
+          'Yes, delete item
         </button>
         <button
           className="modal__cancel-button"

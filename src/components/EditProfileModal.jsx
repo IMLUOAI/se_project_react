@@ -1,42 +1,42 @@
 import "../blocks/modalWithForm/modalWithForm.css";
 import ModalWithForm from "./ModalWithForm";
 import CurrentUserContext from "../contexts/CurrentUserContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import useForm from "../hooks/useForm";
 
-const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
+const EditProfileModal = ({
+  isOpen,
+  handleCloseModal,
+  handleEditProfile,
+  isLoading,
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
 
-  const [data, setData] = useState({
+  const { values, handleChange, setValues } = useForm({
     name: currentUser.name || "",
     avatar: currentUser.avatar || "",
   });
 
   useEffect(() => {
     if (isOpen && currentUser) {
-      setData({
+      setValues({
         name: currentUser.name || "",
         avatar: currentUser.avatar || "",
       });
     }
-  }, [isOpen, currentUser]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  }, [isOpen, currentUser, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleEditProfile(data);
-    handleCloseModal();
+    handleEditProfile({
+      name: values.name,
+      avatar: values.avatar,
+    });
   };
 
   return (
     <ModalWithForm
-      buttonText="Save changes"
+      buttonText={"Save changes"}
       title="Change profile data"
       onClose={handleCloseModal}
       isOpen={isOpen}
@@ -49,7 +49,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
           required
           name="name"
           type="text"
-          value={data.name}
+          value={values.name}
           onChange={handleChange}
           className="modal__input"
           minLength="2"
@@ -64,7 +64,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
           required
           name="avatar"
           type="text"
-          value={data.avatar}
+          value={values.avatar}
           onChange={handleChange}
           className="modal__input"
           minLength="2"
@@ -73,7 +73,7 @@ const EditProfileModal = ({ isOpen, handleCloseModal, handleEditProfile }) => {
         <span className="modal__error"></span>
       </label>
       <button type="submit" className="modal__submit-button_profile">
-        Save changes
+        {isLoading ? "Adding..." : "Save Changes"}
       </button>
     </ModalWithForm>
   );
