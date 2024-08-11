@@ -14,7 +14,7 @@ import AddItemModal from "./AddItemModal";
 import ConfirmationModal from "./ConfirmationModal";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "../utils/ProtectedRoute";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import EditProfileModal from "./EditProfileModal";
