@@ -12,8 +12,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   }
   const isLiked =
     Array.isArray(item.likes) &&
-    currentUser?._id &&
-    item.likes.some((id) => id === currentUser._id);
+    item.likes.some((id) => id === currentUser?._id);
   const itemLikeButtonClassName = `card__like-button ${
     isLiked ? "card__like-button_liked" : "card__like-button"
   }`;

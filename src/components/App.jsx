@@ -40,16 +40,13 @@ function App() {
   const handleSubmit = (request) => {
     setIsLoading(true);
     request()
-      .then(() => {
-        handleCloseModal();
-      })
+      .then(handleCloseModal)
       .catch(console.error)
       .finally(() => setIsLoading(false));
   };
 
   const handleRegistration = ({ email, password, name, avatar }) => {
     if (!password || !email) return;
-
     const makeRequest = () => {
       return auth.register(email, password, name, avatar).then(() => {
         setActiveModal("login");
@@ -89,13 +86,11 @@ function App() {
   };
 
   const handleEditProfileSubmit = (inputValues) => {
+    if (!inputValues.name || !inputValues.avatar) {
+      return;
+    }
     const makeRequest = () => {
-      if (!inputValues.name || !inputValues.avatar) {
-        return Promise.reject("Input value invalid");
-      }
-      return api.editProfile(inputValues).then(() => {
-        setCurrentUser(inputValues);
-      });
+      return api.editProfile(inputValues).then(setCurrentUser(inputValues));
     };
     handleSubmit(makeRequest);
   };
@@ -131,7 +126,7 @@ function App() {
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
     const makeRequest = () => {
       return api.addItem({ name, weather, imageUrl }).then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
       });
     };
     handleSubmit(makeRequest);
@@ -278,6 +273,7 @@ function App() {
                     onSelectCard={handleSelectedCard}
                     onCardLike={handleCardLike}
                     handleEditProfile={handleEditProfileSubmit}
+                    handleCloseModal={handleCloseModal}
                     onLogout={handleLogout}
                   />
                 </ProtectedRoute>
