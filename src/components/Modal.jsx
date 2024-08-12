@@ -22,12 +22,12 @@ export const Modal = ({ name, onClose, children }) => {
   return (
     <div className={`modal modal_type_${name}`} onClick={handleOverlay}>
       <div className="modal__content">
-        {children}
         <button
           className="modal__close-button"
           type="button"
           onClick={onClose}
         />
+      {children}
       </div>
     </div>
   );

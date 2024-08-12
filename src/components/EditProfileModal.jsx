@@ -28,10 +28,7 @@ const EditProfileModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleEditProfile({
-      name: values.name,
-      avatar: values.avatar,
-    });
+    handleEditProfile(values);
   };
 
   return (

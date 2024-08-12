@@ -92,7 +92,7 @@ function App() {
     const makeRequest = () => {
       return api.editProfile(inputValues).then((res) => {
         setCurrentUser(res.data)
-        console.log("Profile updated successfully, clsoing modal...");
+        console.log("Profile updated successfully, closing modal...");
       });
     };
     handleSubmit(makeRequest);
