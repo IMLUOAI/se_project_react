@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import SideBar from "./SideBar";
 import "../blocks/profile/profile.css";
 import ClothesSection from "./ClothesSection";
-import EditProfileModal from "./EditProfileModal";
 
 const Profile = ({
   userName,
@@ -11,25 +10,16 @@ const Profile = ({
   clothingItems,
   onSelectCard,
   onCardLike,
-  handleEditProfile,
+  onEditProfile,
   onLogout,
 }) => {
-  const [isEditProfileModalOpen, setEditProfileModalOpen] = useState(false);
-
-  const handleOpenEditProfileModal = () => {
-    setEditProfileModalOpen(true);
-  };
-
-  const handleCloseEditProfileModal = () => {
-    setEditProfileModalOpen(false);
-  };
 
   return (
     <div className="profile__section">
       <SideBar
         userName={userName}
         userAvatar={userAvatar}
-        onEditProfile={handleOpenEditProfileModal}
+        onEditProfile={onEditProfile}
         onLogout={onLogout}
       />
       <ClothesSection
@@ -37,11 +27,6 @@ const Profile = ({
         clothingItems={clothingItems}
         onSelectCard={onSelectCard}
         onCardLike={onCardLike}
-      />
-      <EditProfileModal
-        isOpen={isEditProfileModalOpen}
-        handleCloseModal={handleCloseEditProfileModal}
-        handleEditProfile={handleEditProfile}
       />
     </div>
   );

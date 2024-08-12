@@ -35,15 +35,14 @@ function App() {
 
   const handleOpenRegisterModal = () => setActiveModal("register");
   const handleOpenLoginModal = () => setActiveModal("login");
+  const handleOpenEditProfileModal = () => setActiveModal("edit");
   const handleCloseModal = () => {
-    console.log("handleModal called");
     setActiveModal("");}
 
   const handleSubmit = (request) => {
     setIsLoading(true);
     request()
       .then(() => {
-        console.log("Request successful, closing modal...")
         handleCloseModal()})
       .catch(console.error)
       .finally(() => setIsLoading(false));
@@ -89,20 +88,16 @@ function App() {
     setActiveModal("login");
   };
 
-  const handleEditProfileSubmit = (inputValues, /*handleCloseModa*/) => {
+  const handleEditProfileSubmit = (inputValues) => {
     if (!inputValues.name || !inputValues.avatar) {
       return;
     }
     const makeRequest = () => {
       return api.editProfile(inputValues).then((res) => {
         setCurrentUser(res.data)
-        /*handleCloseModal()*/
-        console.log("Profile updated successfully, closing modal...");
       });
     };
-    handleSubmit(makeRequest);     // Hi, Reviewer! I tried many solution here, but still failed to let the modal close after promise resolved successfully. 
-    // I really can not make it here. the solution I tried is: "I set a handleCloseModal() inside the handleSubmit in EditProfileModal.jsx, and pass a handleCloseModal
-    // parameter after the inputValues, it works, but the logic is not correct. Since I have the makerequest set up upon this, it shouldn't to repeat another handleCloseModal here"
+    handleSubmit(makeRequest);    
   };
 
   const handleCreateModal = () => {
@@ -213,8 +208,6 @@ function App() {
   // useEffect to fetch clothing items
 
   useEffect(() => {
-    if (!isLoggedIn)
-    return;
     api
       .getItems()
       .then((items) => {
@@ -284,8 +277,7 @@ function App() {
                     onCreateModal={handleCreateModal}
                     onSelectCard={handleSelectedCard}
                     onCardLike={handleCardLike}
-                    handleEditProfile={handleEditProfileSubmit}
-                    handleCloseModal={handleCloseModal}
+                    onEditProfile={handleOpenEditProfileModal}
                     onLogout={handleLogout}
                   />
                 </ProtectedRoute>
@@ -306,8 +298,8 @@ function App() {
             <EditProfileModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "edit"}
-              onSubmit={handleEditProfileSubmit}
-              isLoading={isLoading}
+              handleEditProfile={handleEditProfileSubmit}
+              isLoanSubding={isLoading}
             />
           )}
           {activeModal === "register" && (
