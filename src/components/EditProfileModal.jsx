@@ -29,6 +29,7 @@ const EditProfileModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleEditProfile(values);
+    /*handleCloseModal()*/
   };
 
   return (
