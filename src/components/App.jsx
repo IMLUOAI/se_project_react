@@ -299,7 +299,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "edit"}
               handleEditProfile={handleEditProfileSubmit}
-              isLoanSubding={isLoading}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "register" && (
