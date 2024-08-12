@@ -40,7 +40,7 @@ function App() {
   const handleSubmit = (request) => {
     setIsLoading(true);
     request()
-      .then(handleCloseModal)
+      .then(() => {handleCloseModal()})
       .catch(console.error)
       .finally(() => setIsLoading(false));
   };
@@ -69,7 +69,7 @@ function App() {
           }
         })
         .then((user) => {
-          setCurrentUser(user);
+          setCurrentUser(user.data);
           setIsLoggedIn(true);
           navigate("/profile");
         });
@@ -90,7 +90,10 @@ function App() {
       return;
     }
     const makeRequest = () => {
-      return api.editProfile(inputValues).then(setCurrentUser(inputValues));
+      return api.editProfile(inputValues).then((res) => {
+        setCurrentUser(res.data)
+        console.log("Profile updated successfully, clsoing modal...");
+      });
     };
     handleSubmit(makeRequest);
   };
@@ -125,8 +128,8 @@ function App() {
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
     const makeRequest = () => {
-      return api.addItem({ name, weather, imageUrl }).then((newItem) => {
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
+      return api.addItem({ name, weather, imageUrl }).then((res) => {
+        setClothingItems((prevItems) => [res.data, ...prevItems]);
       });
     };
     handleSubmit(makeRequest);
@@ -203,6 +206,8 @@ function App() {
   // useEffect to fetch clothing items
 
   useEffect(() => {
+    if (!isLoggedIn)
+    return;
     api
       .getItems()
       .then((items) => {

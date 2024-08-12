@@ -13,15 +13,15 @@ const EditProfileModal = ({
   const { currentUser } = useContext(CurrentUserContext);
 
   const { values, handleChange, setValues } = useForm({
-    name: currentUser.name || "",
-    avatar: currentUser.avatar || "",
+    name: currentUser?.name || "",
+    avatar: currentUser?.avatar || "",
   });
 
   useEffect(() => {
     if (isOpen && currentUser) {
       setValues({
-        name: currentUser.name || "",
-        avatar: currentUser.avatar || "",
+        name: currentUser?.name || "",
+        avatar: currentUser?.avatar || "",
       });
     }
   }, [isOpen, currentUser, setValues]);
