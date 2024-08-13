@@ -1,13 +1,13 @@
 .page__section {
-    max-width: 1440px;
-    background-color: #f3f3f3;
-    margin: 0;
+  max-width: 1440px;
+  background-color: #f3f3f3;
+  margin: 0;
 }
 
-@media screen and (max-width: 780px) {
-   .page__section{
-    max-width: 780px;
+@media screen and (max-width: 430px) {
+  .page__section {
+    max-width: 430px;
     min-width: calc(100%-40px);
     overflow-x: hidden;
-   }
+  }
 }

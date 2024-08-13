@@ -183,6 +183,24 @@
   margin: 0 auto 36px 0;
 }
 
+.modal__submit-button_items {
+  color: #fff;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25px;
+  width: 124px;
+  height: 36px;
+  display: inline-block;
+  white-space: nowrap;
+  border: none;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 1);
+  padding: 8px, 16px, 8px, 16px;
+  margin: 32px auto 36px 0;
+}
+
 .modal__submit-button_profile {
   color: #fff;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -207,10 +225,9 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 430px) {
   .modal__content {
     max-width: 330px;
-    height: 330px;
     border-radius: 16px;
   }
 
@@ -259,7 +276,20 @@
     margin: 4px auto 0 0;
   }
 
+  .modal__option-button {
+    margin: 18px auto 10px 12px;
+  }
+
   .modal__submit-button {
     margin: 12px auto 36px 0;
+  }
+
+  .modal__submit-button_items {
+    margin: 8px auto 32px 0;
+    height: 32px;
+  }
+  .modal__submit-button_profile {
+    margin: 38px auto 30px 0;
+    height: 30px;
   }
 }

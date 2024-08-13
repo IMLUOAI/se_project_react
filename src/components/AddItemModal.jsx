@@ -94,7 +94,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
           <label htmlFor="warm">Warm</label>
         </div>
       </div>
-      <button type="submit" className="modal__submit-button_profile">
+      <button type="submit" className="modal__submit-button_items">
         {isLoading ? "Adding..." : "Add garment"}
       </button>
     </ModalWithForm>
