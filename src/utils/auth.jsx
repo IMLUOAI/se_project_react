@@ -1,7 +1,7 @@
 import { request } from "./api";
 
 const BASE_URL = process.env.NODE_ENV === "production"
-? "https://api.wtwr.us.to"
+? "https://api.wtwr.ugo.si"
 : "http://localhost:3001";
 
 
