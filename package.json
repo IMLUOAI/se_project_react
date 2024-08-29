@@ -28,6 +28,8 @@
       "react-app/jest"
     ]
   },
+  "homepage": "https://domain.example.com",
+  "deploy": "npm run build && scp -r ./build imluoai@wtwr.us.to:/home/imluoai/frontend",
   "browserslist": {
     "production": [
       ">0.2%",

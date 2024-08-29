@@ -1,6 +1,8 @@
 import { request } from "./api";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = process.env.NODE_ENV === "production"
+? "https://api.wtwr.us.to"
+: "http://localhost:3001";
 
 
 const register = (email, password, name, avatar) => {
