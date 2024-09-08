@@ -89,7 +89,6 @@ const getUserInfo = () => {
 
 const editProfile = (data) => {
   const token = getToken();
-
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {

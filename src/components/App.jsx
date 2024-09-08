@@ -72,7 +72,7 @@ function App() {
           }
         })
         .then((user) => {
-          setCurrentUser(user.data);
+          setCurrentUser(user);
           setIsLoggedIn(true);
           navigate("/profile");
         });
@@ -94,7 +94,7 @@ function App() {
     }
     const makeRequest = () => {
       return api.editProfile(inputValues).then((res) => {
-        setCurrentUser(res.data)
+        setCurrentUser(res)
       });
     };
     handleSubmit(makeRequest);    
@@ -231,7 +231,7 @@ function App() {
       .getUserInfo(jwt)
       .then((user) => {
         setIsLoggedIn(true);
-        setCurrentUser(user.data);
+        setCurrentUser(user);
       })
       .catch(console.error);
   }, [isLoggedIn]);

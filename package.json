@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && scp -r ./build imluoai@wtwr.ugo.si:/home/imluoai/frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -28,8 +29,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://domain.example.com",
-  "deploy": "npm run build && scp -r ./build imluoai@wtwr.us.to:/home/imluoai/frontend",
+  "homepage": "https://wtwr.ugo.si",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
