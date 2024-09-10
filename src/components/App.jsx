@@ -94,7 +94,7 @@ function App() {
     }
     const makeRequest = () => {
       return api.editProfile(inputValues).then((res) => {
-        setCurrentUser(res)
+        setCurrentUser(res.data)
       });
     };
     handleSubmit(makeRequest);    

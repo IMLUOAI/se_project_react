@@ -24,7 +24,6 @@ const getItems = () => {
 
 const addItem = ({ name, weather, imageUrl }) => {
   const token = getToken();
-
   return request(`${baseUrl}/items/`, {
     method: "POST",
     headers: {
