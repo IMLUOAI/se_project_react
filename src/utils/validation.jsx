@@ -9,7 +9,21 @@ const validatePassword = (password) => {
  return password.length >= 8;
 }
 
+
+const validateAvatarUrl = (avatar) => {
+    const urlPattern = /^(https?:\/\/)([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+    return urlPattern.test(avatar);
+}
+
+const validateUserName = (name) => {
+    const userNamePattern = /^[a-zA-Z0-9_]{3,16}$/;
+    return userNamePattern.test(name)
+}
+
+
 module.exports = {
     validateEmail,
-    validatePassword
+    validatePassword,
+    validateAvatarUrl,
+    validateUserName
 }

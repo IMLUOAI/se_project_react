@@ -79,7 +79,7 @@ const RegisterModal = ({
           maxLength="40"
           required
         />
-        <span className="modal__error"></span>
+        {errors.name &&<span className="modal__error">{errors.name}</span>}
       </label>
       <label className="modal__label">
         Avatar URL
@@ -95,7 +95,7 @@ const RegisterModal = ({
           maxLength=""
           required
         />
-        <span className="modal__error"></span>
+        {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
       <div className="modal__submit-container">
         <button type="submit" className="modal__submit-button">
