@@ -9,7 +9,7 @@ const LoginModal = ({
   handleLogin,
   handleOpenRegisterModal,
 }) => {
-  const { values, handleChange } = useForm({
+  const { values, handleChange, errors } = useForm({
     email: "",
     password: "",
   });
@@ -43,7 +43,7 @@ const LoginModal = ({
           minLength="2"
           maxLength="40"
         />
-        <span className="modal__error"></span>
+        {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
       <label className="modal__label">
         Password
@@ -59,7 +59,7 @@ const LoginModal = ({
           minLength="2"
           maxLength="16"
         />
-        <span className="modal__error"></span>
+        {errors.password && <span className="modal__error">{errors.password}</span>}
       </label>
       <div className="modal__submit-container">
         <button type="submit" className="modal__submit-button">
