@@ -259,6 +259,10 @@
     width: 274px;
   }
 
+  .modal__error {
+    font-size: 0.8rem;
+  }
+
   .modal__weather-title {
     font-size: 0.8rem;
   }
