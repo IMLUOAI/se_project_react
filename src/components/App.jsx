@@ -37,13 +37,15 @@ function App() {
   const handleOpenLoginModal = () => setActiveModal("login");
   const handleOpenEditProfileModal = () => setActiveModal("edit");
   const handleCloseModal = () => {
-    setActiveModal("");}
+    setActiveModal("");
+  };
 
   const handleSubmit = (request) => {
     setIsLoading(true);
     request()
       .then(() => {
-        handleCloseModal()})
+        // handleCloseModal();
+      })
       .catch(console.error)
       .finally(() => setIsLoading(false));
   };
@@ -52,6 +54,7 @@ function App() {
     if (!password || !email) return;
     const makeRequest = () => {
       return auth.register(email, password, name, avatar).then(() => {
+        handleCloseModal();
         setActiveModal("login");
       });
     };
@@ -72,6 +75,7 @@ function App() {
           }
         })
         .then((user) => {
+          handleCloseModal();
           setCurrentUser(user);
           setIsLoggedIn(true);
           navigate("/profile");
@@ -94,10 +98,10 @@ function App() {
     }
     const makeRequest = () => {
       return api.editProfile(inputValues).then((res) => {
-        setCurrentUser(res.data)
+        setCurrentUser(res.data);
       });
     };
-    handleSubmit(makeRequest);    
+    handleSubmit(makeRequest);
   };
 
   const handleCreateModal = () => {
