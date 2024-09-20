@@ -22,9 +22,7 @@ import EditProfileModal from "./EditProfileModal";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState([]);
-  const [weatherTemp, setWeatherTemp] = useState(null);
-  const [weatherType, setWeatherType] = useState("")
-  const [isDay, setIsDay] = useState(true);
+  const [weather, setWeather] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -204,9 +202,7 @@ function App() {
     getForcastWeather()
       .then((data) => {
         const parsedWeather = parseWeatherData(data);
-        setWeatherTemp(parsedWeather.temperature);
-        setWeatherType(parsedWeather.weatherType);
-        setIsDay(parsedWeather.isDay);
+        setWeather(parsedWeather);
       })
       .catch((err) => {
         console.error(`Failed to fetch weather data: ${err}`);
@@ -266,9 +262,7 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Main
-                    weatherTemp={weatherTemp}
-                    weatherType={weatherType}
-                    isDay={isDay}
+                    weather={weather}
                     onSelectCard={handleSelectedCard}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}

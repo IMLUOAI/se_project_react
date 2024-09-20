@@ -5,11 +5,13 @@ import "../blocks/itemCard/itemCard.css";
 import "../blocks/main/main.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
-const Main = ({ weatherTemp, weatherType, isDay, onSelectCard, clothingItems, onCardLike }) => {
+const Main = ({ weather, onSelectCard, clothingItems, onCardLike }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
+  const temp = weather?.temperature?.[currentTemperatureUnit];
 
   const getWeatherTypeForClothing = () => {
+    if (!temp) return null;
+
     if (currentTemperatureUnit === "F") {
       if (temp >= 80) {
         return "hot";
@@ -28,11 +30,12 @@ const Main = ({ weatherTemp, weatherType, isDay, onSelectCard, clothingItems, on
         return "cold";
       }
     }
+    return null;
   };
 
   const clothingWeatherType = getWeatherTypeForClothing();
 
-  if (!weatherTemp || !clothingItems) {
+  if (!temp || !clothingItems) {
     return <p>Loading...</p>;
   }
 
@@ -46,9 +49,10 @@ const Main = ({ weatherTemp, weatherType, isDay, onSelectCard, clothingItems, on
   return (
     <main className="main">
       <WeatherCard
-        day={isDay}
-        type={weatherType}
+        day={weather?.isDay}
+        type={weather?.weatherType}
         weatherTemp={temp}
+        imageSrcUrl={weather?.imageSrcUrl}
       />
       <section className="main__section" _id="card">
         <h2 className="main__title">

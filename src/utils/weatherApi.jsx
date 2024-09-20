@@ -1,5 +1,5 @@
 import { checkResponse } from "./utils";
-import { weatherData as fallbackWeatherData } from "./constants";
+import { weatherOptions } from "./constants";
 
 const lat = 33.0198;
 const lon = -96.6989;
@@ -15,11 +15,9 @@ export const getForcastWeather = () => {
     })
     .catch((err) => {
       console.log(`Failed to fetch weather data: ${err}`);
-      // throw err;
-      return fallbackWeatherData;
+      throw err;
     });
 };
-
 
 const mapWeatherType = (main) => {
   switch (main.toLowerCase()) {
@@ -50,8 +48,6 @@ export const parseWeatherData = (weatherData) => {
 
   console.log("Raw weather data:", weatherData);
   
-  
- 
 
   const currentTime = weatherData.dt;
   const sunrise = weatherData.sys.sunrise;
@@ -68,6 +64,12 @@ export const parseWeatherData = (weatherData) => {
   const weatherType = mapWeatherType(weatherData.weather[0].main.toLowerCase());
   const tempKelvin = weatherData.main.temp;
 
+  const weatherOption = weatherOptions.find((option) => {
+    return option.day === isDay && option.type === weatherType;
+  });
+ 
+  const imageSrcUrl = weatherOption ? weatherOption.url : `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
+  
   const weather = {
     temperature: {
       C: Math.round(tempKelvin - 273.15),
@@ -75,7 +77,7 @@ export const parseWeatherData = (weatherData) => {
     },
     isDay,
     weatherType,
-    // imageSrcUrl: `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
+    imageSrcUrl,
   };
   console.log("Parsed weather data:", weather);
   return weather;
