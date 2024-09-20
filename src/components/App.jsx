@@ -23,6 +23,8 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState([]);
   const [weatherTemp, setWeatherTemp] = useState(null);
+  const [weatherType, setWeatherType] = useState("")
+  const [isDay, setIsDay] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -201,8 +203,10 @@ function App() {
   useEffect(() => {
     getForcastWeather()
       .then((data) => {
-        const weather = parseWeatherData(data);
-        setWeatherTemp(weather);
+        const parsedWeather = parseWeatherData(data);
+        setWeatherTemp(parsedWeather.temperature);
+        setWeatherType(parsedWeather.weatherType);
+        setIsDay(parsedWeather.isDay);
       })
       .catch((err) => {
         console.error(`Failed to fetch weather data: ${err}`);
@@ -263,6 +267,8 @@ function App() {
                 <ProtectedRoute>
                   <Main
                     weatherTemp={weatherTemp}
+                    weatherType={weatherType}
+                    isDay={isDay}
                     onSelectCard={handleSelectedCard}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}

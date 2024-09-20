@@ -5,11 +5,11 @@ import "../blocks/itemCard/itemCard.css";
 import "../blocks/main/main.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
-const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
+const Main = ({ weatherTemp, weatherType, isDay, onSelectCard, clothingItems, onCardLike }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
 
-  const getWeatherType = () => {
+  const getWeatherTypeForClothing = () => {
     if (currentTemperatureUnit === "F") {
       if (temp >= 80) {
         return "hot";
@@ -30,30 +30,25 @@ const Main = ({ weatherTemp, onSelectCard, clothingItems, onCardLike }) => {
     }
   };
 
-  const weatherType = getWeatherType();
+  const clothingWeatherType = getWeatherTypeForClothing();
 
-  if (!weatherTemp) {
+  if (!weatherTemp || !clothingItems) {
     return <p>Loading...</p>;
   }
 
-  if (!clothingItems) {
-    console.error("clothingItems is undefined or null");
-    return null;
-  }
   const filteredCards = clothingItems.filter((item) => {
     if (!item.weather){
       return false;
     }
-    return item.weather.toLowerCase() === weatherType;
+    return item.weather.toLowerCase() === clothingWeatherType;
   });
 
   return (
     <main className="main">
       <WeatherCard
-        day={true}
-        type="sunny"
+        day={isDay}
+        type={weatherType}
         weatherTemp={temp}
-        temperature={currentTemperatureUnit}
       />
       <section className="main__section" _id="card">
         <h2 className="main__title">

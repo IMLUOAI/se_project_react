@@ -42,53 +42,48 @@ export const weatherOptions = [
 ];
 
 export const weatherData = [
-  {
-    coord: {
-      lon: 33.02,
-      lat: 96.7,
-    },
-    weather: [
-      {
-        id: 501,
-        main: "Rain",
-        description: "moderate rain",
-        icon: "10d",
+
+    {
+      "coord": {
+        "lon": -96.6989,
+        "lat": 33.0198
       },
-    ],
-    base: "stations",
-    main: {
-      temp: 298.48,
-      feels_like: 298.74,
-      temp_min: 297.56,
-      temp_max: 300.05,
-      pressure: 1015,
-      humidity: 64,
-      sea_level: 1015,
-      grnd_level: 933,
-    },
-    visibility: 10000,
-    wind: {
-      speed: 0.62,
-      deg: 349,
-      gust: 1.18,
-    },
-    rain: {
-      "1h": 3.16,
-    },
-    clouds: {
-      all: 100,
-    },
-    dt: 1661870592,
-    sys: {
-      type: 2,
-      id: 2075663,
-      country: "IT",
-      sunrise: 1661834187,
-      sunset: 1661882248,
-    },
-    timezone: 7200,
-    id: 3163858,
-    name: "Zocca",
-    cod: 200,
-  },
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
+        }
+      ],
+      "base": "stations",
+      "main": {
+        "temp": 295.15,
+        "feels_like": 294.32,
+        "temp_min": 293.71,
+        "temp_max": 296.48,
+        "pressure": 1015,
+        "humidity": 53
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 4.63,
+        "deg": 180
+      },
+      "clouds": {
+        "all": 0
+      },
+      "dt": 1641013200,
+      "sys": {
+        "type": 1,
+        "id": 4358,
+        "country": "US",
+        "sunrise": 1641034225,
+        "sunset": 1641071092
+      },
+      "timezone": -21600,
+      "id": 4719457,
+      "name": "Plano",
+      "cod": 200
+    }
 ];
