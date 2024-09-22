@@ -19,35 +19,13 @@ export const getForcastWeather = () => {
     });
 };
 
-const mapWeatherType = (main) => {
-  switch (main.toLowerCase()) {
-    case "clear":
-      return "sunny";
-    case "clouds":
-      return "cloudy";
-    case "rain":
-      return "rainy";
-    case "storm":
-      return "storm";
-    case "snow":
-      return "snow";
-    case "fog":
-    case "mist":
-      return "fog";
-    default:
-      return "unknown"; // Handle unexpected weather types
-  }
-};
-
-
 export const parseWeatherData = (weatherData) => {
   if (!weatherData || !weatherData.main || !weatherData.weather) {
     console.log("Invalid weather data structure:", weatherData);
-     return null;
+    return null;
   }
 
   console.log("Raw weather data:", weatherData);
-  
 
   const currentTime = weatherData.dt;
   const sunrise = weatherData.sys.sunrise;
@@ -59,17 +37,39 @@ export const parseWeatherData = (weatherData) => {
     console.log("It's nighttime");
   }
 
-
   const isDay = weatherData.weather[0].icon.includes("d");
+  const mapWeatherType = (main) => {
+    switch (main.toLowerCase()) {
+      case "clear":
+        return isDay ? "sunny" : "moon";
+      case "clouds":
+        return "cloudy";
+      case "rain":
+        return "rainy";
+      case "thunderstorm":
+        return "storm";
+      case "snow":
+        return "snow";
+      case "fog":
+      case "mist":
+      case "haze":
+      case "smoke":
+        return "fog";
+      default:
+        return isDay ? "sunny" : "moon"; // Handle unexpected weather types
+    }
+  };
   const weatherType = mapWeatherType(weatherData.weather[0].main.toLowerCase());
   const tempKelvin = weatherData.main.temp;
 
   const weatherOption = weatherOptions.find((option) => {
     return option.day === isDay && option.type === weatherType;
   });
- 
-  const imageSrcUrl = weatherOption ? weatherOption.url : `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
-  
+
+  const imageSrcUrl = weatherOption
+    ? weatherOption.url
+    : `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+
   const weather = {
     temperature: {
       C: Math.round(tempKelvin - 273.15),
